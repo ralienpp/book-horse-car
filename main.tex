@@ -1,0 +1,260 @@
+\documentclass{article}
+% Single A5 page (148mm x 210mm)
+\usepackage[paperwidth=148mm, paperheight=210mm, margin=0mm]{geometry}
+\usepackage{fontspec, polyglossia, graphicx, tikz}
+\usepackage[absolute,overlay]{textpos}
+\usepackage[outline]{contour}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+
+\usepackage{environ}
+\usepackage{lipsum}
+
+
+
+% --- DEBUG TOGGLE ---
+\newif\ifdebug
+\debugtrue 
+% --------------------
+
+\setmainlanguage{romanian}
+\setotherlanguage{russian}
+\setmainfont{FreeSerif}
+
+% Usage: \begin{haloboxEx}[color]{opacity} ... \end{haloboxEx}
+% Defaults: [white]{0.6}
+\NewEnviron{haloboxEx}[2][white]{%
+    \begin{tikzpicture}
+        \node[
+            fill=#1, 
+            fill opacity=#2, 
+            text opacity=1,       % Ensures text remains 100% black/visible
+            inner sep=6pt,        % Space between text and edge
+            rounded corners=3pt,  % Storybook aesthetic
+            align=left            % Allows for \\ automatic line breaks
+        ] (box) {\BODY};
+    \end{tikzpicture}
+}
+
+% Usage: \begin{haloboxEx}[width]{color}{opacity} ... \end{haloboxEx}
+% Width can be in mm, cm, or pt.
+\NewEnviron{haloboxEx2}[3][100mm]{%
+    \begin{tikzpicture}
+        \node[
+            fill=#2, 
+            fill opacity=#3, 
+            text opacity=1,
+            inner sep=10pt,
+            rounded corners=4pt,
+            text width=#1,       % <--- This forces the wrap
+            align=justify,       % <--- Makes it look like a book
+            hyphenation=romanian % <--- Correct breaks for your language
+        ] (box) {\BODY};
+    \end{tikzpicture}
+}
+
+
+\newtcolorbox{HaloBox}{
+    enhanced,
+    colback=white!60, % 60% white opacity
+    colframe=white!0, % Invisible frame
+    boxrule=0pt,
+    arc=2pt,          % Slightly rounded corners
+    boxsep=2pt,
+    left=2pt, right=2pt, top=2pt, bottom=2pt,
+    outer arc=0pt
+}
+
+% We define the grid for a SINGLE A5 PAGE (8 units wide, 8 units high)
+\TPGrid{8}{8} 
+
+\newcommand{\drawsinglegrid}[1]{
+    \ifdebug
+        \begin{tikzpicture}[remember picture, overlay]
+            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
+            \node[red, anchor=north west, font=\tiny] at (current page.north west) {#1};
+            \foreach \x in {0,1,...,8} \node[red, font=\tiny] at ([xshift=\x*18.5mm]current page.north west) {\x};
+            \foreach \y in {0,1,...,8} \node[red, font=\tiny] at ([yshift=-\y*26.25mm]current page.north west) {\y};
+        \end{tikzpicture}
+    \fi
+}
+
+% NEW PRIMITIVE: \fullspread{image}{L-content}{R-content}
+% This generates TWO PDF pages.
+\newcommand{\fullspread}[3]{
+    % LEFT PAGE
+    \newpage
+    \begin{tikzpicture}[remember picture, overlay]
+        % Place the image centered on the SPREAD, so only the left half shows on this page
+        \node[inner sep=0, anchor=west] at (current page.west) 
+            {\includegraphics[height=\paperheight, width=296mm, keepaspectratio=false]{#1}};
+    \end{tikzpicture}
+    
+    \ifdebug
+        \begin{tikzpicture}[remember picture, overlay]
+            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
+            \node[red, anchor=north west] at (current page.north west) {LEFT PAGE};
+        \end{tikzpicture}
+    \fi
+    
+    \begin{textblock}{6}(1,1) #2 \end{textblock}
+
+    % RIGHT PAGE
+    \newpage
+    \begin{tikzpicture}[remember picture, overlay]
+        % Place the image anchored to the EAST, so only the right half shows on this page
+        \node[inner sep=0, anchor=east] at (current page.east) 
+            {\includegraphics[height=\paperheight, width=296mm, keepaspectratio=false]{#1}};
+    \end{tikzpicture}
+
+    \ifdebug
+        \begin{tikzpicture}[remember picture, overlay]
+            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
+            \node[red, anchor=north east] at (current page.north east) {RIGHT PAGE};
+        \end{tikzpicture}
+    \fi
+    
+    \begin{textblock}{6}(1,1) #3 \end{textblock}
+}
+
+% Usage: \singlepage{image}{x}{y}{width}{content}
+\newcommand{\singlepage}[5]{
+    \newpage
+    \begin{tikzpicture}[remember picture, overlay]
+        \node[inner sep=0] at (current page.center) 
+            {\includegraphics[width=\paperwidth, height=\paperheight]{#1}};
+    \end{tikzpicture}
+    \drawsinglegrid{SINGLE PAGE}
+    \begin{textblock}{#4}(#2,#3)
+        #5
+    \end{textblock}
+}
+
+\newcommand{\textpage}[1]{
+    \newpage
+    \thispagestyle{empty}
+    \drawsinglegrid{TEXT PAGE}
+    \begin{textblock}{6}(1,1)
+        #1
+    \end{textblock}
+    \mbox{} % Keeps the page from being discarded if it looks "empty" to LaTeX
+}
+
+% Define the parity check first
+\newcommand{\checkparity}{
+    \ifodd\value{page}
+%        \errmessage{Logic Error: Spread started on an ODD page (\thepage). This will break your booklet!}
+        \begin{tikzpicture}[remember picture, overlay]
+            \fill[red!10] (current page.south west) rectangle (current page.north east);
+            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
+            \node[red, font=\Huge\bfseries, rotate=45] at (current page.center) {WILL PRINT BADLY};
+        \end{tikzpicture}
+    \fi
+}
+
+% Usage: \prosespread[L/R]{image}{Text Content}
+\newcommand{\prosespread}[3][L]{
+    \clearpage
+    \checkparity
+    
+    \if#1L
+        % IMAGE ON LEFT, TEXT ON RIGHT
+        \singlepage{#2}{0}{0}{0}{} % Empty textblock call for image page
+        \clearpage
+        \drawsinglegrid{PROSE RIGHT}
+        \begin{textblock}{6}(1,1)
+            #3
+        \end{textblock}
+    \else
+        % TEXT ON LEFT, IMAGE ON RIGHT
+        \drawsinglegrid{PROSE LEFT}
+        \begin{textblock}{6}(1,1)
+            #3
+        \end{textblock}
+        \clearpage
+        \singlepage{#2}{0}{0}{0}{}
+    \fi
+}
+
+
+\begin{document}
+
+\singlepage{example-image-c}{1}{2}{6}{
+    \begin{center}
+        \huge\textbf{Marea Criză a Gunoiului}\\
+        \large O poveste despre orașe și cai
+    \end{center}
+}
+
+\newpage
+Another regular page 
+\newpage
+
+
+
+
+
+\fullspread{example-image-a}{
+    \section*{Pagina Stângă}
+    Textul acesta va apărea pe prima pagină A5.
+}{
+    \section*{Pagina Dreaptă}
+    Textul acesta va apărea pe a doua pagină A5. 
+    Imaginea din fundal este aceeași, dar „decalată”.
+
+    \hspace{2cm} Here we go again
+}
+
+%\newpage
+%Another regular page 
+%\newpage
+%
+
+\fullspread{example-image-b}{
+    \section*{Pagina Stângă}
+    Textul acesta va apărea pe prima pagină A5.
+}{
+    \section*{Pagina Dreaptă}
+    Textul acesta va apărea pe a doua pagină A5. 
+    Imaginea din fundal este aceeași, dar „decalată”.
+
+    \hspace{2cm} Here we go again
+}
+
+
+\singlepage{example-image-c}{1}{6}{6}{
+    \small 
+    Fact-check: Datele din această carte sunt bazate pe arhivele din New York (1890).
+
+%\begin{haloboxEx}[blue]{0.1}
+%        \Large\textbf{Orașul era plin de praf.}\\
+%        Această cutie este 70\% opacă. Protejează textul de fundalul încărcat, dar lasă culorile imaginii să se întrevadă.
+%    \end{haloboxEx}
+%
+%}
+%
+%
+%\begin{haloboxEx2}[green]{0.1}
+%        \Large\textbf{Orașul era plin de praf.}\\
+%        Această cutie este 70\% opacă. Protejează textul de fundalul încărcat, dar lasă culorile imaginii să se întrevadă.
+%    \end{haloboxEx2}
+%
+}
+
+
+% An image on the left, and a long story on the right
+\prosespread[L]{example-image-a}{
+    \section*{Capitolul 1: Calul și Orașul}
+%    \haloboxEx{white}{0} % Optional: transparent box for text padding
+    Aici poți scrie paragrafe lungi de proză. Deoarece folosim mecanismul LaTeX standard în interiorul textblock-ului, fluxul textului va fi gestionat automat.
+    
+    \lipsum[1-2] % Placeholder for long text
+}
+
+% Text on the left, and an image on the right
+\prosespread[R]{example-image-b}{
+    \selectlanguage{russian}
+    Здесь находится описание карты города. Текст расположен на левой странице.
+}
+
+\end{document}
