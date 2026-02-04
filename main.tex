@@ -24,6 +24,7 @@
 \setmainlanguage{romanian}
 \setotherlanguage{russian}
 \setmainfont{Linux Libertine O}[Scale=1.5]
+\newfontfamily\russianfont{Linux Libertine O}[Scale=1.5]
 
 % Termes: \begin{haloboxEx}[color]{opacity} ... \end{haloboxEx}
 % Defaults: [white]{0.6}
@@ -229,6 +230,13 @@
 }
 
 
+\newcommand{\startprose}{%
+    \clearpage
+    \restoregeometry % If you want to go back to standard margins
+    \newgeometry{margin=20mm, bottom=25mm} % Standard book margins
+    \thispagestyle{fancy} % Ensure page numbers still appear
+}
+
 
 \begin{document}
 
@@ -303,12 +311,33 @@
     Aici poți scrie paragrafe lungi de proză. Deoarece folosim mecanismul LaTeX standard în interiorul textblock-ului, fluxul textului va fi gestionat automat.
     
     \lipsum[1-2] % Placeholder for long text
+
+    Și mail lung jvompiha.
 }
 
-% Text on the left, and an image on the right
+Text on the left, and an image on the right
 \prosespread[R]{example-image-b}{
-    \selectlanguage{russian}
+    % \selectlanguage{russian}
+    % \newfontfamily\russianfont{Linux Libertine O}
     Здесь находится описание карты города. Текст расположен на левой странице.
+}
+
+\startprose
+\section*{Ghid pentru Părinți}
+
+Această secțiune este generată automat de LaTeX. Aici poți scrie pagini întregi de text, iar sistemul va gestiona singur:
+\begin{itemize}
+    \item Trecerea la pagină nouă (Page breaks).
+    \item Numerotarea automată a paginilor.
+    \item Notele de subsol și listele.
+\end{itemize}
+
+\lipsum[1-10] % This will automatically span 2-3 pages.
+
+
+\singlepage{example-image-c}{1}{6}{6}{
+    \small 
+    full page again
 }
 
 \end{document}
