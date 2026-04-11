@@ -1,343 +1,228 @@
+% !TeX program = lualatex
+% !TeX options = -interaction=nonstopmode -halt-on-error "\def\booklang{ro}\input{main}"
+% ============================================================
+%  main.tex — Book content: "The Horse, the Dung, and the Car"
+%  Compile with: lualatex "\def\booklang{ro}\input{main}"
+%  To switch language in TeXstudio: change 'ro' in the !TeX options line above.
+% ============================================================
 \documentclass{article}
-% Single A5 page (148mm x 210mm)
-\usepackage[paperwidth=148mm, paperheight=210mm, margin=0mm]{geometry}
-\usepackage{fontspec, polyglossia, graphicx, tikz}
-\usepackage[absolute,overlay]{textpos}
-\usepackage[outline]{contour}
-\usepackage{xcolor}
-\usepackage[most]{tcolorbox}
-
-\usepackage{environ}
-\usepackage{lipsum}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{} % Clear all headers/footers
-\renewcommand{\headrulewidth}{0pt} % Remove the horizontal lines
-
-
-
-% --- DEBUG TOGGLE ---
-\newif\ifdebug
-\debugtrue 
-% --------------------
-
-\setmainlanguage{romanian}
-\setotherlanguage{russian}
-\setmainfont{Linux Libertine O}[Scale=1.5]
-\newfontfamily\russianfont{Linux Libertine O}[Scale=1.5]
-
-% Termes: \begin{haloboxEx}[color]{opacity} ... \end{haloboxEx}
-% Defaults: [white]{0.6}
-\NewEnviron{haloboxEx}[2][white]{%
-    \begin{tikzpicture}
-        \node[
-            fill=#1, 
-            fill opacity=#2, 
-            text opacity=1,       % Ensures text remains 100% black/visible
-            inner sep=6pt,        % Space between text and edge
-            rounded corners=3pt,  % Storybook aesthetic
-            align=left            % Allows for \\ automatic line breaks
-        ] (box) {\BODY};
-    \end{tikzpicture}
-}
-
-% Usage: \begin{haloboxEx}[width]{color}{opacity} ... \end{haloboxEx}
-% Width can be in mm, cm, or pt.
-\NewEnviron{haloboxEx2}[3][100mm]{%
-    \begin{tikzpicture}
-        \node[
-            fill=#2, 
-            fill opacity=#3, 
-            text opacity=1,
-            inner sep=10pt,
-            rounded corners=4pt,
-            text width=#1,       % <--- This forces the wrap
-            align=justify,       % <--- Makes it look like a book
-            hyphenation=romanian % <--- Correct breaks for your language
-        ] (box) {\BODY};
-    \end{tikzpicture}
-}
-
-
-\newtcolorbox{HaloBox}{
-    enhanced,
-    colback=white!60, % 60% white opacity
-    colframe=white!0, % Invisible frame
-    boxrule=0pt,
-    arc=2pt,          % Slightly rounded corners
-    boxsep=2pt,
-    left=2pt, right=2pt, top=2pt, bottom=2pt,
-    outer arc=0pt
-}
-
-% We define the grid for a SINGLE A5 PAGE (8 units wide, 8 units high)
-\TPGrid{8}{8} 
-
-\newcommand{\drawsinglegrid}[1]{
-    \ifdebug
-        \begin{tikzpicture}[remember picture, overlay]
-            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
-            \node[red, anchor=north west, font=\tiny] at (current page.north west) {#1};
-            \foreach \x in {0,1,...,8} \node[red, font=\tiny] at ([xshift=\x*18.5mm]current page.north west) {\x};
-            \foreach \y in {0,1,...,8} \node[red, font=\tiny] at ([yshift=-\y*26.25mm]current page.north west) {\y};
-        \end{tikzpicture}
-    \fi
-}
-
-
-\newcommand{\drawdebugguides}[1]{
-    \begin{tikzpicture}[remember picture, overlay]
-        % 1. BLEED & TRIM ZONE (Red dashed line at the physical edge)
-        \draw[red, thick, dashed] (current page.south west) rectangle (current page.north east);
-        
-        % 2. THE GUTTER (Center fold line)
-        \draw[blue, line width=0.5pt] (current page.north) -- (current page.south);
-        %\node[blue, anchor=north, font=\tiny\sffamily] at (current page.north) {FOLD / GUTTER};
-
-        % 3. SAFETY MARGINS (10mm from every edge)
-        % Any text outside this box is at risk of being trimmed or lost in the fold.
-        \draw[orange, thin] ([shift={(10mm,10mm)}]current page.south west) 
-                 rectangle ([shift={(-10mm,-10mm)}]current page.north east);
-
-        % 4. COORDINATE GRID
-        \draw[gray!20, thin, step=1] (current page.south west) grid (current page.north east);
-        
-        % 5. LABEL
-        \node[fill=black, opacity=0.6, text=white, font=\ttfamily\scriptsize, anchor=north west] 
-            at (current page.north west) {#1 | PAGE: \thepage};
-    \end{tikzpicture}
-}
-
-
-
-
-% \fullspread{image}{L-content}{R-content}
-% This generates TWO PDF pages.
-\newcommand{\fullspread}[3]{
-    % LEFT PAGE
-    \newpage
-    \begin{tikzpicture}[remember picture, overlay]
-        % Place the image centered on the SPREAD, so only the left half shows on this page
-        \node[inner sep=0, anchor=west] at (current page.west) 
-            {\includegraphics[height=\paperheight, width=296mm, keepaspectratio=false]{#1}};
-    \end{tikzpicture}
-    
-%    \ifdebug
-%        \begin{tikzpicture}[remember picture, overlay]
-%            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
-%            \node[red, anchor=north west] at (current page.north west) {LEFT PAGE};
-%        \end{tikzpicture}
-%    \fi
-    
-    \drawdebugguides{SPREAD LEFT}
-    \begin{textblock}{6}(1,1) #2 \end{textblock}
-
-    % RIGHT PAGE
-    \newpage
-    \drawdebugguides{SPREAD RIGHT}
-
-    \begin{tikzpicture}[remember picture, overlay]
-        % Place the image anchored to the EAST, so only the right half shows on this page
-        \node[inner sep=0, anchor=east] at (current page.east) 
-            {\includegraphics[height=\paperheight, width=296mm, keepaspectratio=false]{#1}};
-    \end{tikzpicture}
-
-%    \ifdebug
-%        \begin{tikzpicture}[remember picture, overlay]
-%            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
-%            \node[red, anchor=north east] at (current page.north east) {RIGHT PAGE};
-%        \end{tikzpicture}
-%    \fi
-    
-    \drawdebugguides{SPREAD RIGHT}
-    \begin{textblock}{6}(1,1) #3 \end{textblock}
-}
-
-% Usage: \singlepage{image}{x}{y}{width}{content}
-\newcommand{\singlepage}[5]{
-    \newpage
-    \begin{tikzpicture}[remember picture, overlay]
-        \node[inner sep=0] at (current page.center) 
-            {\includegraphics[width=\paperwidth, height=\paperheight]{#1}};
-    \end{tikzpicture}
-    \drawdebugguides{SINGLE PAGE}
-    \begin{textblock}{#4}(#2,#3)
-        #5
-    \end{textblock}
-}
-
-\newcommand{\textpage}[1]{
-    \newpage
-    \thispagestyle{empty}
-    \drawdebugguides{TEXT PAGE}
-    \begin{textblock}{6}(1,1)
-        #1
-    \end{textblock}
-    \mbox{} % Keeps the page from being discarded if it looks "empty" to LaTeX
-}
-
-% Define the parity check first
-\newcommand{\checkparity}{
-    \ifodd\value{page}
-%        \errmessage{Logic Error: Spread started on an ODD page (\thepage). This will break your booklet!}
-        \begin{tikzpicture}[remember picture, overlay]
-            \fill[red!10] (current page.south west) rectangle (current page.north east);
-            \draw[red!30, thin, step=1] (current page.south west) grid (current page.north east);
-            \node[red, font=\Huge\bfseries, rotate=45] at (current page.center) {WILL PRINT BADLY};
-        \end{tikzpicture}
-    \fi
-}
-
-% Usage: \prosespread[L/R]{image}{Text Content}
-\newcommand{\prosespread}[3][L]{
-    \clearpage
-    \checkparity
-    
-    \if#1L
-        % IMAGE ON LEFT, TEXT ON RIGHT
-        \singlepage{#2}{0}{0}{0}{} % Empty textblock call for image page
-        \clearpage
-        \drawdebugguides{PROSE RIGHT}
-        \begin{textblock}{6}(1,1)
-            #3
-        \end{textblock}
-    \else
-        % TEXT ON LEFT, IMAGE ON RIGHT
-        \drawdebugguides{PROSE LEFT}
-        \begin{textblock}{6}(1,1)
-            #3
-        \end{textblock}
-        \clearpage
-        \singlepage{#2}{0}{0}{0}{}
-    \fi
-}
-
-
-
-% Position the page number in the bottom corner using TikZ
-\fancyfoot[C]{
-    \begin{tikzpicture}[remember picture, overlay]
-        \node[
-            fill=white, 
-            fill opacity=0.5, 
-            text opacity=1, 
-            inner sep=4pt, 
-            rounded corners=2pt,
-            anchor=south] 
-            at (current page.south) [yshift=10mm] 
-            {\small\textsf{\thepage}};
-    \end{tikzpicture}
-}
-
-
-\newcommand{\startprose}{%
-    \clearpage
-    \restoregeometry % If you want to go back to standard margins
-    \newgeometry{margin=20mm, bottom=25mm} % Standard book margins
-    \thispagestyle{fancy} % Ensure page numbers still appear
-}
-
+\usepackage[debug,pagenumbers]{picturebook}
 
 \begin{document}
 
-\singlepage{example-image-c}{1}{2}{6}{
-\thispagestyle{empty}
-    \begin{center}
-        \huge\textbf{Titlu}\\
-        \vspace{1cm}
-        \large O poveste despre sustenabiltiate
-    \end{center}
+% ============================================================
+%  COVER (p.1) — modern city
+% ============================================================
+\pagenumbersoff
+\singlepage{images/modern-city.jpeg}{1}{3}{12.8}{%
+	\begin{halo}[opacity=0.7]
+		\begin{center}
+			{\Huge\bfseries \tr{title}}\\[0.5cm]
+			{\large \tr{subtitle}}
+		\end{center}
+	\end{halo}
 }
 
-
-\singlepage{example-image-a}{1}{2}{6}{
-\thispagestyle{empty}
-    \begin{center}
-        Această pagină este goală
-    \end{center}
+% ============================================================
+%  SPREAD pp.2–3 — horse tram era
+%  p.2: cities didn't always look like this
+%  p.3: horse trams
+% ============================================================
+\pagenumberson
+\fullspread{images/horse-tram.jpeg}%
+{1}{1}{12.8}{% left page
+	\begin{halo}
+		\tr{p01_modern_city}
+	\end{halo}
+}%
+{1}{1}{12.8}{% right page
+	\begin{halo}
+		\tr{p02_horse_tram}
+	\end{halo}
 }
 
-
-
-
-\singlepage{images/modern-city.jpeg}{1}{1}{6}{
-    \vspace{-1cm}
-    \begin{haloboxEx}[white]{0.5}
-        Orașele noastre nu arătau întotdeauna așa.
-    \end{haloboxEx}
+% ============================================================
+%  p.4 — growing cities, growing horse population
+% ============================================================
+\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
+	\begin{halo}
+		\tr{p03_growing_cities}
+	\end{halo}
 }
 
-\singlepage{images/horse-tram.jpeg}{1}{1}{6}{
-    \vspace{-1cm}
-    Pe vremuri transportul public erau trăsurile și tramvaiurile trase de cai.
+% ============================================================
+%  p.5 — New York 1890 statistics
+% ============================================================
+\singlepage{images/modern-city.jpeg}{1}{1}{12.8}{%
+	\begin{halo}
+		\tr{p04_ny_stats}
+
+		\medskip
+		\tr{p04_ny_subtitle}
+	\end{halo}
 }
 
+% ============================================================
+%  SPREAD pp.6–7 — daily horse waste / smell
+%  p.6: manure stats + subtitle
+%  p.7: how did it smell?
+% ============================================================
+\fullspread{images/horse-tram.jpeg}%
+{1}{1}{12.8}{% left page
+	\begin{halo}
+		\tr{p05_manure_stats}
 
-
-
-
-\fullspread{example-image-b}{
-    Orașele noastre nu arătau întotdeauna așa.
-}{
-    Au fost vremuri când transportul public erau trăsurile și tramvaiurile trase de cai
-
+		\medskip
+		{\small\itshape \tr{p05_subtitle}}
+	\end{halo}
+}%
+{2}{8}{10}{% right page — centered question
+	\begin{halo}[color=yellow, opacity=0.5]
+		\begin{center}
+			{\Large\bfseries \tr{p06_smell}}
+		\end{center}
+	\end{halo}
 }
 
-
-\singlepage{example-image-c}{1}{6}{6}{
-    \small 
-    Fact-check: Datele din această carte sunt bazate pe arhivele din New York (1890).
-
-%\begin{haloboxEx}[blue]{0.1}
-%        \Large\textbf{Orașul era plin de praf.}\\
-%        Această cutie este 70\% opacă. Protejează textul de fundalul încărcat, dar lasă culorile imaginii să se întrevadă.
-%    \end{haloboxEx}
-%
-%}
-%
-%
-%\begin{haloboxEx2}[green]{0.1}
-%        \Large\textbf{Orașul era plin de praf.}\\
-%        Această cutie este 70\% opacă. Protejează textul de fundalul încărcat, dar lasă culorile imaginii să se întrevadă.
-%    \end{haloboxEx2}
-%
+% ============================================================
+%  p.8 — alarming situation, people adapting
+% ============================================================
+\singlepage{images/modern-city.jpeg}{1}{1}{12.8}{%
+	\begin{halo}
+		\tr{p07_alarming}
+	\end{halo}
 }
 
-
-% An image on the left, and a long story on the right
-\prosespread[L]{example-image-a}{
-    \section*{Capitolul 1: Calul și Orașul}
-%    \haloboxEx{white}{0} % Optional: transparent box for text padding
-    Aici poți scrie paragrafe lungi de proză. Deoarece folosim mecanismul LaTeX standard în interiorul textblock-ului, fluxul textului va fi gestionat automat.
-    
-    \lipsum[1-2] % Placeholder for long text
-
-    Și mail lung jvompiha.
+% ============================================================
+%  p.9 — saved by technology (old car)
+% ============================================================
+\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
+	\begin{halo}
+		\tr{p08_saved_by_tech}
+	\end{halo}
 }
 
-Text on the left, and an image on the right
-\prosespread[R]{example-image-b}{
-    % \selectlanguage{russian}
-    % \newfontfamily\russianfont{Linux Libertine O}
-    Здесь находится описание карты города. Текст расположен на левой странице.
+% ============================================================
+%  SPREAD pp.10–11 — history repeats / growing cars
+%  p.10: history repeats
+%  p.11: cars growing
+% ============================================================
+\fullspread{images/modern-city.jpeg}%
+{2}{8}{10}{% left page — dramatic statement
+	\begin{halo}[color=yellow, opacity=0.5]
+		\begin{center}
+			{\Large\bfseries \tr{p09_history_repeats}}
+		\end{center}
+	\end{halo}
+}%
+{1}{1}{12.8}{% right page
+	\begin{halo}
+		\tr{p10_cars_growing}
+	\end{halo}
 }
 
+% ============================================================
+%  p.12 — cars produce invisible exhaust
+% ============================================================
+\singlepage{images/modern-city.jpeg}{1}{1}{12.8}{%
+	\begin{halo}
+		\tr{p11_exhaust}
+	\end{halo}
+}
+
+% ============================================================
+%  p.13 — can be smelled / detected
+% ============================================================
+\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
+	\begin{halo}
+		\tr{p12_detect}
+	\end{halo}
+}
+
+% ============================================================
+%  SPREAD pp.14–15 — health effects / piles haven't disappeared
+%  p.14: health impact
+%  p.15: piles are back
+% ============================================================
+\fullspread{images/horse-tram.jpeg}%
+{1}{1}{12.8}{% left page
+	\begin{halo}
+		\tr{p13_health}
+	\end{halo}
+}%
+{2}{8}{10}{% right page — dramatic
+	\begin{halo}[color=yellow, opacity=0.5]
+		\begin{center}
+			{\Large\bfseries \tr{p14_piles_back}}
+		\end{center}
+	\end{halo}
+}
+
+% ============================================================
+%  p.16 — what can you do?
+% ============================================================
+\singlepage{images/modern-city.jpeg}{2}{8}{10}{%
+	\begin{halo}[color=yellow, opacity=0.5]
+		\begin{center}
+			{\Large\bfseries \tr{p15_what_can_you_do}}
+		\end{center}
+	\end{halo}
+}
+
+% ============================================================
+%  p.17 — walk, bike, public transport
+% ============================================================
+\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
+	\begin{halo}
+		\tr{p16_walk_bike}
+	\end{halo}
+}
+
+% ============================================================
+%  p.18 — plant a tree
+% ============================================================
+\singlepage{images/modern-city.jpeg}{1}{15}{12.8}{%
+	\begin{halo}
+		\tr{p17_plant_tree}
+	\end{halo}
+}
+
+% ============================================================
+%  p.19 — use your vote
+% ============================================================
+\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
+	\begin{halo}
+		\tr{p18_vote}
+	\end{halo}
+}
+
+% ============================================================
+%  p.20 — contribute to tech progress
+% ============================================================
+\singlepage{images/modern-city.jpeg}{1}{15}{12.8}{%
+	\begin{halo}
+		\tr{p19_tech_progress}
+	\end{halo}
+}
+
+% ============================================================
+%  p.21 — think about the ecosystem
+% ============================================================
+\singlepage{images/horse-tram.jpeg}{2}{8}{10}{%
+	\begin{halo}[color=yellow, opacity=0.5]
+		\begin{center}
+			{\Large\bfseries \tr{p20_ecosystem}}
+		\end{center}
+	\end{halo}
+}
+
+% ============================================================
+%  PROSE SECTION — parent guide
+% ============================================================
+\pagenumberson
+\pagenumberstyle{center}
 \startprose
-\section*{Ghid pentru Părinți}
-
-Această secțiune este generată automat de LaTeX. Aici poți scrie pagini întregi de text, iar sistemul va gestiona singur:
-\begin{itemize}
-    \item Trecerea la pagină nouă (Page breaks).
-    \item Numerotarea automată a paginilor.
-    \item Notele de subsol și listele.
-\end{itemize}
-
-\lipsum[1-10] % This will automatically span 2-3 pages.
-
-
-\singlepage{example-image-c}{1}{6}{6}{
-    \small 
-    full page again
-}
+\section*{\tr{parent_guide_title}}
+\tr{parent_guide_body}
 
 \end{document}

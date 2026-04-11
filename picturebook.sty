@@ -1,0 +1,374 @@
+% ============================================================
+%  picturebook.sty
+%  A LaTeX package for illustrated children's picture books.
+%  Engine: LuaLaTeX  (compile with: lualatex main.tex)
+%
+%  Package options:
+%    debug       - show grid overlay, safe area, page type labels
+%    safemargin  - safe area margin (default 5mm)
+% ============================================================
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{picturebook}[2026/03/12 Illustrated children's picture book template]
+
+% ------------------------------------------------------------
+%  Option handling
+% ------------------------------------------------------------
+\newif\ifpb@debug
+\pb@debugfalse
+
+\newif\ifpb@pagenumbers
+\pb@pagenumbersfalse
+
+\newlength{\pb@safemargin}
+\setlength{\pb@safemargin}{5mm}
+
+% Page number style: "sides" (left/right) or "center"
+\def\pb@pagenumberstyle{sides}
+
+\DeclareOption{debug}{\pb@debugtrue}
+\DeclareOption{pagenumbers}{\pb@pagenumberstrue}
+\DeclareOption*{\PackageWarning{picturebook}{Unknown option '\CurrentOption'}}
+\ProcessOptions\relax
+
+% ------------------------------------------------------------
+%  Required packages
+% ------------------------------------------------------------
+\RequirePackage[paperwidth=148mm, paperheight=210mm, margin=0mm]{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{fontspec}
+\RequirePackage{polyglossia}
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{xcolor}
+\RequirePackage{environ}
+\RequirePackage{fancyhdr}
+\RequirePackage{etoolbox}
+
+% Suppress headers/footers by default
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ============================================================
+%  PAGE NUMBERS (R13)
+%  Enabled via \pagenumberson or the 'pagenumbers' package option.
+%  Disabled via \pagenumbersoff (e.g., for a clean spread).
+%  Style: \pagenumberstyle{sides} or \pagenumberstyle{center}
+% ============================================================
+\newcommand{\pagenumberson}{\pb@pagenumberstrue}
+\newcommand{\pagenumbersoff}{\pb@pagenumbersfalse}
+\newcommand{\pagenumberstyle}[1]{\def\pb@pagenumberstyle{#1}}
+
+% Render page number as TikZ overlay (works over full-bleed images)
+\newcommand{\pb@renderpagenum}{%
+  \ifpb@pagenumbers
+    \begin{tikzpicture}[remember picture, overlay]
+      \def\pb@pnstyle{\pb@pagenumberstyle}%
+      \ifx\pb@pnstyle\pb@style@center
+        % Centered at bottom
+        \node[fill=white, fill opacity=0.5, text opacity=1,
+              inner sep=3pt, rounded corners=2pt, anchor=south,
+              font=\small\sffamily]
+          at ([yshift=8mm]current page.south) {\thepage};
+      \else
+        % Sides: left on even pages, right on odd pages
+        \ifodd\value{page}
+          \node[fill=white, fill opacity=0.5, text opacity=1,
+                inner sep=3pt, rounded corners=2pt, anchor=south east,
+                font=\small\sffamily]
+            at ([xshift=-8mm, yshift=8mm]current page.south east) {\thepage};
+        \else
+          \node[fill=white, fill opacity=0.5, text opacity=1,
+                inner sep=3pt, rounded corners=2pt, anchor=south west,
+                font=\small\sffamily]
+            at ([xshift=8mm, yshift=8mm]current page.south west) {\thepage};
+        \fi
+      \fi
+    \end{tikzpicture}%
+  \fi
+}
+\def\pb@style@center{center}
+
+% Configure textpos to use centimeters from top-left origin
+\setlength{\TPHorizModule}{1cm}
+\setlength{\TPVertModule}{1cm}
+\textblockorigin{0cm}{0cm}
+
+% Store original geometry for switching modes
+\newlength{\pb@pageW}
+\newlength{\pb@pageH}
+\setlength{\pb@pageW}{\paperwidth}
+\setlength{\pb@pageH}{\paperheight}
+
+
+% ============================================================
+%  TRANSLATION SYSTEM (Lua tables)
+% ============================================================
+
+% \booklang must be defined before \input{main}
+% e.g. \def\booklang{ro}
+\ifdefined\booklang\else
+  \def\booklang{ro}
+\fi
+
+% Load the Lua translation table
+\directlua{
+  pb_strings = dofile("translations/" .. "\booklang" .. ".lua")
+  if not pb_strings then
+    texio.write_nl("WARNING: translations/" .. "\booklang" .. ".lua not found or returned nil")
+    pb_strings = {}
+  end
+}
+
+% \tr{key} - retrieve a translated string. Shows "MISSING: key" if undefined.
+\newcommand{\tr}[1]{%
+  \directlua{
+    local val = pb_strings["\luaescapestring{#1}"]
+    if val then
+      tex.print(val)
+    else
+      tex.print("\\textcolor{red}{MISSING: \luaescapestring{#1}}")
+    end
+  }%
+}
+
+% Set polyglossia language from the Lua table
+\directlua{
+  local lang = pb_strings and pb_strings["polyglossia_lang"]
+  if lang then
+    tex.print("\\setmainlanguage{" .. lang .. "}")
+  else
+    tex.print("\\setmainlanguage{english}")
+  end
+}
+
+
+% ============================================================
+%  FONT CONFIGURATION
+% ============================================================
+% Default font: Linux Libertine O (supports Latin + Cyrillic)
+% Override by defining \bookfont before loading the package.
+\ifdefined\bookfont\else
+  \def\bookfont{Linux Libertine O}
+\fi
+\setmainfont{\bookfont}
+% Polyglossia requires all font families to support the active script.
+% Set sans and mono to Cyrillic-capable fonts as well.
+\setsansfont{Linux Biolinum O}
+\setmonofont{FreeMono}
+
+
+% ============================================================
+%  INTERNAL: Full-bleed geometry reset
+% ============================================================
+\newcommand{\pb@resetbleed}{%
+  \clearpage
+  \newgeometry{margin=0mm}%
+  \thispagestyle{fancy}%
+}
+
+
+% ============================================================
+%  \startprose — switch to standard margins for prose sections.
+%  No \endprose needed; \singlepage / \fullspread reset to full-bleed.
+% ============================================================
+\newcommand{\startprose}{%
+  \clearpage
+  \newgeometry{margin=20mm, bottom=25mm}%
+  % For prose pages, use fancyhdr footer for page numbers
+  \fancyhf{}%
+  \ifpb@pagenumbers
+    \fancyfoot[C]{\small\sffamily\thepage}%
+  \fi
+  \thispagestyle{fancy}%
+  \pagestyle{fancy}%
+}
+
+
+% ============================================================
+%  \singlepage{image}{x}{y}{width}{content}
+%  Places a full-bleed background image with a text block.
+%  x,y in cm from top-left. width in cm.
+% ============================================================
+\newcommand{\singlepage}[5]{%
+  \pb@resetbleed
+  % Background image
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[inner sep=0pt, anchor=center] at (current page.center)
+      {\includegraphics[width=\paperwidth, height=\paperheight]{#1}};
+  \end{tikzpicture}%
+  % Debug overlay
+  \ifpb@debug\pb@drawdebug{SINGLE PAGE}\fi
+  % Text block
+  \begin{textblock*}{#4cm}(#2cm, #3cm)
+    #5
+  \end{textblock*}%
+  % Page number
+  \pb@renderpagenum
+}
+
+
+% ============================================================
+%  DEBUG OVERLAY
+% ============================================================
+\newcommand{\pb@drawdebug}[1]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    % 1cm grid
+    \draw[cyan!30, very thin, step=1cm]
+      (current page.south west) grid (current page.north east);
+    % 5cm coordinate labels
+    \pgfmathsetmacro{\xmax}{int(\the\paperwidth / 28.45274)}% paperwidth in cm (approx)
+    \pgfmathsetmacro{\ymax}{int(\the\paperheight / 28.45274)}% paperheight in cm
+    \foreach \x in {0,5,...,\xmax} {
+      \foreach \y in {0,5,...,\ymax} {
+        \node[fill=black, fill opacity=0.5, text=white, text opacity=1,
+              font=\ttfamily\fontsize{5}{6}\selectfont, inner sep=1pt,
+              anchor=north west]
+          at ([xshift=\x cm, yshift=-\y cm]current page.north west)
+          {\x,\y};
+      }
+    }
+    % Safe area (red dotted)
+    \draw[red, thick, densely dotted]
+      ([shift={(\pb@safemargin,\pb@safemargin)}]current page.south west)
+      rectangle
+      ([shift={(-\pb@safemargin,-\pb@safemargin)}]current page.north east);
+    % Page type label
+    \node[fill=black, fill opacity=0.7, text=white, text opacity=1,
+          font=\ttfamily\scriptsize, inner sep=3pt, anchor=north west]
+      at ([xshift=2mm, yshift=-2mm]current page.north west)
+      {#1 ~|~ p.\thepage};
+  \end{tikzpicture}%
+}
+
+
+% ============================================================
+%  HALO ENVIRONMENT
+%  Usage: \begin{halo}[color=white, opacity=0.6] ... \end{halo}
+%  Places content over a semi-transparent rounded box for readability.
+% ============================================================
+\RequirePackage[most]{tcolorbox}
+
+\pgfkeys{
+  /pb/halo/.cd,
+  color/.initial=white,
+  opacity/.initial=0.6,
+}
+
+\newenvironment{halo}[1][]{%
+  \pgfkeys{/pb/halo/.cd, #1}%
+  \pgfkeysgetvalue{/pb/halo/color}{\pb@halo@color}%
+  \pgfkeysgetvalue{/pb/halo/opacity}{\pb@halo@opacity}%
+  \begin{tcolorbox}[
+    enhanced,
+    colback=\pb@halo@color,
+    opacityback=\pb@halo@opacity,
+    colframe=\pb@halo@color,
+    opacityframe=0,
+    boxrule=0pt,
+    arc=4pt,
+    boxsep=4pt,
+    left=4pt, right=4pt, top=4pt, bottom=4pt,
+    sharp corners=south,
+    sharp corners=north,
+    arc=4pt,
+  ]%
+}{%
+  \end{tcolorbox}%
+}
+
+
+% ============================================================
+%  PARITY ENFORCEMENT + FILLER PAGES (R15)
+% ============================================================
+
+% \fillerpage — intentional blank/decorative page.
+% The author can call this explicitly to pad the page count.
+\newcommand{\fillerpage}{%
+  \pb@resetbleed
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[orange!30] (current page.south west) rectangle (current page.north east);
+    \node[font=\Large\sffamily\bfseries, text=orange!70!black,
+          align=center, anchor=center]
+      at (current page.center)
+      {THIS PAGE INTENTIONALLY LEFT BLANK\\[4pt]
+       \normalsize\normalfont (filler page — p.\thepage)};
+  \end{tikzpicture}%
+  \ifpb@debug\pb@drawdebug{FILLER PAGE}\fi
+  \pb@renderpagenum
+}
+
+% Internal: draw the auto-filler content (no \clearpage — caller handles that).
+\newcommand{\pb@drawautofiller}{%
+  \newgeometry{margin=0mm}%
+  \thispagestyle{fancy}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[orange!50] (current page.south west) rectangle (current page.north east);
+    \node[font=\Large\sffamily\bfseries, text=orange!90!black,
+          align=center, anchor=center]
+      at (current page.center)
+      {AUTO-INSERTED FILLER PAGE\\[4pt]
+       \normalsize\normalfont A spread needed an even left page.\\
+       Replace this with content or a \texttt{\textbackslash fillerpage}.\\[4pt]
+       (p.\thepage)};
+  \end{tikzpicture}%
+  \ifpb@debug\pb@drawdebug{AUTO FILLER}\fi
+  \pb@renderpagenum
+}
+
+
+% ============================================================
+%  \fullspread{image}{Lx}{Ly}{Lwidth}{L-content}{Rx}{Ry}{Rwidth}{R-content}
+%  Places a full-spread image across two pages (left + right).
+%  The image is assumed to have 2:1 aspect ratio matching the spread.
+%  L/R x,y in cm from top-left of each page. L/R width in cm.
+%  Either content can be empty ({}).
+%
+%  Parity enforcement (R15): The left page of a spread MUST be even.
+%  If the current page counter is odd, an auto-filler page is inserted.
+% ============================================================
+\newcommand{\fullspread}[9]{%
+  % --- PARITY CHECK ---
+  % After \pb@resetbleed (\clearpage), the page counter will be
+  % on the next page. We need the left page to be even.
+  % Check before clearpage: after clearpage, \thepage = next page number.
+  \clearpage
+  \ifodd\value{page}%
+    % Current page is odd — insert a filler to push the
+    % left page of the spread onto an even page number.
+    \pb@drawautofiller
+  \fi
+  % --- LEFT PAGE ---
+  \pb@resetbleed
+  % Clip left half of the image
+  \begin{tikzpicture}[remember picture, overlay]
+    \clip (current page.south west) rectangle (current page.north east);
+    \node[inner sep=0pt, anchor=west] at (current page.west)
+      {\includegraphics[height=\paperheight, width=2\paperwidth]{#1}};
+  \end{tikzpicture}%
+  \ifpb@debug\pb@drawdebug{SPREAD LEFT}\fi
+  \begin{textblock*}{#4cm}(#2cm, #3cm)
+    #5
+  \end{textblock*}%
+  \pb@renderpagenum
+  % --- RIGHT PAGE ---
+  \pb@resetbleed
+  % Clip right half of the image
+  \begin{tikzpicture}[remember picture, overlay]
+    \clip (current page.south west) rectangle (current page.north east);
+    \node[inner sep=0pt, anchor=east] at (current page.east)
+      {\includegraphics[height=\paperheight, width=2\paperwidth]{#1}};
+  \end{tikzpicture}%
+  \ifpb@debug\pb@drawdebug{SPREAD RIGHT}\fi
+  \begin{textblock*}{#8cm}(#6cm, #7cm)
+    #9
+  \end{textblock*}%
+  \pb@renderpagenum
+}
+
+
+% ============================================================
+%  END OF PACKAGE
+% ============================================================
+\endinput
