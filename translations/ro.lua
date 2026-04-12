@@ -8,6 +8,7 @@ return {
   -- Cover
   title    = "Potcoava și roata",
   subtitle = "O poveste despre cum orașele rezolvă problemele",
+  series   = "Din seria «povești documentare»",
 
   -- Story pages
   p01_modern_city     = "Orașele noastre nu arătau întotdeauna așa.",

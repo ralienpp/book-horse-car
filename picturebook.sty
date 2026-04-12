@@ -218,6 +218,20 @@
 
 
 % ============================================================
+%  \block{x}{y}{width}{content}
+%  Places an additional text block on the current page.
+%  Call immediately after \singlepage or \fullspread (before
+%  the next page macro).  x, y, width in cm from top-left.
+%  May be called multiple times for multiple extra blocks.
+% ============================================================
+\newcommand{\block}[4]{%
+  \begin{textblock*}{#3cm}(#1cm, #2cm)
+    #4
+  \end{textblock*}%
+}
+
+
+% ============================================================
 %  DEBUG OVERLAY
 % ============================================================
 \newcommand{\pb@drawdebug}[1]{%

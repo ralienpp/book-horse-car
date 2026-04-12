@@ -7,6 +7,7 @@ return {
   -- Cover
   title    = "Das Pferd und das Auto",
   subtitle = "Eine Geschichte darüber, wie Städte Probleme lösen",
+  series   = [[Aus der Reihe „Dokumentargeschichten"]],
 
   -- Story pages
   p01_modern_city     = "Unsere Städte sahen nicht immer so aus.",

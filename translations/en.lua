@@ -7,6 +7,7 @@ return {
   -- Cover
   title    = "The Horse, the Dung, and the Car",
   subtitle = "How cities solve problems",
+  series   = [[From the "documentary tales" series]],
 
   -- Story pages
   p01_modern_city     = "Our cities did not always look like this.",
