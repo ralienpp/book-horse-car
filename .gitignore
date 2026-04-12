@@ -1,3 +1,18 @@
+## ============================================================
+## Fonts — downloaded by scripts/setup-fonts.sh, not committed.
+## OFL / GUST licensed fonts are free to redistribute but we
+## keep them out of the repo to avoid bloat and stay clean.
+## Fonts requiring manual download for licence reasons go here too.
+## ============================================================
+fonts/antykwa/
+fonts/opendyslexic/
+fonts/dyslexie/
+fonts/lexie/
+fonts/sylexiad/
+
+## Generated book PDFs (build artefacts)
+book-*.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof

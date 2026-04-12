@@ -45,10 +45,57 @@ Output files land in the project root: `book-ro.pdf`, `book-ru.pdf`, `book-en.pd
 │   ├── verify.sh               # Post-build automated verification (12 checks)
 │   ├── check-translations.lua  # Translation key completeness validator
 │   ├── scale-pdf.sh            # Ghostscript-based ISO paper size scaling
-│   └── make-booklet.sh         # Booklet imposition for saddle-stitch printing
-├── fonts/                      # (reserved for future custom fonts)
+│   ├── make-booklet.sh         # Booklet imposition for saddle-stitch printing
+│   └── setup-fonts.sh          # Downloads optional fonts into fonts/
+├── fonts/                      # Downloaded by setup-fonts.sh — not in git
 ├── story.txt                   # Original Romanian story text
 └── spec.md                     # Full specification (R1–R15)
+```
+
+## Fonts
+
+Font files are **not committed** to the repository. Run the setup script once after cloning:
+
+```bash
+bash scripts/setup-fonts.sh            # install all available fonts
+bash scripts/setup-fonts.sh antykwa    # install one font only
+bash scripts/setup-fonts.sh --list     # show what is available
+```
+
+| Font | License | Variants |
+|------|---------|----------|
+| Antykwa Toruńska | GUST Font License (free, open) | Regular, Light, Med, Cond |
+| OpenDyslexic | SIL Open Font License 1.1 (free, open) | Regular, Bold, Italic, Bold-Italic |
+
+To use a downloaded font, set `\bookfont` before loading the package in `main.tex`:
+
+```latex
+\def\bookfont{Antykwa Torunska}
+\usepackage{picturebook}
+```
+
+Or set it permanently in `picturebook.sty` (line ~153):
+
+```latex
+\def\bookfont{Antykwa Torunska}
+```
+
+The font must be either installed system-wide (visible to `fc-list`) or placed in the `fonts/` subdirectory. For fonts in `fonts/`, `fontspec` finds them automatically because LuaLaTeX is run from the project root.
+
+**Fonts requiring manual download** (non-redistributable — not handled by the script):
+
+| Font | License | URL |
+|------|---------|-----|
+| Dyslexie | Commercial, proprietary | https://www.dyslexiefont.com |
+| Lexie Readable | Freeware, no redistribution | https://www.k-type.com/fonts/lexie-readable |
+| Sylexiad | Academic use only | http://www.robsfonts.com |
+
+Place manually downloaded fonts in `fonts/<subfolder>/` — those paths are already in `.gitignore`.
+
+To see all fonts currently available on your system (usable without any setup):
+
+```bash
+fc-list --format="%{family}\n" | sort -u
 ```
 
 ## Makefile Targets
@@ -286,6 +333,10 @@ Printing instructions are printed to stdout after generation.
 ### scripts/check-translations.lua
 
 See [Checking Translations](#checking-translations) above.
+
+### scripts/setup-fonts.sh
+
+See [Fonts](#fonts) above.
 
 ## Dependencies
 
