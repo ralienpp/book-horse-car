@@ -156,11 +156,23 @@
 %  FONT CONFIGURATION
 % ============================================================
 % Default font: Linux Libertine O (supports Latin + Cyrillic)
-% Override by defining \bookfont before loading the package.
+% Override by defining \bookfont before loading the package:
+%   \def\bookfont{Antykwa Torunska}          % system-installed font
+%   \def\bookfont{OpenDyslexic}              % font in fonts/ subdir
+%   \def\bookfontpath{fonts/opendyslexic/}   % required when not system-installed
 \ifdefined\bookfont\else
   \def\bookfont{Linux Libertine O}
 \fi
-\setmainfont{\bookfont}
+\ifdefined\bookfontpath
+  \setmainfont{\bookfont}[Path=\bookfontpath,
+    Extension      = .otf,
+    UprightFont    = *-Regular,
+    BoldFont       = *-Bold,
+    ItalicFont     = *-Italic,
+    BoldItalicFont = *-Bold-Italic]
+\else
+  \setmainfont{\bookfont}
+\fi
 % Some older fonts (e.g. Antykwa Torunska) have t/T-cedilla (U+0163/0162)
 % but not t/T-comma-below (U+021B/021A), the correct Romanian codepoints.
 % pre_shaping_filter fires before HarfBuzz shapes each glyph run, so the
