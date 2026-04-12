@@ -161,6 +161,37 @@
   \def\bookfont{Linux Libertine O}
 \fi
 \setmainfont{\bookfont}
+% Some older fonts (e.g. Antykwa Torunska) have t/T-cedilla (U+0163/0162)
+% but not t/T-comma-below (U+021B/021A), the correct Romanian codepoints.
+% pre_shaping_filter fires before HarfBuzz shapes each glyph run, so the
+% remapped codepoint is what HarfBuzz receives — no phantom cluster markers,
+% no spurious spaces, no missing-character warnings.
+\directlua{
+  local glyph_id = node.id("glyph")
+  local font_lacks_cache = {}
+  local function font_lacks(fid, cp)
+    local key = fid * 0x200000 + cp
+    local v = font_lacks_cache[key]
+    if v == nil then
+      local f = font.getfont(fid)
+      v = not (f and f.characters and f.characters[cp])
+      font_lacks_cache[key] = v
+    end
+    return v
+  end
+  local function remap_romanian_comma(head)
+    for n in node.traverse_id(glyph_id, head) do
+      if n.char == 0x021B and font_lacks(n.font, 0x021B) then
+        n.char = 0x0163
+      elseif n.char == 0x021A and font_lacks(n.font, 0x021A) then
+        n.char = 0x0162
+      end
+    end
+    return head
+  end
+  luatexbase.add_to_callback(
+    "pre_shaping_filter", remap_romanian_comma, "pb_remap_romanian_comma")
+}
 % Polyglossia requires all font families to support the active script.
 % Set sans and mono to Cyrillic-capable fonts as well.
 \setsansfont{Linux Biolinum O}
