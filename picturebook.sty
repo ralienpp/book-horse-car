@@ -122,13 +122,21 @@
 }
 
 % \tr{key} - retrieve a translated string. Shows "MISSING: key" if undefined.
+% Newlines in the Lua string are handled naturally:
+%   blank line  -> \par (paragraph break)
+%   single newline -> space
 \newcommand{\tr}[1]{%
   \directlua{
     local val = pb_strings["\luaescapestring{#1}"]
     if val then
-      tex.print(val)
+      local CR = string.char(13)
+      local LF = string.char(10)
+      val = val:gsub(CR .. LF, LF):gsub(CR, LF)
+      val = val:gsub(LF .. LF .. "+", "\\par ")
+      val = val:gsub(LF, " ")
+      tex.sprint(val)
     else
-      tex.print("\\textcolor{red}{MISSING: \luaescapestring{#1}}")
+      tex.sprint("\\textcolor{red}{MISSING: \luaescapestring{#1}}")
     end
   }%
 }
