@@ -30,37 +30,53 @@
 }
 
 % ============================================================
-%  SPREAD pp.2–3 — horse tram era
+%  2x single pp.2–3 — horse tram era
 %  p.2: cities didn't always look like this
 %  p.3: horse trams
 % ============================================================
 \pagenumberson
-\fullspread{images/horse-tram.jpeg}%
-{1}{1}{12.8}{% left page
-	\begin{halo}
-		\tr{p01_modern_city}
-	\end{halo}
-}%
-{1}{1}{12.8}{% right page
-	\begin{halo}
-		\tr{p02_horse_tram}
-	\end{halo}
+\singlepage{images/modern-city.jpeg}{3.5}{1}{12.8}{%
+	\tr{p01_modern_city}
 }
+
+
+\singlepage{images/horse-tram.jpeg}{1}{1}{12.8}{%
+	\tr{p02_horse_tram}
+}
+
+
+
+%\fullspread{images/horse-tram.jpeg}%
+%{1}{1}{12.8}{% left page
+%	\begin{halo}
+%		\tr{p01_modern_city}
+%	\end{halo}
+%}%
+%{1}{1}{12.8}{% right page
+%	\begin{halo}
+%		\tr{p02_horse_tram}
+%	\end{halo}
+%}
 
 % ============================================================
 %  p.4 — growing cities, growing horse population
 % ============================================================
-\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
-	\begin{halo}
+\singlepage{images/riders-carriages.jpeg}{1.5}{1}{8}{%
+	\begin{halo}[color=white, opacity=0]
 		\tr{p03_growing_cities}
+	\end{halo}
+}
+\block{1}{18}{8}{%
+	\begin{halo}[color=white, opacity=0.4]
+		\tr{p03a_more_horses}
 	\end{halo}
 }
 
 % ============================================================
 %  p.5 — New York 1890 statistics
 % ============================================================
-\singlepage{images/modern-city.jpeg}{1}{1}{12.8}{%
-	\begin{halo}
+\singlepage{images/horse-human-pseudotessellation.png}{1}{10}{12.8}{%
+	\begin{halo}[color=white, opacity=0.8]
 		\tr{p04_ny_stats}
 
 		\medskip
@@ -113,24 +129,43 @@
 %  p.10: history repeats
 %  p.11: cars growing
 % ============================================================
-\fullspread{images/gridlock-dual.png}%
-{2}{8}{10}{% left page — dramatic statement
+\singlepage{images/car-human-pseudotessellation.jpeg}{2}{8}{10}{%
 	\begin{halo}[color=yellow, opacity=0.5]
-		\begin{center}
-			{\Large\bfseries \tr{p09_history_repeats}}
-		\end{center}
-	\end{halo}
-}%
-{1}{1}{12.8}{% right page
-	\begin{halo}
-		\tr{p10_cars_growing}
+	\begin{center}
+		{\Large\bfseries \tr{p09_history_repeats}}
+	\end{center}
 	\end{halo}
 }
+
+
+\singlepage{images/gridlock.jpg}{1}{1}{12}{%
+	\begin{halo}[opacity=0.5]
+		\tr{p10_cars_growing}
+%		\begin{center}
+%			{\Large\bfseries \tr{p09_history_repeats}}
+%		\end{center}
+	\end{halo}
+}
+
+
+%\fullspread{images/gridlock-dual.png}%
+%{2}{8}{10}{% left page — dramatic statement
+%	\begin{halo}[color=yellow, opacity=0.5]
+%		\begin{center}
+%			{\Large\bfseries \tr{p09_history_repeats}}
+%		\end{center}
+%	\end{halo}
+%}%
+%{1}{1}{12.8}{% right page
+%	\begin{halo}
+%		\tr{p10_cars_growing}
+%	\end{halo}
+%}
 
 % ============================================================
 %  p.12 — cars produce invisible exhaust
 % ============================================================
-\singlepage{images/modern-city.jpeg}{1}{1}{12.8}{%
+\singlepage{images/shrouded-in-exhaust-gas.jpeg}{1}{1}{12.8}{%
 	\begin{halo}
 		\tr{p11_exhaust}
 	\end{halo}
@@ -139,7 +174,7 @@
 % ============================================================
 %  p.13 — can be smelled / detected
 % ============================================================
-\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
+\singlepage{images/shrouded-in-exhaust-gas.jpeg}{1}{15}{12.8}{%
 	\begin{halo}
 		\tr{p12_detect}
 	\end{halo}
