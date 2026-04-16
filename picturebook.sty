@@ -112,31 +112,73 @@
   \def\booklang{ro}
 \fi
 
-% Load the Lua translation table
+% Load translations with fallback chain:
+%   1. Start with Romanian (primary/source language) as the base table.
+%   2. Overlay the target language on top.
+%   3. Keys present in target -> use target value.
+%      Keys missing in target -> keep Romanian value, prefixed with [TODO] in
+%      the compiled output so translators can spot untranslated strings.
+%
+% This means:
+%   - Compilation always succeeds regardless of missing keys.
+%   - Translators see the Romanian source text as context, not a blank.
+%   - [TODO] markers are visible in the PDF so nothing silently slips through.
 \directlua{
-  pb_strings = dofile("translations/" .. "\booklang" .. ".lua")
-  if not pb_strings then
-    texio.write_nl("WARNING: translations/" .. "\booklang" .. ".lua not found or returned nil")
-    pb_strings = {}
+  local primary = "ro"
+  local lang    = "\booklang"
+
+  local base = dofile("translations/" .. primary .. ".lua") or {}
+
+  local overlay = {}
+  if lang ~= primary then
+    overlay = dofile("translations/" .. lang .. ".lua") or {}
+    if not next(overlay) then
+      texio.write_nl("WARNING: translations/" .. lang .. ".lua not found or empty")
+    end
+  end
+
+  pb_strings = {}
+  pb_fallback_keys = {}
+
+  for k, v in pairs(base) do
+    if overlay[k] ~= nil then
+      pb_strings[k] = overlay[k]
+    else
+      pb_strings[k] = v
+      if lang ~= primary and k ~= "polyglossia_lang" then
+        pb_fallback_keys[k] = true
+      end
+    end
+  end
+  for k, v in pairs(overlay) do
+    if pb_strings[k] == nil then
+      pb_strings[k] = v
+    end
   end
 }
 
-% \tr{key} - retrieve a translated string. Shows "MISSING: key" if undefined.
-% Newlines in the Lua string are handled naturally:
-%   blank line  -> \par (paragraph break)
-%   single newline -> space
+% \tr{key} — retrieve a translated string.
+%   - Key present in target language  -> render normally.
+%   - Key missing in target, present in Romanian -> render with [TODO] prefix.
+%   - Key missing everywhere          -> render "MISSING: key" in red.
+% Newlines: blank line -> \par, single newline -> space.
 \newcommand{\tr}[1]{%
   \directlua{
-    local val = pb_strings["\luaescapestring{#1}"]
+    local key = "\luaescapestring{#1}"
+    local val = pb_strings[key]
     if val then
       local CR = string.char(13)
       local LF = string.char(10)
       val = val:gsub(CR .. LF, LF):gsub(CR, LF)
       val = val:gsub(LF .. LF .. "+", "\\par ")
       val = val:gsub(LF, " ")
-      tex.sprint(val)
+      if pb_fallback_keys[key] then
+        tex.sprint("\\textcolor{orange}{[TODO] }" .. val)
+      else
+        tex.sprint(val)
+      end
     else
-      tex.sprint("\\textcolor{red}{MISSING: \luaescapestring{#1}}")
+      tex.sprint("\\textcolor{red}{MISSING: " .. key .. "}")
     end
   }%
 }
