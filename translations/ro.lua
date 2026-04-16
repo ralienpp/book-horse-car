@@ -31,7 +31,7 @@ return {
   p15_what_can_you_do = "Ce poți face?",
   p16_walk_bike       = "Mergi pe jos. Cu bicicleta. Cu transportul public. Sau nu te du!",
   p17_plant_tree      = "Plantează un copac.",
-  p18_vote            = "Votează cu cap!",
+  p18_vote            = "Votează!",
   p19_tech_progress   = "Contribuie la progresul tehnologic.",
   p20_ecosystem       = "Gândește-te la tot ecosistemul.",
 
