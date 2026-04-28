@@ -109,8 +109,8 @@
 % ============================================================
 %  p.8 — alarming situation, people adapting
 % ============================================================
-\singlepage{images/modern-city.jpeg}{1}{1}{12.8}{%
-	\begin{halo}
+\singlepage{images/street-manure.jpeg}{1}{0.5}{12.8}{%
+	\begin{halo}[opacity=0.1]
 		\tr{p07_alarming}
 	\end{halo}
 }
@@ -174,7 +174,7 @@
 % ============================================================
 %  p.13 — can be smelled / detected
 % ============================================================
-\singlepage{images/shrouded-in-exhaust-gas.jpeg}{1}{18}{12.8}{%
+\singlepage{images/shrouded-in-exhaust-gas.jpeg}{1}{0.8}{12.8}{%
 	\begin{halo}[opacity=0.1]
 		\tr{p12_detect}
 	\end{halo}
@@ -185,25 +185,25 @@
 %  p.14: health impact
 %  p.15: piles are back
 % ============================================================
-\fullspread{images/horse-tram.jpeg}%
+\fullspread{images/coughing.jpeg}%
 {1}{1}{12.8}{% left page
-	\begin{halo}
+%	\begin{halo}
 		\tr{p13_health}
-	\end{halo}
+%	\end{halo}
 }%
-{2}{8}{10}{% right page — dramatic
-	\begin{halo}[color=yellow, opacity=0.5]
+{2}{1}{10}{% right page — dramatic
+%	\begin{halo}[color=yellow, opacity=0.5]
 		\begin{center}
 			{\Large\bfseries \tr{p14_piles_back}}
 		\end{center}
-	\end{halo}
+%	\end{halo}
 }
 
 % ============================================================
 %  p.16 — what can you do?
 % ============================================================
-\singlepage{images/modern-city.jpeg}{2}{8}{10}{%
-	\begin{halo}[color=yellow, opacity=0.5]
+\singlepage{images/what-can-i-do.jpeg}{2}{1}{10}{%
+	\begin{halo}%[color=yellow, opacity=0.5]
 		\begin{center}
 			{\Large\bfseries \tr{p15_what_can_you_do}}
 		\end{center}
@@ -213,11 +213,19 @@
 % ============================================================
 %  p.17 — walk, bike, public transport
 % ============================================================
-\singlepage{images/horse-tram.jpeg}{1}{15}{12.8}{%
-	\begin{halo}
-		\tr{p16_walk_bike}
-	\end{halo}
+\singlepage{images/walk.jpeg}{1}{1}{12.8}{%
+	\begin{center}
+		\tr{p16_walk}
+	\end{center}
 }
+
+
+\singlepage{images/cyclists.jpeg}{1}{1}{12.8}{%
+	\begin{center}
+		\tr{p16_bike}
+	\end{center}
+}
+
 
 % ============================================================
 %  p.18 — plant a tree
