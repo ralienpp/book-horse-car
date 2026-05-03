@@ -20,7 +20,8 @@ book-%.pdf: main.tex picturebook.sty translations/%.lua $(wildcard images/*)
 
 # Debug build (Romanian only, with grid overlay)
 debug:
-	lualatex $(LATEXFLAGS) -jobname="book-ro-debug" "\def\booklang{ro}\def\debugmode{1}\input{main}"
+	lualatex $(LATEXFLAGS) -jobname="book-ro-debug" "\PassOptionsToPackage{debug}{picturebook}\def\booklang{ro}\input{main}"
+	lualatex $(LATEXFLAGS) -jobname="book-ro-debug" "\PassOptionsToPackage{debug}{picturebook}\def\booklang{ro}\input{main}"
 
 # Run automated verification
 verify: book-ro.pdf book-ru.pdf
