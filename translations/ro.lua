@@ -17,10 +17,10 @@ return {
   p03a_more_horses    = "Creștea și populația cailor.",
   p04_ny_stats        = [[În 1890 în New York locuiau 1,5 milioane de oameni și 100\,000 de cai!]],
   p04_ny_subtitle     = [[Iar acolo unde avem cai~--- ce mai avem?]],
-  p05_manure_stats    = [[În fiecare zi un cal produce 17~kg de balegă și 8~litri de urină.]],
-  p05_subtitle        = "peste 1100 tone pe zi",
-  p06_smell           = "Cum crezi că era mirosul în oraș?",
-  p07_alarming        = [[Situația devenea alarmantă! Orășenii se adaptau, construind casele deasupra nivelului străzii, instalând răzuitoare pentru curățirea tălpilor\dots{} Dar în zadar, căci mormanele deveneau tot mai mari!]],
+  p05_manure_stats    = [[Zilnic un cal produce 17~kg de balegă și 8~litri de urină.]],
+  p05_subtitle        = "Toți caii din oraș -- peste 1000 tone pe zi!",
+  p06_smell           = "Cum crezi că era mirosul?",
+  p07_alarming        = [[Situația devenea alarmantă! Orășenii se adaptau, construiau case cu praguri înalte, instalau răzuitoare pentru încălțăminte\dots{} Zadarnic, căci mormanele creșteau!]],
   p08_saved_by_tech   = "Am fost salvați de tehnologie. În scurt timp automobilele au înlocuit caii, iar mormanele au dispărut de pe străzi.",
   p09_history_repeats = "Istoria s-a repetat.",
   p10_cars_growing    = "Creșteau orașele, în ele veneau tot mai mulți oameni, creștea numărul mașinilor.",
@@ -40,7 +40,27 @@ return {
 
   -- Prose section
   parent_guide_title = "Ghid pentru părinți",
-  parent_guide_body  = [[Această carte povestește despre modul în care orașele au evoluat de-a lungul timpului, de la cai la automobile, și despre provocările de mediu care au apărut pe parcurs.
-  
-  Scopul cărții este de a ajuta copiii să înțeleagă că problemele de mediu nu sunt noi, iar soluțiile necesită implicarea tuturor.]],
+  parent_guide_body  = [[Scopul cărții este de a ajuta copiii să înțeleagă că problemele de mediu nu sunt noi, și că e în puterea fiecăruia dintre noi să contribuie la soluționarea acestora.
+
+De asemenea, să știi că impactul automobilelor asupra mediului nu se reduce doar la gazele de eșapament:
+\begin{itemize}
+	\item Poluarea fonică afectează negativ populațiile animalelor (inclusiv oamenii) de lângă drumuri. Observă cum ciripitul păsărilor devine mai rar atunci când te apropii de o șosea.
+	\item Frecarea roților cu drumul duce la eliminarea particulelor microscopice în aer; acestea pot irita căile respiratorii.
+	\item Uzura frânelor tot contribuie la poluarea atmosferei cu substanțe nocive care pot ajunge în plămâni.
+	\item Sărurile presurate pe drumuri iarna se scurg apoi în apele subterane și afectează organismele care consumă această apă.
+	\item Drumurile asfaltate acoperă pământul precum un capac și împiedică suplinirea rezervelor de ape subterane.
+	\item Drumurile cauzează fragmentarea habitatului animalelor; iar uneori animalele care se aventurează să treacă drumul -- sunt lovite de mașini.
+	\item Drumurile asfaltate contribuie la efectul ``insulei urbane'' -- asfaltul se încălzește mai tare decât pământul, iar noaptea această căldură este radiată înapoi în atmosferă. Astfel, temperatura medie în orașe este mai mare decât în zonele rurale.
+\end{itemize}
+
+\textbf{Soluții și alternative:}
+\begin{itemize}
+	\item Automobilele electrice folosesc preponderent ``frâne regenerative'', și nu frâne cu saboți. Această înlocuire elimină una din sursele de particule minuscule care ajung în atmosferă.
+	\item Transportul pe șenile (e.g., tramvai, metrou) elimină efectul frecării roților cu asfaltul; frecarea metal-pe-metal e mult mai mică, astfel se consumă mai puțină energie pentru a mișca din loc un tren.
+	\item Trenurile cu levitație magnetică (Maglev) nu au deloc contact cu șina, ceea ce reduce și mai mult atât poluarea fonică, cât și forța de frecare. Astfel randamentul acestui mijloc de transport e și mai mare.
+	\item Căile ferate sunt permeabile, adică nu au un efect de ``capac'', spre deosebire de drumurile asfaltate.
+	\item Căile ferate utilizează mult mai eficient spațiul -- în aceeași unitate de timp un tren transportă sute de oameni, în timp ce într-un automobil încap doar câteva persoane.
+\end{itemize}
+
+]],
 }
