@@ -22,6 +22,14 @@ make verify
 
 # Debug build with grid overlay (Romanian only)
 make debug
+
+# Create a booklet version after a basic version was compiled.
+# For 2xA5 per A4: run the command below, print as duplex long-edge and just fold them.
+# The output is in, e.g., `book-ro-booklet.pdf`
+scripts/make-booklet.sh book-ro.pdf a4
+
+# For 4xA6 per A4: run the command below, print as duplex SHORT-edge, cut horizontally, interleave the pages. The output is in, e.g.,: `book-ro-a6-booklet.pdf`
+make booklet SHEET=a4 SIZE=a6
 ```
 
 Output files land in the project root: `book-ro.pdf`, `book-ru.pdf`, `book-en.pdf`, `book-de.pdf`.

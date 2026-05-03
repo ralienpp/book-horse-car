@@ -185,6 +185,59 @@ if [ "$natural" = "$sheet" ]; then
   exit 0
 fi
 
+# ---- Step 2b: ISO-doubling — stack two spreads 1×2 on sheet --
+# If 2 × area(natural) ≈ area(sheet) (within 3%), the natural booklet
+# spread (landscape) fits exactly twice on the sheet (portrait).
+# Use pdfjam --nup 1x2 so the printer gets the right size directly.
+two_natural=$(( 2 * natural_area ))
+# Check |2*natural - sheet| / sheet < 3%
+diff=$(( two_natural - sheet_area ))
+[ $diff -lt 0 ] && diff=$(( -diff ))
+threshold=$(( sheet_area * 3 / 100 ))
+if (( diff <= threshold )); then
+  echo ""
+  echo "ISO-doubling fit — stacking two spreads 1×2 on ${sheet} (portrait)..."
+
+  # pdfbook2 output: pages come in duplex pairs [front, back] per booklet sheet.
+  # For short-edge duplex on portrait A4, flipping over the top edge swaps
+  # top/bottom halves. So to get correct front/back per strip after cutting:
+  #   A4 front: top=p1(front-of-sheet1), bottom=p3(front-of-sheet2)
+  #   A4 back:  top=p4(back-of-sheet2),  bottom=p2(back-of-sheet1)
+  # → reorder every group of 4 from [a,b,c,d] to [a,c,d,b] before nup.
+  n_pages="$booklet_pages"
+  page_order=""
+  i=1
+  while (( i <= n_pages )); do
+    remaining=$(( n_pages - i + 1 ))
+    if (( remaining >= 4 )); then
+      a=$i; b=$((i+1)); c=$((i+2)); d=$((i+3))
+      page_order="${page_order:+$page_order,}$a,$c,$d,$b"
+    else
+      # Partial group at end — emit as-is
+      for (( j=i; j<=n_pages; j++ )); do
+        page_order="${page_order:+$page_order,}$j"
+      done
+    fi
+    i=$((i+4))
+  done
+
+  pdfjam --nup 1x2 --paper "${ISO_LATEX[$sheet]}" --no-landscape \
+    --delta "0 0" --frame false \
+    "$booklet_tmp" "$page_order" \
+    --outfile "$output" 2>/dev/null
+  [ -f "$output" ] || die "pdfjam failed to produce $output"
+  out_pages=$(pdfinfo "$output" 2>/dev/null | grep "Pages:" | awk '{print $2}')
+  out_size=$(pdfinfo "$output" 2>/dev/null | grep "Page size:")
+  echo "  → $output"
+  echo ""
+  echo "Output: $output"
+  echo "  Pages: $out_pages"
+  echo "  Size:  $out_size"
+  echo ""
+  echo "Print duplex (short-edge). Cut horizontally. Fold each strip. Stack and staple."
+  exit 0
+fi
+
 # ---- Step 3: Center on larger sheet with crop marks ---------
 echo ""
 echo "Step 2: Centering on ${sheet} sheet with crop marks..."
