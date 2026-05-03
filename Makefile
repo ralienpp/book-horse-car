@@ -13,8 +13,8 @@ all: $(PDFS)
 ro: book-ro.pdf
 ru: book-ru.pdf
 
-# Per-language PDF (two passes for cross-references)
-book-%.pdf: main.tex picturebook.sty translations/%.lua $(wildcard images/*)
+# Per-language PDF; 2 passes needed, otherwise images are offset to coordinates outside the page
+book-%.pdf: main.tex picturebook.sty translations/%.lua
 	lualatex $(LATEXFLAGS) -jobname="book-$*" "\def\booklang{$*}\input{main}"
 	lualatex $(LATEXFLAGS) -jobname="book-$*" "\def\booklang{$*}\input{main}"
 
