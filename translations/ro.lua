@@ -34,7 +34,7 @@ return {
   p16_public_transport= "Cu transportul public.",
   p16_stay            = "Sau nu te du!",
   p17_plant_tree      = "Plantează un copac.",
-  p18_vote            = "Votează!",
+  p18_vote            = "Votează rațional!",
   p19_tech_progress   = "Contribuie la progresul tehnologic.",
   p20_ecosystem       = "Gândește-te la tot ecosistemul.",
 
