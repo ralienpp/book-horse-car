@@ -1,10 +1,10 @@
-LANGS        := ro en ru de
+LANGS        := ro en ru de es
 PDFS         := $(foreach lang,$(LANGS),book-$(lang).pdf)
 
 # LuaLaTeX flags — never hang on interactive prompts
 LATEXFLAGS   := -interaction=nonstopmode -halt-on-error
 
-.PHONY: all ro ru debug verify check-translations scale booklet clean
+.PHONY: all ro ru es debug verify check-translations scale booklet clean
 
 # Build all languages
 all: $(PDFS)
@@ -12,6 +12,7 @@ all: $(PDFS)
 # Quick builds: primary check pair
 ro: book-ro.pdf
 ru: book-ru.pdf
+es: book-es.pdf
 
 # Per-language PDF; 2 passes needed, otherwise images are offset to coordinates outside the page
 book-%.pdf: main.tex picturebook.sty translations/%.lua
