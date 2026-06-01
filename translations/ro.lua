@@ -40,9 +40,9 @@ return {
 
   -- Prose section
   parent_guide_title = "Ghid pentru părinți",
-  parent_guide_body  = [[Scopul cărții este de a ajuta copiii să înțeleagă că problemele de mediu nu sunt noi, și că e în puterea fiecăruia dintre noi să contribuie la soluționarea acestora.
+  parent_guide_body  = [[\textbf{Sustenabilitatea} este utilizarea resurselor naturale într-un mod care nu duce la epuizarea acestora sau la degradarea mediului înconjurător. Exploatarea excesivă a resurselor nu produce întotdeauna consecințe vizibile imediat, astfel excesul devine evident mai târziu, uneori -- prea târziu.
 
-De asemenea, să știi că impactul automobilelor asupra mediului nu se reduce doar la gazele de eșapament:
+Impactul automobilelor asupra mediului nu se reduce doar la gazele de eșapament:
 \begin{itemize}
 	\item Poluarea fonică afectează negativ populațiile animalelor (inclusiv oamenii) de lângă drumuri. Observă cum ciripitul păsărilor devine mai rar atunci când te apropii de o șosea.
 	\item Frecarea roților cu drumul duce la eliminarea particulelor microscopice în aer; acestea pot irita căile respiratorii.
@@ -61,6 +61,20 @@ De asemenea, să știi că impactul automobilelor asupra mediului nu se reduce d
 	\item Căile ferate sunt permeabile, adică nu au un efect de ``capac'', spre deosebire de drumurile asfaltate.
 	\item Căile ferate utilizează mult mai eficient spațiul -- în aceeași unitate de timp un tren transportă sute de oameni, în timp ce într-un automobil încap doar câteva persoane.
 \end{itemize}
+
+\textbf{De ce e important să votezi?}
+O mare parte din problemele cu care ne confruntăm nu sunt tragedii inevitabile care ne-a fost sortit să le îndurăm, ci o consecință a managementului prost, determinat de incompetența sau corupția administrației. Într-o democrație administrația se poate schimba prin alegeri. Așadar, votul este unul din instrumentele pe care le avem la dispoziție, și e important să-l utilizăm. \emph{Rațional}!
+
+Cartea ``Climate injustice'' de Friederike Otto descrie multiple cazuri în care regiuni cu populații de milioane trec prin secete sau inundații, care puteau fi evitate dacă administrația ar fi aplicat corect soluții propuse de cercetători.
+
+Deși problemele care puteau fi evitate nu au fost evitate -- trebuie să ne concentrăn pe acelea care \emph{încă pot fi evitate}.
+
+
+\textbf{Puterea unui singur om} este limitată. Chiar dacă vei merge cu bicileta toată viața, poluarea la scară industrială eclipsează efortul tău personal. Totuși, nimeni dintre noi nu este singur -- \emph{cooperarea aduce schimbarea}. Putem coopera prin votarea pentru politici mai rezonabile, prin elaborarea tehnologiilor noi, etc.
+
+
+\textbf{Tragedia resurselor comune} nereglementate caracterizează multe aspecte a societății umane. Atunci când un bun comun (e.g. un râu, un parc, o pădure, un lac\ldots)
+ 
 
 ]],
 }
