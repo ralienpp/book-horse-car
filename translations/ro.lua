@@ -49,7 +49,7 @@ Impactul automobilelor asupra mediului nu se reduce doar la gazele de eșapament
 	\item Uzura frânelor tot contribuie la poluarea atmosferei cu substanțe nocive care pot ajunge în plămâni.
 	\item Sărurile presurate pe drumuri iarna se scurg apoi în apele subterane și afectează organismele care consumă această apă.
 	\item Drumurile asfaltate acoperă pământul precum un capac și împiedică suplinirea rezervelor de ape subterane.
-	\item Drumurile cauzează fragmentarea habitatului animalelor; iar uneori animalele care se aventurează să treacă drumul -- sunt lovite de mașini.
+	\item Drumurile fragmentează habitatul animalelor; iar uneori animalele care se aventurează să treacă drumul -- sunt lovite de mașini.
 	\item Drumurile asfaltate contribuie la efectul ``insulei urbane'' -- asfaltul se încălzește mai tare decât pământul, iar noaptea această căldură este radiată înapoi în atmosferă. Astfel, temperatura medie în orașe este mai mare decât în zonele rurale.
 \end{itemize}
 
