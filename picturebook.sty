@@ -243,8 +243,15 @@
     end
     return head
   end
-  luatexbase.add_to_callback(
-    "pre_shaping_filter", remap_romanian_comma, "pb_remap_romanian_comma")
+  if luatexbase.callback_types and
+     luatexbase.callback_types["pre_shaping_filter"] then
+    luatexbase.add_to_callback(
+      "pre_shaping_filter", remap_romanian_comma, "pb_remap_romanian_comma")
+  else
+    texio.write_nl(
+      "WARNING (picturebook): pre_shaping_filter unavailable (LuaTeX < 1.15)." ..
+      " Using translation-output fallback for Romanian ț/Ț.")
+  end
 }
 % Polyglossia requires all font families to support the active script.
 % Set sans and mono to Cyrillic-capable fonts as well.
