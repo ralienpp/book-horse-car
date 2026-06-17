@@ -195,6 +195,151 @@
 
 
 % ============================================================
+%  DUAL-LANGUAGE SYSTEM (additive — does not affect single-language builds)
+%
+%  A dual-language book renders two languages stacked in the same text
+%  block: the primary (\booklang) on top, the secondary (\booklangsecondary)
+%  below it in its own typographic style and Polyglossia language context.
+%
+%  Activated ONLY when \booklangsecondary is defined before \input.
+%  When it is undefined, none of the following has any effect and the
+%  single-language behaviour above is fully preserved.
+%
+%    \def\booklang{ro}            % primary   (top)
+%    \def\booklangsecondary{en}   % secondary (bottom)
+%
+%  The secondary table is built independently from pb_strings, using the
+%  same Romanian-source fallback: a key missing in the secondary language
+%  falls back to the Romanian source text, flagged with [TODO], rather than
+%  rendering "MISSING". This keeps dual builds as robust as single ones.
+% ============================================================
+% Determine the secondary language code (empty if none) at the TeX level,
+% BEFORE entering \directlua. \pb@seccode expands to e.g. "en" or to nothing.
+\ifdefined\booklangsecondary
+  \edef\pb@seccode{\booklangsecondary}%
+\else
+  \def\pb@seccode{}%
+\fi
+% Catcode guard: by the time these \directlua blocks run, \setmainlanguage{...}
+% (emitted above) may have made " and ~ active characters (polyglossia
+% shorthands for German/Russian etc.). Inside \directlua an active " would
+% break Lua string delimiters, and an active ~ would break Lua's ~= operator
+% (the symptom is a spurious "'then' expected near '\'" from the chunk).
+% Force both to catcode 12 (other) for the duration of each chunk. The
+% earlier primary loader escapes this only because it runs before any
+% language is selected.
+\begingroup
+\catcode`\"=12\relax
+\catcode`\~=12\relax
+\directlua{
+  local primary = "ro"
+  local sec = "\luaescapestring{\pb@seccode}"
+
+  pb_strings_secondary = nil
+  pb_fallback_keys_secondary = {}
+
+  if sec ~= "" then
+    local base = dofile("translations/" .. primary .. ".lua") or {}
+    local overlay = {}
+    if sec ~= primary then
+      overlay = dofile("translations/" .. sec .. ".lua") or {}
+      if not next(overlay) then
+        texio.write_nl("WARNING: secondary translations/" .. sec ..
+                       ".lua not found or empty")
+      end
+    end
+
+    pb_strings_secondary = {}
+    for k, v in pairs(base) do
+      if overlay[k] ~= nil then
+        pb_strings_secondary[k] = overlay[k]
+      else
+        pb_strings_secondary[k] = v
+        if sec ~= primary and k ~= "polyglossia_lang" then
+          pb_fallback_keys_secondary[k] = true
+        end
+      end
+    end
+    for k, v in pairs(overlay) do
+      if pb_strings_secondary[k] == nil then
+        pb_strings_secondary[k] = v
+      end
+    end
+  end
+}%
+\endgroup
+
+% Register the secondary Polyglossia language (for correct hyphenation /
+% typographic rules of the secondary text). No-op when no secondary table.
+%
+% Two-step, and the split matters:
+%   1. Inside a catcode group (to protect the Lua chunk's " and ~), run
+%      \directlua only to STASH the secondary polyglossia language name into
+%      the global macro \pb@seclang.
+%   2. AFTER closing the group, call \setotherlanguage{\pb@seclang}. This must
+%      happen at top level: \setotherlanguage defines the language environment
+%      via \newenvironment, which would be local — and thus discarded by
+%      \endgroup — if it ran inside the group.
+\begingroup
+\catcode`\"=12\relax
+\catcode`\~=12\relax
+\directlua{
+  if pb_strings_secondary then
+    local lang = pb_strings_secondary["polyglossia_lang"] or "english"
+    tex.print("\\gdef\\pb@seclang{" .. lang .. "}")
+  end
+}%
+\endgroup
+\ifdefined\pb@seclang
+  \setotherlanguage{\pb@seclang}%
+\fi
+
+% ---- Customisation hooks (override in the preamble if desired) ----
+% \dualsecstyle — how the secondary (lower) language is typeset.
+% \dualsep      — vertical separation between primary and secondary.
+\providecommand{\dualsecstyle}{\small\itshape}
+\providecommand{\dualsep}{\par\smallskip}
+
+% Internal: render a key from the secondary table, with the same
+% newline handling and [TODO] fallback marking as \tr.
+\newcommand{\pb@trsecondary}[1]{%
+  \directlua{
+    local key = "\luaescapestring{#1}"
+    local val = pb_strings_secondary and pb_strings_secondary[key]
+    if val then
+      local CR = string.char(13)
+      local LF = string.char(10)
+      val = val:gsub(CR .. LF, LF):gsub(CR, LF)
+      val = val:gsub(LF .. LF .. "+", "\\par ")
+      val = val:gsub(LF, " ")
+      val = val:gsub("ț", "ţ"):gsub("Ț", "Ţ")
+      if pb_fallback_keys_secondary[key] then
+        tex.sprint("\\textcolor{orange}{[TODO] }" .. val)
+      else
+        tex.sprint(val)
+      end
+    else
+      tex.sprint("\\textcolor{red}{MISSING: " .. key .. "}")
+    end
+  }%
+}
+
+% \dualtr{key} — primary on top, secondary stacked below.
+% Falls back to plain \tr{key} when no secondary language is loaded, so the
+% same source can compile single- or dual-language without edits.
+\newcommand{\dualtr}[1]{%
+  \ifdefined\pb@seclang
+    \tr{#1}%
+    \dualsep
+    {\dualsecstyle
+     \begin{\pb@seclang}\pb@trsecondary{#1}\end{\pb@seclang}}%
+  \else
+    \tr{#1}%
+  \fi
+}
+
+
+% ============================================================
 %  FONT CONFIGURATION
 % ============================================================
 % Default font: Linux Libertine O (supports Latin + Cyrillic)

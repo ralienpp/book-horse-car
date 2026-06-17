@@ -4,7 +4,7 @@ PDFS         := $(foreach lang,$(LANGS),book-$(lang).pdf)
 # LuaLaTeX flags — never hang on interactive prompts
 LATEXFLAGS   := -interaction=nonstopmode -halt-on-error
 
-.PHONY: all ro ru es debug verify check-translations scale booklet clean
+.PHONY: all ro ru es dual debug verify check-translations scale booklet clean
 
 # Build all languages
 all: $(PDFS)
@@ -13,6 +13,24 @@ all: $(PDFS)
 ro: book-ro.pdf
 ru: book-ru.pdf
 es: book-es.pdf
+
+# Dual-language edition (stacked: primary on top, secondary below).
+# Defaults to Romanian primary / English secondary; override on the
+# command line, e.g.:  make dual DUAL_PRIMARY=en DUAL_SECONDARY=ro
+# Output is book-dual-<primary>-<secondary>.pdf, so each language pair is
+# cached independently and switching the parameters always rebuilds the
+# correct file.
+DUAL_PRIMARY   ?= ro
+DUAL_SECONDARY ?= en
+dual: book-dual-$(DUAL_PRIMARY)-$(DUAL_SECONDARY).pdf
+.SECONDEXPANSION:
+book-dual-%.pdf: main-dual.tex picturebook.sty \
+		translations/$$(word 1,$$(subst -, ,$$*)).lua \
+		translations/$$(word 2,$$(subst -, ,$$*)).lua
+	$(eval DUAL_P := $(word 1,$(subst -, ,$*)))
+	$(eval DUAL_S := $(word 2,$(subst -, ,$*)))
+	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}\input{main-dual}"
+	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}\input{main-dual}"
 
 # Per-language PDF; 2 passes needed, otherwise images are offset to coordinates outside the page
 book-%.pdf: main.tex picturebook.sty translations/%.lua
