@@ -26,7 +26,7 @@ return {
   p10_cars_growing    = "Creșteau orașele, în ele veneau tot mai mulți oameni, creștea numărul mașinilor.",
   p11_exhaust         = "Deși mașinile nu lasă mormane de balegă, ele produc gaze de eșapament care nu pot fi văzute cu ochiul liber.",
   p12_detect          = "Dar pot fi mirosite sau detectate cu instrumente speciale.",
-  p13_health          = "Se resimte și pe sănătatea noastră, inclusiv a celor care nu au mașini sau care trăiesc departe de orașe, și a animalelor.",
+  p13_health          = "Se resimte și pe sănătatea noastră, inclusiv a celor care nu au mașini sau care trăiesc departe de orașe. Suferă și animalele.",
   p14_piles_back      = "E ca și cum mormanele n-au dispărut!",
   p15_what_can_you_do = "Ce poți face?",
   p16_walk            = "Mergi pe jos.",
