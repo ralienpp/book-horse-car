@@ -39,9 +39,9 @@ return {
 
   -- Prose section
   parent_guide_title = "Guía para padres",
-  parent_guide_body  = [[El objetivo del libro es ayudar a los niños a entender que los problemas medioambientales no son nuevos y que cada uno de nosotros tiene el poder de contribuir a su solución.
+  parent_guide_body  = [[\textbf{La sostenibilidad} es el uso de los recursos naturales de una manera que no conduzca a su agotamiento ni a la degradación del medio ambiente. La sobreexplotación de los recursos no siempre produce consecuencias visibles de inmediato, de modo que el exceso se hace evidente más tarde, a veces -- demasiado tarde.
 
-También conviene saber que el impacto de los automóviles en el medio ambiente no se limita a los gases de escape:
+El impacto de los automóviles en el medio ambiente no se limita a los gases de escape:
 \begin{itemize}
 	\item La contaminación acústica afecta negativamente a las poblaciones animales (incluidos los humanos) que viven cerca de las carreteras. Fíjate cómo el canto de los pájaros se vuelve más escaso cuando te acercas a una carretera.
 	\item La fricción de los neumáticos con el asfalto libera partículas microscópicas al aire que pueden irritar las vías respiratorias.
@@ -61,5 +61,15 @@ También conviene saber que el impacto de los automóviles en el medio ambiente 
 	\item Las vías férreas utilizan el espacio de forma mucho más eficiente: en la misma unidad de tiempo un tren transporta cientos de personas, mientras que en un automóvil caben solo unas pocas.
 \end{itemize}
 
+\textbf{¿Por qué es importante votar?}
+Una gran parte de los problemas a los que nos enfrentamos no son tragedias inevitables que estuviéramos destinados a soportar, sino una consecuencia de la mala gestión, producto de la incompetencia o la corrupción de la administración. En una democracia, la administración puede cambiarse mediante elecciones. El voto es, por tanto, uno de los instrumentos a nuestra disposición, y es importante utilizarlo. \emph{¡Con sensatez!}
+
+El libro ``Climate Injustice'' de Friederike Otto describe numerosos casos en los que regiones con poblaciones de millones de personas atraviesan sequías o inundaciones que podrían haberse evitado si la administración hubiera aplicado correctamente las soluciones propuestas por los investigadores.
+
+Aunque los problemas que podían evitarse no se evitaron -- debemos centrarnos en aquellos que \emph{todavía pueden evitarse}.
+
+\textbf{El poder de una sola persona} es limitado. Aunque vayas en bicicleta toda tu vida, la contaminación a escala industrial eclipsa tu esfuerzo personal. Y, sin embargo, ninguno de nosotros está solo -- \emph{la cooperación trae el cambio}. Podemos cooperar votando por políticas más razonables, desarrollando nuevas tecnologías, etcétera.
+
+\textbf{La tragedia de los bienes comunes}, cuando no está regulada, caracteriza muchos aspectos de la sociedad humana. Cuando un bien común (por ejemplo, un río, un parque, un bosque, un lago\ldots)
 ]],
 }
