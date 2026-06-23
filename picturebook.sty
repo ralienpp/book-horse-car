@@ -291,6 +291,15 @@
 }%
 \endgroup
 \ifdefined\pb@seclang
+  % CJK languages (e.g. chinese) require a CJK-capable font family declared as
+  % \chinesefont before \setotherlanguage is called.  Auto-declare one when the
+  % secondary is chinese and \chinesefont has not already been defined by the user.
+  \def\pb@tmp@chinese{chinese}%
+  \ifx\pb@seclang\pb@tmp@chinese
+    \ifundef{\chinesefont}{%
+      \newfontfamily\chinesefont{AR PL UMing CN}%
+    }{}%
+  \fi
   \setotherlanguage{\pb@seclang}%
 \fi
 
@@ -302,24 +311,32 @@
 
 % Internal: render a key from the secondary table, with the same
 % newline handling and [TODO] fallback marking as \tr.
+%
+% Some polyglossia language environments (e.g. chinese) redefine \\ to a
+% localised string (e.g. the Chinese word for "Glossary").  Because TeX
+% expands macros when tokenising \directlua arguments, any \\ inside the
+% Lua source would be substituted before Lua sees it, producing invalid Lua.
+% We avoid \\ entirely inside \directlua: backslashes in Lua string literals
+% are produced with string.char(92) so no TeX control sequence is involved.
 \newcommand{\pb@trsecondary}[1]{%
   \directlua{
     local key = "\luaescapestring{#1}"
     local val = pb_strings_secondary and pb_strings_secondary[key]
+    local BS  = string.char(92)
     if val then
       local CR = string.char(13)
       local LF = string.char(10)
       val = val:gsub(CR .. LF, LF):gsub(CR, LF)
-      val = val:gsub(LF .. LF .. "+", "\\par ")
+      val = val:gsub(LF .. LF .. "+", BS .. "par ")
       val = val:gsub(LF, " ")
       val = val:gsub("ț", "ţ"):gsub("Ț", "Ţ")
       if pb_fallback_keys_secondary[key] then
-        tex.sprint("\\textcolor{orange}{[TODO] }" .. val)
+        tex.sprint(BS .. "textcolor{orange}{[TODO] }" .. val)
       else
         tex.sprint(val)
       end
     else
-      tex.sprint("\\textcolor{red}{MISSING: " .. key .. "}")
+      tex.sprint(BS .. "textcolor{red}{MISSING: " .. key .. "}")
     end
   }%
 }
