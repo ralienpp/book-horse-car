@@ -1,18 +1,24 @@
-LANGS        := ro en ru de es
+LANGS        := ro en ru de es ta bn hi fa tr zh
 PDFS         := $(foreach lang,$(LANGS),book-$(lang).pdf)
 
 # LuaLaTeX flags — never hang on interactive prompts
 LATEXFLAGS   := -interaction=nonstopmode -halt-on-error
 
-.PHONY: all ro ru es dual debug verify check-translations scale booklet clean
+.PHONY: all ro ru es ta bn hi fa tr zh dual debug verify check-translations scale booklet clean
 
 # Build all languages
 all: $(PDFS)
 
-# Quick builds: primary check pair
+# Quick builds: one target per language
 ro: book-ro.pdf
 ru: book-ru.pdf
 es: book-es.pdf
+ta: book-ta.pdf
+bn: book-bn.pdf
+hi: book-hi.pdf
+fa: book-fa.pdf
+tr: book-tr.pdf
+zh: book-zh.pdf
 
 # Dual-language edition (stacked: primary on top, secondary below).
 # Defaults to Romanian primary / English secondary; override on the

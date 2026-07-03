@@ -162,6 +162,9 @@
 %   - Key missing in target, present in Romanian -> render with [TODO] prefix.
 %   - Key missing everywhere          -> render "MISSING: key" in red.
 % Newlines: blank line -> \par, single newline -> space.
+% For RTL primary languages the text is wrapped in {\<lang>font \textdir TRT}.
+% NOTE: defined here, BEFORE \setmainlanguage, so the " catcode is still 12
+% when this \newcommand is tokenised (polyglossia may make " active afterwards).
 \newcommand{\tr}[1]{%
   \directlua{
     local key = "\luaescapestring{#1}"
@@ -169,29 +172,61 @@
     if val then
       local CR = string.char(13)
       local LF = string.char(10)
-      val = val:gsub(CR .. LF, LF):gsub(CR, LF)
-      val = val:gsub(LF .. LF .. "+", "\\par ")
+      local BS = string.char(92)
+      local OB = string.char(123)
+      local CB = string.char(125)
+      val = val:gsub(CR..LF, LF):gsub(CR, LF)
+      val = val:gsub(LF..LF.."+", BS.."par ")
       val = val:gsub(LF, " ")
+      val = val:gsub("ț","ţ"):gsub("Ț","Ţ")
+      if pb_rtl_langs and pb_rtl_langs[ pb_strings["polyglossia_lang"] ] then
+        local lang = pb_strings["polyglossia_lang"]
+        val = OB..BS.."csname "..lang.."font"..BS.."endcsname "
+                 ..BS.."textdir TRT "..val..CB
+      end
       if pb_fallback_keys[key] then
-        tex.sprint("\\textcolor{orange}{[TODO] }" .. val)
+        tex.sprint(BS.."textcolor"..OB.."orange"..CB..OB.."[TODO] "..CB..val)
       else
         tex.sprint(val)
       end
     else
-      tex.sprint("\\textcolor{red}{MISSING: " .. key .. "}")
+      tex.sprint(BS.."textcolor"..string.char(123).."red"..string.char(125)
+                 ..string.char(123).."MISSING: "..key..string.char(125))
     end
   }%
 }
 
-% Set polyglossia language from the Lua table
+% Non-Latin script support and language setup.
+%
+% Font map: polyglossia language name -> {serif, sans, mono} font families.
+% RTL set:  languages whose direction=RL would flip textpos coordinates.
+%   For RTL languages we keep \setmainlanguage{english} so the page layout
+%   stays LTR, and wrap the translated text in {\<lang>font \textdir TRT …}
+%   inside \tr{} at render time.
+% pb_setup_script_fonts(lang): emits \newfontfamily commands for a script;
+%   called both for the primary language here and for any secondary language
+%   in the dual-language setup below.
+%
+% Everything is in ONE \directlua block so all globals and the helper
+% function are defined in the same Lua chunk and visible to later chunks.
+\directlua{dofile(kpse.find_file("picturebook-scriptfonts.lua"))}
 \directlua{
   local lang = pb_strings and pb_strings["polyglossia_lang"]
   if lang then
-    tex.print("\\setmainlanguage{" .. lang .. "}")
+    pb_setup_script_fonts(lang)
+    if pb_rtl_langs[lang] then
+      tex.print("\\setmainlanguage{english}")
+      tex.print("\\gdef\\pb@rtllang{" .. lang .. "}")
+    else
+      tex.print("\\setmainlanguage{" .. lang .. "}")
+      tex.print("\\gdef\\pb@rtllang{}")
+    end
   else
     tex.print("\\setmainlanguage{english}")
+    tex.print("\\gdef\\pb@rtllang{}")
   end
 }
+
 
 
 % ============================================================
@@ -291,15 +326,9 @@
 }%
 \endgroup
 \ifdefined\pb@seclang
-  % CJK languages (e.g. chinese) require a CJK-capable font family declared as
-  % \chinesefont before \setotherlanguage is called.  Auto-declare one when the
-  % secondary is chinese and \chinesefont has not already been defined by the user.
-  \def\pb@tmp@chinese{chinese}%
-  \ifx\pb@seclang\pb@tmp@chinese
-    \ifundef{\chinesefont}{%
-      \newfontfamily\chinesefont{AR PL UMing CN}%
-    }{}%
-  \fi
+  % Non-Latin scripts need a script-capable font declared before
+  % \setotherlanguage; pb_setup_script_fonts handles known scripts.
+  \directlua{pb_setup_script_fonts("\luaescapestring{\pb@seclang}")}
   \setotherlanguage{\pb@seclang}%
 \fi
 
