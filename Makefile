@@ -12,6 +12,7 @@ all: $(PDFS)
 # Quick builds: one target per language
 ro: book-ro.pdf
 ru: book-ru.pdf
+en: book-en.pdf
 es: book-es.pdf
 ta: book-ta.pdf
 bn: book-bn.pdf

@@ -39,6 +39,7 @@ Output files land in the project root: `book-ro.pdf`, `book-ru.pdf`, `book-en.pd
 ```
 .
 ├── main.tex                    # Full book content (22 pages)
+├── main-dual.tex               # Dual-language edition
 ├── picturebook.sty             # LaTeX package - all macros, environments, config
 ├── picturebook-glossary.lua    # Glossary CSV parser and LaTeX emitter
 ├── Makefile                    # Build system
