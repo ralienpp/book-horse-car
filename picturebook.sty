@@ -386,6 +386,21 @@
 
 
 % ============================================================
+%  GLOSSARY
+% ============================================================
+% \printglossary{file}{src_lang}{dst_lang}
+% Reads a CSV glossary file and emits a compact two-column description list.
+% If no data exists for the (src, dst) pair, nothing is emitted.
+% CSV schema: src,word,ipa,dst,meaning
+\directlua{pb_glossary = dofile(kpse.find_file("picturebook-glossary.lua"))}
+\newcommand{\printglossary}[3]{%
+  \directlua{
+    pb_glossary.emit("\luaescapestring{#1}", "\luaescapestring{#2}", "\luaescapestring{#3}")
+  }%
+}
+
+
+% ============================================================
 %  FONT CONFIGURATION
 % ============================================================
 % Default font: Linux Libertine O (supports Latin + Cyrillic)

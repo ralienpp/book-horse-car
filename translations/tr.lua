@@ -39,6 +39,7 @@ return {
 
   -- Prose section
   parent_guide_title = "Ebeveyn Rehberi",
+  glossary_title = "Sözlük",
   parent_guide_body  = [[\textbf{Sürdürülebilirlik}, doğal kaynakların tükenmeyecek ve çevre bozulmayacak biçimde kullanılması demektir. Kaynakların aşırı sömürülmesinin sonuçları her zaman hemen görünmez -- bu yüzden o aşırılık daha sonra, bazen çok geç, ortaya çıkar.
 
 Araçların çevre üzerindeki etkisi yalnızca egzoz gazlarıyla sınırlı değildir:

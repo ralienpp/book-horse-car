@@ -40,18 +40,22 @@ Output files land in the project root: `book-ro.pdf`, `book-ru.pdf`, `book-en.pd
 .
 ├── main.tex                    # Full book content (22 pages)
 ├── picturebook.sty             # LaTeX package - all macros, environments, config
+├── picturebook-glossary.lua    # Glossary CSV parser and LaTeX emitter
 ├── Makefile                    # Build system
 ├── translations/
 │   ├── ro.lua                  # Romanian (primary)
 │   ├── ru.lua                  # Russian
 │   ├── en.lua                  # English
-│   └── de.lua                  # German
+│   ├── de.lua                  # German
+│   └── glossary.csv            # Multilingual glossary (IPA + translations)
 ├── images/
 │   ├── modern-city.jpeg        # Placeholder - modern city scene
 │   └── horse-tram.jpeg         # Placeholder - horse tram era
 ├── scripts/
 │   ├── verify.sh               # Post-build automated verification (12 checks)
 │   ├── check-translations.lua  # Translation key completeness validator
+│   ├── glossary-canonicalize.py # Sort, validate, sync glossary CSV
+│   ├── glossary-ipa.py         # Fill in missing IPA transcriptions
 │   ├── scale-pdf.sh            # Ghostscript-based ISO paper size scaling
 │   ├── make-booklet.sh         # Booklet imposition for saddle-stitch printing
 │   └── setup-fonts.sh          # Downloads optional fonts into fonts/
@@ -265,6 +269,63 @@ texlua scripts/check-translations.lua translations/
 
 Validates that all `.lua` files in the translations directory define the same set of keys. Exits with code 1 if any file is missing a key.
 
+## Glossary
+
+The dual-language edition includes a glossary of vocabulary from the source language with IPA transcriptions and translations. The glossary is stored as a single CSV file at `translations/glossary.csv` and rendered at compile time by `picturebook-glossary.lua`.
+
+### CSV Schema
+
+```csv
+src,prefix,word,ipa,dst,meaning
+de,die,Straße,ʃtraːsə,en,"street, road"
+de,die,Straße,ʃtraːsə,ro,"stradă, drum"
+de,,aber,ˈaːbɐ,en,but
+```
+
+| Column   | Description |
+|----------|-------------|
+| `src`    | Source language code |
+| `prefix` | Display prefix (e.g. `der`/`die`/`das` for German nouns). Ignored for sorting. |
+| `word`   | The vocabulary word |
+| `ipa`    | IPA transcription (Unicode). Can be left empty; propagated from other rows with same `(src, word)`. |
+| `dst`    | Target language code |
+| `meaning`| Translation in the target language |
+
+Sorting is by `(src, word, dst)`, alphabetical, ignoring the prefix column.
+
+### For Translators
+
+Edit `translations/glossary.csv` in any spreadsheet application (Excel, Google Sheets, LibreOffice). Fill in the `meaning` column for your target language. The `prefix` and `ipa` columns can be left empty — they are propagated automatically from other rows for the same word.
+
+### Building the Glossary
+
+The glossary is rendered automatically by `\printglossary` in `main-dual.tex`. It reads the CSV at compile time, filters by the active `(src, dst)` language pair, and emits a compact dictionary-style layout. If no data exists for a language pair, the glossary section is simply empty.
+
+### Maintainer Workflow
+
+```bash
+# 1. Sort and validate the glossary
+python3 scripts/glossary-canonicalize.py translations/glossary.csv
+
+# 2. Sync new vocabulary from a translation file (requires spaCy)
+python3 scripts/glossary-canonicalize.py translations/glossary.csv \
+    --sync translations/de.lua --dst en,ro
+
+# 3. Fill in missing IPA transcriptions (requires ipa-dict data)
+python3 scripts/glossary-ipa.py
+
+# 4. Build the book
+make dual
+```
+
+### Dependencies for Glossary Tooling
+
+These are only needed for the maintainer scripts, not for building the book.
+
+- [ipa-dict](https://github.com/open-dict-data/ipa-dict) — pronunciation dictionary (clone to `~/ipa-dict`)
+- [epitran](https://pypi.org/project/epitran/) — rule-based IPA transliteration fallback (optional)
+- [spaCy](https://spacy.io/) — lemmatization for vocabulary extraction (optional, for `--sync`)
+
 ## Scripts
 
 ### scripts/verify.sh
@@ -341,6 +402,27 @@ Printing instructions are printed to stdout after generation.
 ### scripts/check-translations.lua
 
 See [Checking Translations](#checking-translations) above.
+
+### scripts/glossary-canonicalize.py
+
+Sorts and validates `translations/glossary.csv`. Optionally syncs vocabulary from a Lua translation file (requires spaCy).
+
+```bash
+# Sort and validate existing data
+python3 scripts/glossary-canonicalize.py translations/glossary.csv
+
+# Sync new words from a translation file (requires spaCy)
+python3 scripts/glossary-canonicalize.py translations/glossary.csv --sync translations/de.lua
+```
+
+### scripts/glossary-ipa.py
+
+Fills in missing IPA transcriptions in `translations/glossary.csv`. Uses ipa-dict lookup with optional Epitran fallback.
+
+```bash
+python3 scripts/glossary-ipa.py
+python3 scripts/glossary-ipa.py --ipa-dict-dir /path/to/ipa-dict/data
+```
 
 ### scripts/setup-fonts.sh
 

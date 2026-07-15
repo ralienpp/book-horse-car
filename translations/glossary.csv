@@ -1,0 +1,703 @@
+src,prefix,word,ipa,dst,meaning
+de,,aber,ˈaːbɐ,en,but
+de,,aber,ˈaːbɐ,ro,dar
+de,die,Abgase,abɡaːzə,en,exhaust fumes
+de,die,Abgase,abɡaːzə,ro,gaze de eșapament
+de,,achte,ˈaxtə,en,"eighth, pay attention"
+de,,achte,ˈaxtə,ro,"al optulea, a fi atent"
+de,,alarmierend,alaʁˈmiːʁənt,en,alarming
+de,,alarmierend,alaʁˈmiːʁənt,ro,alarmant
+de,,allein,aˈlaɪ̯n,en,"alone, only"
+de,,allein,aˈlaɪ̯n,ro,"singur, doar"
+de,,aller,ˈalɐ,en,all (gen.)
+de,,aller,ˈalɐ,ro,toți (gen.)
+de,die,Allmende,almɛndə,en,common pool resource
+de,die,Allmende,almɛndə,ro,resursă comună
+de,,als,als,en,"as, when"
+de,,als,als,ro,"ca, când"
+de,die,Alternative,ˌaltɛʁnaˈtiːvə,en,alternative
+de,die,Alternative,ˌaltɛʁnaˈtiːvə,ro,alternativă
+de,,an,an,en,"at, on"
+de,,an,an,ro,"la, pe"
+de,,anders,ˈandɐs,en,"differently, other"
+de,,anders,ˈandɐs,ro,"diferit, altul"
+de,,anschließend,ˈanˌʃliːsn̩t,en,"subsequently, then"
+de,,anschließend,ˈanˌʃliːsn̩t,ro,"ulterior, apoi"
+de,,anwenden,ˈanˌvɛndn̩,en,to apply
+de,,anwenden,ˈanˌvɛndn̩,ro,a aplica
+de,der,Aspekt,aspɛkt,en,aspect
+de,der,Aspekt,aspɛkt,ro,aspect
+de,der,Asphalt,asfalt,en,asphalt
+de,der,Asphalt,asfalt,ro,asfalt
+de,der,Atemweg,aːtɛmvɛːk,en,airway
+de,der,Atemweg,aːtɛmvɛːk,ro,cale respiratorie
+de,die,Atmosphäre,atmɔsfɛːrə,en,atmosphere
+de,die,Atmosphäre,atmɔsfɛːrə,ro,atmosferă
+de,,auch,aʊ̯x,en,"also, too"
+de,,auch,aʊ̯x,ro,"de asemenea, și"
+de,,auf,aʊ̯f,en,on
+de,,auf,aʊ̯f,ro,"pe, asupra"
+de,die,Auffüllung,aʊ̯fʏlʊŋk,en,"refill, filling"
+de,die,Auffüllung,aʊ̯fʏlʊŋk,ro,"reumplere, umplere"
+de,,aufnehmen,ˈaʊ̯fˌneːmən,en,"to take in, to record"
+de,,aufnehmen,ˈaʊ̯fˌneːmən,ro,"a prelua, a înregistra"
+de,das,Auge,aʊ̯ɡə,en,eye
+de,das,Auge,aʊ̯ɡə,ro,ochi
+de,,aus,aʊ̯s,en,"out of, from"
+de,,aus,aʊ̯s,ro,"din, afară din"
+de,die,Ausbeutung,aʊ̯sbɔɪ̯tʊŋk,en,exploitation
+de,die,Ausbeutung,aʊ̯sbɔɪ̯tʊŋk,ro,exploatare
+de,die,Auswirkung,aʊ̯sviːrkʊŋk,en,"impact, effect"
+de,die,Auswirkung,aʊ̯sviːrkʊŋk,ro,"impact, efect"
+de,das,Auto,aʊ̯toː,en,car
+de,das,Auto,aʊ̯toː,ro,mașină
+de,,bald,balt,en,soon
+de,,bald,balt,ro,curând
+de,,bauen,ˈbaʊ̯ən,en,to build
+de,,bauen,ˈbaʊ̯ən,ro,a construi
+de,der,Baum,baʊ̯m,en,tree
+de,der,Baum,baʊ̯m,ro,copac
+de,,bedacht,bəˈdaxt,en,considered
+de,,bedacht,bəˈdaxt,ro,chibzuit
+de,,bedecken,bəˈdɛkn̩,en,to cover
+de,,bedecken,bəˈdɛkn̩,ro,a acoperi
+de,,bedingt,bəˈdɪŋt,en,"conditional, caused"
+de,,bedingt,bəˈdɪŋt,ro,"condiționat, cauzat"
+de,,befördern,bəˈfœʁdɐn,en,"to transport, to promote"
+de,,befördern,bəˈfœʁdɐn,ro,"a transporta, a promova"
+de,,begrenzen,bəˈɡʁɛnt͡sn̩,en,"to limit, to restrict"
+de,,begrenzen,bəˈɡʁɛnt͡sn̩,ro,"a limita, a restricționa"
+de,,bei,baɪ̯,en,"at, near"
+de,,bei,baɪ̯,ro,"la, lângă"
+de,,beschreiben,bəˈʃʁaɪ̯bm̩,en,to describe
+de,,beschreiben,bəˈʃʁaɪ̯bm̩,ro,a descrie
+de,,beschränken,bəˈʃʁɛŋkn̩,en,to restrict
+de,,beschränken,bəˈʃʁɛŋkn̩,ro,a restricționa
+de,,beseitigen,bəˈzaɪ̯tɪɡn̩,en,"to eliminate, to remove"
+de,,beseitigen,bəˈzaɪ̯tɪɡn̩,ro,"a elimina, a înlătura"
+de,,besitzen,bəˈzɪt͡sn̩,en,to possess
+de,,besitzen,bəˈzɪt͡sn̩,ro,a poseda
+de,,bestimmt,bəˈʃtɪmt,en,"certainly, determined"
+de,,bestimmt,bəˈʃtɪmt,ro,"cu siguranță, determinat"
+de,die,Bewegung,bjuːɛɡŋk,en,"movement, motion"
+de,die,Bewegung,bjuːɛɡŋk,ro,mișcare
+de,,bleib,blaɪ̯p,en,stay
+de,,bleib,blaɪ̯p,ro,rămâi
+de,,bloß,bloːs,en,"only, bare"
+de,,bloß,bloːs,ro,"doar, gol"
+de,der,Boden,bodn̩,en,"ground, floor"
+de,der,Boden,bodn̩,ro,"pământ, podea"
+de,die,Bremse,ˈbʁɛmzə,en,brake
+de,die,Bremse,ˈbʁɛmzə,ro,frână
+de,der,Bremsenverschleiß,brɛmzɛnfɛːrʃlaɪ̯s,en,brake wear
+de,der,Bremsenverschleiß,brɛmzɛnfɛːrʃlaɪ̯s,ro,uzura frânelor
+de,,bringen,ˈbʁɪŋən,en,to bring
+de,,bringen,ˈbʁɪŋən,ro,a aduce
+de,das,Buch,buːx,en,book
+de,das,Buch,buːx,ro,carte
+de,,climate,kliːmaːtə,en,climate
+de,,climate,kliːmaːtə,ro,climă
+de,,da,daː,en,"there, since"
+de,,da,daː,ro,"acolo, deoarece"
+de,,daher,daˈheːɐ̯,en,therefore
+de,,daher,daˈheːɐ̯,ro,prin urmare
+de,,darauf,daˈʁaʊ̯f,en,"on it, therefore"
+de,,darauf,daˈʁaʊ̯f,ro,"pe el, prin urmare"
+de,der,Deckel,ˈdɛkl̩,en,"lid, cover"
+de,der,Deckel,ˈdɛkl̩,ro,"capac, copertă"
+de,,deckel''-effekt,dɛːkɛːl''-ɛfɛkt,en,lid effect
+de,,deckel''-effekt,dɛːkɛːl''-ɛfɛkt,ro,efectul capacului
+de,,dein,daɪ̯n,en,your
+de,,dein,daɪ̯n,ro,al tău
+de,die,Demokratie,dɛːmoːkraːtiː,en,democracy
+de,die,Demokratie,dɛːmoːkraːtiː,ro,democrație
+de,,denk,dɛŋk,en,think
+de,,denk,dɛŋk,ro,gândește
+de,,denn,dɛn,en,"for, because"
+de,,denn,dɛn,ro,"căci, deoarece"
+de,,dennoch,ˈdɛnɔx,en,"nevertheless, yet"
+de,,dennoch,ˈdɛnɔx,ro,"totuși, cu toate acestea"
+de,,der,deːɐ̯,en,"the, the one"
+de,,der,deːɐ̯,ro,"cel, acela"
+de,,derselbe,deːɐ̯ˈzɛlbə,en,the same
+de,,derselbe,deːɐ̯ˈzɛlbə,ro,același
+de,,deutlich,ˈdɔɪ̯tlɪç,en,"clear, distinct"
+de,,deutlich,ˈdɔɪ̯tlɪç,ro,"clar, distinct"
+de,,dieser,ˈdiːzɐ,en,"this, this one"
+de,,dieser,ˈdiːzɐ,ro,"acesta, acesta"
+de,,du,duː,en,you
+de,,du,duː,ro,tu
+de,,durch,dʊʁç,en,through
+de,,durch,dʊʁç,ro,prin
+de,,durchlässig,ˈdʊʁçˌlɛsɪk,en,permeable
+de,,durchlässig,ˈdʊʁçˌlɛsɪk,ro,permeabil
+de,,durchmachen,ˈdʊʁçˌmaxn̩,en,to go through
+de,,durchmachen,ˈdʊʁçˌmaxn̩,ro,a trece prin
+de,die,Durchschnittstemperatur,duːrxʃnɪtstɛmpɛːraːtuːɐ̯,en,average temperature
+de,die,Durchschnittstemperatur,duːrxʃnɪtstɛmpɛːraːtuːɐ̯,ro,temperatura medie
+de,die,Dürren,ˈdʏʁən,en,droughts
+de,die,Dürren,ˈdʏʁən,ro,secete
+de,der,Effekt,ɛfɛkt,en,effect
+de,der,Effekt,ɛfɛkt,ro,efect
+de,,effizient,ɛfiˈt͡si̯ɛnt,en,efficient
+de,,effizient,ɛfiˈt͡si̯ɛnt,ro,eficient
+de,,ein,aɪ̯n,en,"a, one"
+de,,ein,aɪ̯n,ro,"un, una"
+de,,einer,ˈaɪ̯nɐ,en,one (gen.)
+de,,einer,ˈaɪ̯nɐ,ro,unul (gen.)
+de,der,Einsatz,aɪ̯nzaːt͡s,en,"use, deployment"
+de,der,Einsatz,aɪ̯nzaːt͡s,ro,"utilizare, desfășurare"
+de,,einschließen,ˈaɪ̯nˌʃliːsn̩,en,"to include, to enclose"
+de,,einschließen,ˈaɪ̯nˌʃliːsn̩,ro,"a include, a închide"
+de,,einst,aɪ̯nst,en,"once, former"
+de,,einst,aɪ̯nst,ro,"odinioară, fost"
+de,der,Einwohner,aɪ̯nvoːnɐ,en,"resident, inhabitant"
+de,der,Einwohner,aɪ̯nvoːnɐ,ro,"rezident, locuitor"
+de,,einzeln,ˈaɪ̯nt͡sl̩n,en,"individual, single"
+de,,einzeln,ˈaɪ̯nt͡sl̩n,ro,"individual, singular"
+de,die,Eisenbahn,aɪ̯zɛnbaːn,en,railway
+de,die,Eisenbahn,aɪ̯zɛnbaːn,ro,cale ferată
+de,das,Elektroauto,ɛːlɛktroːauːtoː,en,electric car
+de,das,Elektroauto,ɛːlɛktroːauːtoː,ro,mașină electrică
+de,die,Eltern,ɛltɛːɐ̯n,en,parents
+de,die,Eltern,ɛltɛːɐ̯n,ro,părinți
+de,die,Energie,ɛːnɛːrɡiː,en,energy
+de,die,Energie,ɛːnɛːrɡiː,ro,energie
+de,,entfernt,ɛntˈfɛʁnt,en,"removed, distant"
+de,,entfernt,ɛntˈfɛʁnt,ro,"îndepărtat, departe"
+de,,entwickeln,ɛntˈvɪkl̩n,en,to develop
+de,,entwickeln,ɛntˈvɪkl̩n,ro,a dezvolta
+de,die,Erde,ˈeːɐ̯də,en,"earth, soil"
+de,die,Erde,ˈeːɐ̯də,ro,"pământ, sol"
+de,,erfasst,ɛɐ̯ˈfast,en,"captured, recorded"
+de,,erfasst,ɛɐ̯ˈfast,ro,"capturat, înregistrat"
+de,,erhitzen,ɛɐ̯ˈhɪt͡sn̩,en,"to heat, to warm"
+de,,erhitzen,ɛɐ̯ˈhɪt͡sn̩,ro,a încălzi
+de,der,Ersatz,ɛɐ̯zaːt͡s,en,"replace, substitute"
+de,der,Ersatz,ɛɐ̯zaːt͡s,ro,"înlocuitor, substitut"
+de,die,Erschöpfung,ɛɐ̯ʃœp͡fʊŋk,en,exhaustion
+de,die,Erschöpfung,ɛɐ̯ʃœp͡fʊŋk,ro,epuizare
+de,,ersetzen,ɛɐ̯ˈzɛt͡sn̩,en,to replace
+de,,ersetzen,ɛɐ̯ˈzɛt͡sn̩,ro,a înlocui
+de,,erst,eːɐ̯st,en,"first, only"
+de,,erst,eːɐ̯st,ro,"primul, doar"
+de,,ertragen,ɛɐ̯ˈtʁaːɡn̩,en,"to endure, to bear"
+de,,ertragen,ɛɐ̯ˈtʁaːɡn̩,ro,"a suporta, a îndura"
+de,,es,ɛs,en,it
+de,,es,ɛs,ro,"el, o (pronume neutru)"
+de,,fahren,ˈfaːʁən,en,"to drive, to travel"
+de,,fahren,ˈfaːʁən,ro,"a conduce, a călători"
+de,das,Fahrrad,faːraːt,en,"bicycle, bike"
+de,das,Fahrrad,faːraːt,ro,bicicletă
+de,der,Fall,fal,en,"case, fall"
+de,der,Fall,fal,ro,"caz, cădere"
+de,der,Fluss,flʊs,en,river
+de,der,Fluss,flʊs,ro,râu
+de,die,Folge,ˈfɔlɡə,en,"consequence, order"
+de,die,Folge,ˈfɔlɡə,ro,"consecință, ordine"
+de,der,Forscher,ˈfɔʁʃɐ,en,researcher
+de,der,Forscher,ˈfɔʁʃɐ,ro,cercetător
+de,der,Fortschritt,ˈfɔʁtˌʃʁɪt,en,progress
+de,der,Fortschritt,ˈfɔʁtˌʃʁɪt,ro,progres
+de,,frei,fʁaɪ̯,en,free
+de,,frei,fʁaɪ̯,ro,liber
+de,,friederike,friːdɛːriːkə,en,Friederike
+de,,friederike,friːdɛːriːkə,ro,Friederike
+de,der,Fuß,fuːs,en,foot
+de,der,Fuß,fuːs,ro,picior
+de,,fährstn,fɛːhrstn,en,are you going (colloq.)
+de,,fährstn,fɛːhrstn,ro,mergi (colocvial)
+de,,führen,ˈfyːʁən,en,"to lead, to guide"
+de,,führen,ˈfyːʁən,ro,"a conduce, a ghida"
+de,,für,fyːɐ̯,en,for
+de,,für,fyːɐ̯,ro,pentru
+de,,ganz,ɡant͡s,en,"whole, completely"
+de,,ganz,ɡant͡s,ro,"întreg, complet"
+de,,geben,ˈɡeːbm̩,en,to give
+de,,geben,ˈɡeːbm̩,ro,a da
+de,das,Gebiet,ɡəˈbiːt,en,"area, region"
+de,das,Gebiet,ɡəˈbiːt,ro,"zonă, regiune"
+de,,geh,ɡeː,en,go
+de,,geh,ɡeː,ro,mergi
+de,,gelangen,ɡəˈlaŋən,en,"to reach, to arrive"
+de,,gelangen,ɡəˈlaŋən,ro,"a ajunge, a sosi"
+de,das,Gemeingut,ɡəmaɪ̯ŋkt,en,common good
+de,das,Gemeingut,ɡəmaɪ̯ŋkt,ro,bun comun
+de,,gering,ɡəˈʁɪŋ,en,"small, minor"
+de,,gering,ɡəˈʁɪŋ,ro,"mic, minor"
+de,,gesamt,ɡəˈzamt,en,"total, entire"
+de,,gesamt,ɡəˈzamt,ro,"total, întreg"
+de,die,Geschichte,ɡəʃɪçtə,en,"history, story"
+de,die,Geschichte,ɡəʃɪçtə,ro,"istorie, poveste"
+de,die,Gesellschaft,ɡəzɛlʃaft,en,"society, company"
+de,die,Gesellschaft,ɡəzɛlʃaft,ro,"societate, companie"
+de,,gestreut,ɡəˈʃtʁɔɪ̯t,en,scattered
+de,,gestreut,ɡəˈʃtʁɔɪ̯t,ro,împrăștiat
+de,die,Gesundheit,ɡəzʊndhaɪ̯t,en,health
+de,die,Gesundheit,ɡəzʊndhaɪ̯t,ro,sănătate
+de,,gibt,ɡɪbt,en,gives
+de,,gibt,ɡɪbt,ro,dă
+de,,groß,ɡʁoːs,en,"big, large"
+de,,groß,ɡʁoːs,ro,mare
+de,das,Grundwasser,ɡrʊndvasɐ,en,groundwater
+de,das,Grundwasser,ɡrʊndvasɐ,ro,apă subterană
+de,der,Grundwasservorrat,ɡrʊndvazɛːrfɔraːt,en,groundwater reserve
+de,der,Grundwasservorrat,ɡrʊndvazɛːrfɔraːt,ro,rezervă de apă subterană
+de,,haben,ˈhaːbm̩,en,to have
+de,,haben,ˈhaːbm̩,ro,a avea
+de,der,Haufe,haʊ̯fə,en,"heap, pile"
+de,der,Haufe,haʊ̯fə,ro,"grămadă, morman"
+de,das,Haus,haʊ̯s,en,house
+de,das,Haus,haʊ̯s,ro,casă
+de,,heißen,ˈhaɪ̯sn̩,en,"to be called, to call"
+de,,heißen,ˈhaɪ̯sn̩,ro,"a se numi, a chema"
+de,,heute,ˈhɔɪ̯tə,en,today
+de,,heute,ˈhɔɪ̯tə,ro,astăzi
+de,,hinterlassen,ˌhɪntɐˈlasn̩,en,to leave behind
+de,,hinterlassen,ˌhɪntɐˈlasn̩,ro,a lăsa în urmă
+de,,hinzu,hɪnˈt͡suː,en,additionally
+de,,hinzu,hɪnˈt͡suː,ro,în plus
+de,,hoch,hoːx,en,high
+de,,hoch,hoːx,ro,înalt
+de,das,Hufeisen,huːfaɪ̯zɛːn,en,horseshoe
+de,das,Hufeisen,huːfaɪ̯zɛːn,ro,potcoavă
+de,,hundert,ˈhʊndɐt,en,hundred
+de,,hundert,ˈhʊndɐt,ro,sută
+de,,ihr,iːɐ̯,en,"her, their"
+de,,ihr,iːɐ̯,ro,"ei, lor"
+de,,immer,ˈɪmɐ,en,"always, always"
+de,,immer,ˈɪmɐ,ro,întotdeauna
+de,,in,ɪn,en,in
+de,,in,ɪn,ro,în
+de,,indem,ɪnˈdeːm,en,"by, while"
+de,,indem,ɪnˈdeːm,ro,"prin, în timp ce"
+de,,industriell,ɪndʊstʁiˈɛl,en,industrial
+de,,industriell,ɪndʊstʁiˈɛl,ro,industrial
+de,die,Inkompetenz,ɪŋkɔmpɛːtɛːns,en,incompetence
+de,die,Inkompetenz,ɪŋkɔmpɛːtɛːns,ro,incompetență
+de,,installiert,ɪnstaˈliːɐ̯t,en,installed
+de,,installiert,ɪnstaˈliːɐ̯t,ro,instalat
+de,,je,jeː,en,"ever, each"
+de,,je,jeː,ro,"vreodată, fiecare"
+de,,jeder,ˈjeːdɐ,en,"every, each"
+de,,jeder,ˈjeːdɐ,ro,"fiecare, orice"
+de,,jener,ˈjeːnɐ,en,"former, that one"
+de,,jener,ˈjeːnɐ,ro,"cel de dinainte, acela"
+de,,kannstn,kanstn,en,can you (colloq.)
+de,,kannstn,kanstn,ro,poți (colocvial)
+de,,kein,kaɪ̯n,en,"no, none"
+de,,kein,kaɪ̯n,ro,"niciun, niciunul"
+de,,keiner,ˈkaɪ̯nɐ,en,no one
+de,,keiner,ˈkaɪ̯nɐ,ro,nimeni
+de,,kommst,kɔmst,en,you come
+de,,kommst,kɔmst,ro,vii
+de,,konfrontieren,kɔnfʁɔnˈtiːʁən,en,to confront
+de,,konfrontieren,kɔnfʁɔnˈtiːʁən,ro,a confrunta
+de,der,Kontakt,kɔntakt,en,contact
+de,der,Kontakt,kɔntakt,ro,contact
+de,,konzentrieren,kɔnt͡sɛnˈtʁiːʁən,en,to concentrate
+de,,konzentrieren,kɔnt͡sɛnˈtʁiːʁən,ro,a concentra
+de,die,Korruption,kɔrʊptiːoːn,en,corruption
+de,die,Korruption,kɔrʊptiːoːn,ro,corupție
+de,,können,ˈkœnən,en,"can, to be able"
+de,,können,ˈkœnən,ro,a putea
+de,die,Lage,laːɡə,en,"location, situation"
+de,die,Lage,laːɡə,ro,"locație, situație"
+de,,lang,laŋ,en,long
+de,,lang,laŋ,ro,lung
+de,das,Leben,ˈleːbm̩,en,"life, to live"
+de,das,Leben,ˈleːbm̩,ro,"viață, a trăi"
+de,der,Leitfad,laɪ̯tfaːt,en,guide
+de,der,Leitfad,laɪ̯tfaːt,ro,ghid
+de,die,Luft,lʊft,en,air
+de,die,Luft,lʊft,ro,aer
+de,die,Luftverschmutzung,lʊftfɛːrʃmuːt͡sʊŋk,en,air pollution
+de,die,Luftverschmutzung,lʊftfɛːrʃmuːt͡sʊŋk,ro,poluarea aerului
+de,die,Lunge,lʊŋə,en,lung
+de,die,Lunge,lʊŋə,ro,plămân
+de,,ländlich,ˈlɛntlɪç,en,rural
+de,,ländlich,ˈlɛntlɪç,ro,rural
+de,die,Lärmbelastung,lɛːrmbɛːlastʊŋk,en,noise pollution
+de,die,Lärmbelastung,lɛːrmbɛːlastʊŋk,ro,poluare fonică
+de,die,Lösung,løːzʊŋk,en,solution
+de,die,Lösung,løːzʊŋk,ro,soluție
+de,die,Macht,maxt,en,"power, makes"
+de,die,Macht,maxt,ro,"putere, face"
+de,die,Magnetschwebebahnen,manjɛtʃvɛːbɛːbann̩,en,maglev trains
+de,die,Magnetschwebebahnen,manjɛtʃvɛːbɛːbann̩,ro,trenuri maglev
+de,,man,man,en,"one, people"
+de,,man,man,ro,"cineva, oamenii"
+de,das,Management,maːnaːɡɛːmɛnt,en,management
+de,das,Management,maːnaːɡɛːmɛnt,ro,management
+de,,manchmal,ˈmançmaːl,en,sometimes
+de,,manchmal,ˈmançmaːl,ro,uneori
+de,der,Maßstab,maːsstaːp,en,"scale, standard"
+de,der,Maßstab,maːsstaːp,ro,"scară, standard"
+de,,mehr,meːɐ̯,en,more
+de,,mehr,meːɐ̯,ro,mai mult
+de,der,Mensch,mɛnʃ,en,"human, person"
+de,der,Mensch,mɛnʃ,ro,"om, persoană"
+de,,menschlich,ˈmɛnʃlɪç,en,human
+de,,menschlich,ˈmɛnʃlɪç,ro,uman
+de,,messen,ˈmɛsn̩,en,to measure
+de,,messen,ˈmɛsn̩,ro,a măsura
+de,,mikroskopisch,mikʁoˈskoːpɪʃ,en,microscopic
+de,,mikroskopisch,mikʁoˈskoːpɪʃ,ro,microscopic
+de,der,Mist,mɪst,en,"mess, manure"
+de,der,Mist,mɪst,ro,"mizerie, gunoi"
+de,,mit,mɪt,en,with
+de,,mit,mɪt,ro,cu
+de,das,Mittel,ˈmɪtl̩,en,"means, medium"
+de,das,Mittel,ˈmɪtl̩,ro,"mijloc, mediu"
+de,,müssen,ˈmʏsn̩,en,must
+de,,müssen,ˈmʏsn̩,ro,trebuie
+de,die,Nachhaltigkeit,naxhaltɪɡkaɪ̯t,en,sustainability
+de,die,Nachhaltigkeit,naxhaltɪɡkaɪ̯t,ro,sustenabilitate
+de,,nachts,naxt͡s,en,at night
+de,,nachts,naxt͡s,ro,noaptea
+de,,nah,naː,en,near
+de,,nah,naː,ro,aproape
+de,,natürlich,naˈtyːɐ̯lɪç,en,"naturally, natural"
+de,,natürlich,naˈtyːɐ̯lɪç,ro,"firesc, natural"
+de,,neu,nɔɪ̯,en,new
+de,,neu,nɔɪ̯,ro,nou
+de,,new,njuː,en,new
+de,,new,njuː,ro,nou
+de,,nicht,nɪçt,en,not
+de,,nicht,nɪçt,ro,nu
+de,,nie,niː,en,never
+de,,nie,niː,ro,niciodată
+de,,noch,nɔx,en,"still, yet"
+de,,noch,nɔx,ro,"încă, totuși"
+de,,nur,nuːɐ̯,en,only
+de,,nur,nuːɐ̯,ro,doar
+de,,nutzen,ˈnʊt͡sn̩,en,"to use, benefit"
+de,,nutzen,ˈnʊt͡sn̩,ro,"a folosi, beneficiu"
+de,die,Nutzung,nuːt͡sʊŋk,en,use
+de,die,Nutzung,nuːt͡sʊŋk,ro,utilizare
+de,die,Nähe,ˈnɛːə,en,"proximity, closeness"
+de,die,Nähe,ˈnɛːə,ro,"proximitate, apropiere"
+de,,nötig,ˈnøːtɪk,en,necessary
+de,,nötig,ˈnøːtɪk,ro,necesar
+de,,obwohl,ɔpˈvoːl,en,although
+de,,obwohl,ɔpˈvoːl,ro,deși
+de,,oder,ˈoːdɐ,en,or
+de,,oder,ˈoːdɐ,ro,sau
+de,der,Organismus,oːrɡaːnɪsmʊs,en,organism
+de,der,Organismus,oːrɡaːnɪsmʊs,ro,organism
+de,der,Park,paʁk,en,park
+de,der,Park,paʁk,ro,parc
+de,das,Partikel,paːrtikl̩,en,particle
+de,das,Partikel,paːrtikl̩,ro,particulă
+de,,passen,ˈpasn̩,en,"to fit, to match"
+de,,passen,ˈpasn̩,ro,"a se potrivi, a corespunde"
+de,,persönlich,pɛʁˈzøːnlɪç,en,"personal, personally"
+de,,persönlich,pɛʁˈzøːnlɪç,ro,personal
+de,das,Pferd,p͡fɛːɐ̯t,en,horse
+de,das,Pferd,p͡fɛːɐ̯t,ro,cal
+de,die,Pferdekutsche,p͡fɛːrdɛːkutʃə,en,horse-drawn carriage
+de,die,Pferdekutsche,p͡fɛːrdɛːkutʃə,ro,trăsură cu cai
+de,die,Pferdestraßenbahne,p͡fɛːrdɛstraːsɛnbaːnə,en,horse-drawn tram
+de,die,Pferdestraßenbahne,p͡fɛːrdɛstraːsɛnbaːnə,ro,tramvai cu cai
+de,die,Pflanze,ˈp͡flant͡sə,en,plant
+de,die,Pflanze,ˈp͡flant͡sə,ro,plantă
+de,die,Politik,poːliːtiːk,en,politics
+de,die,Politik,poːliːtiːk,ro,politică
+de,das,Problem,prɔblm̩,en,problem
+de,das,Problem,prɔblm̩,ro,problemă
+de,,produzieren,pʁoduˈt͡siːʁən,en,to produce
+de,,produzieren,pʁoduˈt͡siːʁən,ro,a produce
+de,,prägen,ˈpʁɛːɡn̩,en,"to shape, to coin"
+de,,prägen,ˈpʁɛːɡn̩,ro,"a modela, a marca"
+de,die,Quelle,ˈkvɛlə,en,source
+de,die,Quelle,ˈkvɛlə,ro,sursă
+de,das,Rad,raːt,en,"wheel, bike"
+de,das,Rad,raːt,ro,"roată, bicicletă"
+de,der,Raum,raʊ̯m,en,"space, room"
+de,der,Raum,raʊ̯m,ro,"spațiu, cameră"
+de,,regenerativ,ʁeɡəneʁaˈtiːf,en,regenerative
+de,,regenerativ,ʁeɡəneʁaˈtiːf,ro,regenerativ
+de,die,Region,rɛːɡiːoːn,en,region
+de,die,Region,rɛːɡiːoːn,ro,regiune
+de,die,Reibung,raɪ̯bʊŋk,en,friction
+de,die,Reibung,raɪ̯bʊŋk,ro,frecare
+de,die,Reibungsbremse,raɪ̯bʊŋsbrɛmzə,en,friction brake
+de,die,Reibungsbremse,raɪ̯bʊŋsbrɛmzə,ro,frână cu frecare
+de,die,Reibungskraft,raɪ̯bʊŋskraft,en,friction force
+de,die,Reibungskraft,raɪ̯bʊŋskraft,ro,forță de frecare
+de,der,Reifen,ˈʁaɪ̯fn̩,en,"to mature, tire"
+de,der,Reifen,ˈʁaɪ̯fn̩,ro,"a se coace, anvelopă"
+de,die,Reihe,ˈʁaɪ̯ə,en,"row, series"
+de,die,Reihe,ˈʁaɪ̯ə,ro,"rând, serie"
+de,,reizen,ˈʁaɪ̯t͡sn̩,en,"to irritate, to tempt"
+de,,reizen,ˈʁaɪ̯t͡sn̩,ro,"a irita, a ispiti"
+de,die,Ressource,rɛzuːrkə,en,resource
+de,die,Ressource,rɛzuːrkə,ro,resursă
+de,,retten,ˈʁɛtn̩,en,to save
+de,,retten,ˈʁɛtn̩,ro,a salva
+de,,richtig,ˈʁɪçtɪk,en,"correct, right"
+de,,richtig,ˈʁɪçtɪk,ro,"corect, drept"
+de,,riechen,ˈʁiːçn̩,en,to smell
+de,,riechen,ˈʁiːçn̩,ro,a mirosi
+de,,rochen,ˈʁɔxn̩,en,smelt (fish)
+de,,rochen,ˈʁɔxn̩,ro,a mirosit (pește)
+de,das,Salz,zalt͡s,en,salt
+de,das,Salz,zalt͡s,ro,sare
+de,der,Schaden,ˈʃaːdn̩,en,"damage, harm"
+de,der,Schaden,ˈʃaːdn̩,ro,"daună, prejudiciu"
+de,der,Schatten,ˈʃatn̩,en,"shadow, shade"
+de,der,Schatten,ˈʃatn̩,ro,umbră
+de,die,Schiene,ˈʃiːnə,en,rail
+de,die,Schiene,ˈʃiːnə,ro,șină
+de,,schienengebunden,ˈʃiːnənɡəˌbʊndn̩,en,rail-bound
+de,,schienengebunden,ˈʃiːnənɡəˌbʊndn̩,ro,legat de șine
+de,,schlecht,ʃlɛçt,en,"bad, poor"
+de,,schlecht,ʃlɛçt,ro,"rău, slab"
+de,,schuhabstreifer\dot,ʃuːabstraɪ̯fɛːr\doːt,en,shoe scraper·
+de,,schuhabstreifer\dot,ʃuːabstraɪ̯fɛːr\doːt,ro,curățitor de pantofi·
+de,die,Schwelle,ˈʃvɛlə,en,"threshold, sleeper"
+de,die,Schwelle,ˈʃvɛlə,ro,"prag, traversă"
+de,,schädigen,ˈʃɛːdɪɡn̩,en,"to harm, to damage"
+de,,schädigen,ˈʃɛːdɪɡn̩,ro,"a dăuna, a deteriora"
+de,die,Schädigung,ʃɛːdɪɡŋk,en,damage
+de,die,Schädigung,ʃɛːdɪɡŋk,ro,"daună, deteriorare"
+de,,schädlich,ˈʃɛːtlɪç,en,harmful
+de,,schädlich,ˈʃɛːtlɪç,ro,dăunător
+de,,see\ldot,zeː\ldoːt,en,lake···
+de,,see\ldot,zeː\ldoːt,ro,lac···
+de,,sehen,ˈzeːən,en,to see
+de,,sehen,ˈzeːən,ro,a vedea
+de,,sein,zaɪ̯n,en,"his, its"
+de,,sein,zaɪ̯n,ro,"al lui, al său"
+de,,selbst,zɛlpst,en,"self, even"
+de,,selbst,zɛlpst,ro,"sine, chiar"
+de,,selten,ˈzɛltn̩,en,"rare, seldom"
+de,,selten,ˈzɛltn̩,ro,"rar, rareori"
+de,,setzen,ˈzɛt͡sn̩,en,"to place, to set"
+de,,setzen,ˈzɛt͡sn̩,ro,"a plasa, a seta"
+de,,sich,zɪç,en,"oneself, himself"
+de,,sich,zɪç,ro,"sine, pe sine"
+de,,sichtbar,ˈzɪçtbaːɐ̯,en,visible
+de,,sichtbar,ˈzɪçtbaːɐ̯,ro,vizibil
+de,,sickeren,ziːkɛːrən,en,"to seep, to soak"
+de,,sickeren,ziːkɛːrən,ro,"a se infiltra, a se scurge"
+de,,sie,ziː,en,"she, they"
+de,,sie,ziː,ro,"ea, ei/ele"
+de,,so,zoː,en,"so, like this"
+de,,so,zoː,ro,"așa, astfel"
+de,,sodass,zoˈdas,en,"so that, thus"
+de,,sodass,zoˈdas,ro,astfel încât
+de,,sofort,zoˈfɔʁt,en,immediately
+de,,sofort,zoˈfɔʁt,ro,imediat
+de,,sondern,ˈzɔndɐn,en,but rather
+de,,sondern,ˈzɔndɐn,ro,"ci, dar"
+de,,sowohl,zoˈvoːl,en,both
+de,,sowohl,zoˈvoːl,ro,ambele
+de,,speziell,ʃpeˈt͡si̯ɛl,en,"special, specific"
+de,,speziell,ʃpeˈt͡si̯ɛl,ro,"special, specific"
+de,,spät,ʃpɛːt,en,late
+de,,spät,ʃpɛːt,ro,târziu
+de,die,Stadt,ʃtaːt,en,"city, town"
+de,die,Stadt,ʃtaːt,ro,oraș
+de,der,Stadtbewohner,ʃtatbjuːoːnɐ,en,city dweller
+de,der,Stadtbewohner,ʃtatbjuːoːnɐ,ro,locuitor al orașului
+de,,stark,ʃtaʁk,en,strong
+de,,stark,ʃtaʁk,ro,puternic
+de,,statt,ʃtat,en,"instead, place"
+de,,statt,ʃtat,ro,"în loc de, loc"
+de,,stehen,ˈʃteːən,en,to stand
+de,,stehen,ˈʃteːən,ro,a sta
+de,,steigen,ˈʃtaɪ̯ɡn̩,en,"to rise, to climb"
+de,,steigen,ˈʃtaɪ̯ɡn̩,ro,"a urca, a crește"
+de,,stellen,ˈʃtɛlən,en,"to place, to put"
+de,,stellen,ˈʃtɛlən,ro,"a plasa, a pune"
+de,die,Stimme,ˈʃtɪmə,en,"voice, vote"
+de,die,Stimme,ˈʃtɪmə,ro,"voce, vot"
+de,,stimmen,ˈʃtɪmən,en,"to vote, to match"
+de,,stimmen,ˈʃtɪmən,ro,"a vota, a corespunde"
+de,der,Stoff,ʃtɔf,en,"material, substance"
+de,der,Stoff,ʃtɔf,ro,"material, substanță"
+de,die,Straße,ʃtraːsə,en,"street, road"
+de,die,Straße,ʃtraːsə,ro,"stradă, drum"
+de,die,Straßenbahn,ʃtraːsɛnbaːn,en,"tram, streetcar"
+de,die,Straßenbahn,ʃtraːsɛnbaːn,ro,tramvai
+de,,städtisch,ˈʃtɛtɪʃ,en,urban
+de,,städtisch,ˈʃtɛtɪʃ,ro,urban
+de,der,Tag,taːk,en,day
+de,der,Tag,taːk,ro,zi
+de,die,Technik,tɛçniːk,en,technology
+de,die,Technik,tɛçniːk,ro,tehnologie
+de,die,Technologie,tɛçnoːloːɡiː,en,technology
+de,die,Technologie,tɛçnoːloːɡiː,ro,tehnologie
+de,,technologisch,tɛçnoˈloːɡɪʃ,en,technological
+de,,technologisch,tɛçnoˈloːɡɪʃ,ro,tehnologic
+de,der,Teil,taɪ̯l,en,part
+de,der,Teil,taɪ̯l,ro,parte
+de,das,Tier,tiːɐ̯,en,animal
+de,das,Tier,tiːɐ̯,ro,animal
+de,der,Tierlebensräum,tiːrlɛːbɛnsrɔɪ̯m,en,animal habitats
+de,der,Tierlebensräum,tiːrlɛːbɛnsrɔɪ̯m,ro,habitate ale animalelor
+de,die,Tonne,ˈtɔnə,en,"ton, barrel"
+de,die,Tonne,ˈtɔnə,ro,"tonă, butoi"
+de,,tragen,ˈtʁaːɡn̩,en,"to carry, to wear"
+de,,tragen,ˈtʁaːɡn̩,ro,"a căra, a purta"
+de,die,Tragödie,traːɡøːdiː,en,tragedy
+de,die,Tragödie,traːɡøːdiː,ro,tragedie
+de,,tun,tjuːn,en,to do
+de,,tun,tjuːn,ro,a face
+de,,u-bahn,uː-baːn,en,"subway, U-Bahn"
+de,,u-bahn,uː-baːn,ro,metrou
+de,,um,ʊm,en,"around, at"
+de,,um,ʊm,ro,"în jurul, la"
+de,die,Umwelt,ʊmvɛlt,en,environment
+de,die,Umwelt,ʊmvɛlt,ro,mediu înconjurător
+de,,und,ʊnt,en,and
+de,,und,ʊnt,ro,și
+de,,unregulieren,uːnrɛɡliːrən,en,unregulated
+de,,unregulieren,uːnrɛɡliːrən,ro,nereglementat
+de,,uns,ʊns,en,us
+de,,uns,ʊns,ro,"ne, nouă"
+de,,unser,ˈʊnzɐ,en,our
+de,,unser,ˈʊnzɐ,ro,al nostru
+de,,unvermeidlich,ˈʊnfɛɐ̯ˌmaɪ̯tlɪç,en,inevitable
+de,,unvermeidlich,ˈʊnfɛɐ̯ˌmaɪ̯tlɪç,ro,inevitabil
+de,der,Urin,uːriːn,en,urine
+de,der,Urin,uːriːn,ro,urină
+de,die,Verfügung,fɛːrfʏɡŋk,en,"availability, disposal"
+de,die,Verfügung,fɛːrfʏɡŋk,ro,"disponibilitate, dispoziție"
+de,,vergebens,fɛɐ̯ˈɡeːbn̩s,en,in vain
+de,,vergebens,fɛɐ̯ˈɡeːbn̩s,ro,în zadar
+de,,verhindern,fɛɐ̯ˈhɪndɐn,en,to prevent
+de,,verhindern,fɛɐ̯ˈhɪndɐn,ro,a preveni
+de,der,Verkehr,fɛɐ̯ˈkeːɐ̯,en,"traffic, transport"
+de,der,Verkehr,fɛɐ̯ˈkeːɐ̯,ro,"trafic, transport"
+de,das,Verkehrsmittel,fɛːrkeːrsmɪtl̩,en,transportation
+de,das,Verkehrsmittel,fɛːrkeːrsmɪtl̩,ro,mijloc de transport
+de,,vermeidbar,fɛɐ̯ˈmaɪ̯tbaːɐ̯,en,avoidable
+de,,vermeidbar,fɛɐ̯ˈmaɪ̯tbaːɐ̯,ro,evitabil
+de,,vermeiden,fɛɐ̯ˈmaɪ̯dn̩,en,to avoid
+de,,vermeiden,fɛɐ̯ˈmaɪ̯dn̩,ro,a evita
+de,,vernünftig,fɛɐ̯ˈnʏnftɪk,en,reasonable
+de,,vernünftig,fɛɐ̯ˈnʏnftɪk,ro,rezonabil
+de,,verringern,fɛɐ̯ˈʁɪŋɐn,en,to reduce
+de,,verringern,fɛɐ̯ˈʁɪŋɐn,ro,a reduce
+de,die,Verschmutzung,fɛːrʃmuːt͡sʊŋk,en,pollution
+de,die,Verschmutzung,fɛːrʃmuːt͡sʊŋk,ro,poluare
+de,,verschwinden,fɛɐ̯ˈʃvɪndn̩,en,to disappear
+de,,verschwinden,fɛɐ̯ˈʃvɪndn̩,ro,a dispărea
+de,der,Verstand,fɛɐ̯ˈʃtant,en,understanding
+de,der,Verstand,fɛɐ̯ˈʃtant,ro,înțelegere
+de,die,Verwaltung,fɛːrvaltʊŋk,en,administration
+de,die,Verwaltung,fɛːrvaltʊŋk,ro,administrație
+de,die,Veränderung,fɛːrɛndɛːrʊŋk,en,"change, alteration"
+de,die,Veränderung,fɛːrɛndɛːrʊŋk,ro,"schimbare, modificare"
+de,,viel,fiːl,en,"much, many"
+de,,viel,fiːl,ro,"mult, mulți"
+de,,vieler,ˈfiːlɐ,en,many (gen.)
+de,,vieler,ˈfiːlɐ,ro,mulți (gen.)
+de,,vogelgesang,foːɡɛlɡɛːzaŋk,en,birdsong
+de,,vogelgesang,foːɡɛlɡɛːzaŋk,ro,cântec de păsări
+de,,von,fɔn,en,"of, from"
+de,,von,fɔn,ro,"al, din"
+de,,vorgeschlagen,ˈfoːɐ̯ɡəˌʃlaːɡn̩,en,"suggested, proposed"
+de,,vorgeschlagen,ˈfoːɐ̯ɡəˌʃlaːɡn̩,ro,"sugerat, propus"
+de,,wachsen,ˈvaksn̩,en,to grow
+de,,wachsen,ˈvaksn̩,ro,a crește
+de,der,Wagen,ˈvaːɡn̩,en,"dare, car"
+de,der,Wagen,ˈvaːɡn̩,ro,"a îndrăzni, mașină"
+de,die,Wahl,vaːl,en,"choice, election"
+de,die,Wahl,vaːl,ro,"alegere, alegeri"
+de,der,Wald,valt,en,forest
+de,der,Wald,valt,ro,pădure
+de,,was,vas,en,what
+de,,was,vas,ro,ce
+de,das,Wasser,ˈvasɐ,en,water
+de,das,Wasser,ˈvasɐ,ro,apă
+de,die,Weise,ˈvaɪ̯zə,en,"way, manner"
+de,die,Weise,ˈvaɪ̯zə,ro,"mod, manieră"
+de,,weit,vaɪ̯t,en,far
+de,,weit,vaɪ̯t,ro,departe
+de,,weiter,ˈvaɪ̯tɐ,en,"further, next"
+de,,weiter,ˈvaɪ̯tɐ,ro,"mai departe, următor"
+de,,wenige,ˈveːnɪɡə,en,few
+de,,wenige,ˈveːnɪɡə,ro,puțini
+de,,weniger,ˈveːnɪɡɐ,en,less
+de,,weniger,ˈveːnɪɡɐ,ro,mai puțin
+de,,wenn,vɛn,en,"if, when"
+de,,wenn,vɛn,ro,"dacă, când"
+de,,wer,veːɐ̯,en,who
+de,,wer,veːɐ̯,ro,cine
+de,,werden,ˈveːɐ̯dn̩,en,"to become, will"
+de,,werden,ˈveːɐ̯dn̩,ro,"a deveni, va"
+de,,wichtig,ˈvɪçtɪk,en,important
+de,,wichtig,ˈvɪçtɪk,ro,important
+de,,wie,viː,en,"how, like"
+de,,wie,viː,ro,"cum, ca"
+de,,wiederholen,ˈviːdɐˌhoːlən,en,to repeat
+de,,wiederholen,ˈviːdɐˌhoːlən,ro,a repeta
+de,der,Winter,vɪntɐ,en,winter
+de,der,Winter,vɪntɐ,ro,iarnă
+de,,winzig,ˈvɪnt͡sɪk,en,tiny
+de,,winzig,ˈvɪnt͡sɪk,ro,minuscul
+de,,wir,viːɐ̯,en,we
+de,,wir,viːɐ̯,ro,noi
+de,,wirken,ˈvɪʁkn̩,en,"to work, to affect"
+de,,wirken,ˈvɪʁkn̩,ro,"a acționa, a afecta"
+de,der,Wirkungsgrad,viːrkʊŋsɡraːt,en,"efficiency, efficiency"
+de,der,Wirkungsgrad,viːrkʊŋsɡraːt,ro,eficiență
+de,,wo,voː,en,where
+de,,wo,voː,ro,unde
+de,,wohl,voːl,en,"well, probably"
+de,,wohl,voːl,ro,"bine, probabil"
+de,,wuchsen,ˈvuːksn̩,en,grew
+de,,wuchsen,ˈvuːksn̩,ro,au crescut
+de,,wähl,vɛːl,en,choose
+de,,wähl,vɛːl,ro,alege
+de,,wählen,ˈvɛːlən,en,"to choose, to elect"
+de,,wählen,ˈvɛːlən,ro,"a alege, a vota"
+de,,während,ˈvɛːʁənt,en,"during, while"
+de,,während,ˈvɛːʁənt,ro,"în timpul, în timp ce"
+de,die,Wärme,ˈvɛʁmə,en,heat
+de,die,Wärme,ˈvɛʁmə,ro,căldură
+de,die,Wärmeinsel,vɛːrmaɪ̯nzɛːl,en,heat island
+de,die,Wärmeinsel,vɛːrmaɪ̯nzɛːl,ro,insulă de căldură
+de,die,Zahl,t͡saːl,en,number
+de,die,Zahl,t͡saːl,ro,număr
+de,,zahlreich,ˈt͡saːlˌʁaɪ̯ç,en,numerous
+de,,zahlreich,ˈt͡saːlˌʁaɪ̯ç,ro,numeros
+de,,zeigen,ˈt͡saɪ̯ɡn̩,en,to show
+de,,zeigen,ˈt͡saɪ̯ɡn̩,ro,a arăta
+de,die,Zeitspanne,t͡saɪ̯tspanə,en,time period
+de,die,Zeitspanne,t͡saɪ̯tspanə,ro,perioadă de timp
+de,die,Zerschneidung,t͡sɛːrʃnaɪ̯dʊŋk,en,"cutting, fragmentation"
+de,die,Zerschneidung,t͡sɛːrʃnaɪ̯dʊŋk,ro,"tăiere, fragmentare"
+de,,ziehen,ˈt͡siːən,en,"to pull, to move"
+de,,ziehen,ˈt͡siːən,ro,"a trage, a se muta"
+de,,zu,t͡suː,en,to
+de,,zu,t͡suː,ro,"la, spre"
+de,der,Zug,t͡sʊk,en,"train, draft"
+de,der,Zug,t͡sʊk,ro,"tren, curent de aer"
+de,,zurückgestrahlen,t͡suːrʏkɡɛstraln̩,en,to reflect back
+de,,zurückgestrahlen,t͡suːrʏkɡɛstraln̩,ro,a reflecta înapoi
+de,,zusammenarbeiten,t͡suˈzamənˌʔaʁbaɪ̯tn̩,en,to cooperate
+de,,zusammenarbeiten,t͡suˈzamənˌʔaʁbaɪ̯tn̩,ro,a coopera
+de,,ändern,ˈɛndɐn,en,to change
+de,,ändern,ˈɛndɐn,ro,a schimba
+de,,öffentlich,ˈœfn̩tlɪç,en,public
+de,,öffentlich,ˈœfn̩tlɪç,ro,public
+de,das,Ökosystem,øːkoːzʏstm̩,en,ecosystem
+de,das,Ökosystem,øːkoːzʏstm̩,ro,ecosistem
+de,,über,ˈyːbɐ,en,"over, across"
+de,,über,ˈyːbɐ,ro,"peste, dincolo"
+de,,überhaupt,ˌyːbɐˈhaʊ̯pt,en,"at all, altogether"
+de,,überhaupt,ˌyːbɐˈhaʊ̯pt,ro,"deloc, în total"
+de,das,Übermaß,yːbɛːrmaːs,en,excess
+de,das,Übermaß,yːbɛːrmaːs,ro,exces
+de,,übermäßig,ˈyːbɐˌmɛːsɪk,en,excessive
+de,,übermäßig,ˈyːbɐˌmɛːsɪk,ro,excesiv
+de,,überqueren,ˌyːbɐˈkveːʁən,en,to cross
+de,,überqueren,ˌyːbɐˈkveːʁən,ro,a traversa
+de,die,Überschwemmung,yːbɛːrʃvɛmʊŋk,en,flood
+de,die,Überschwemmung,yːbɛːrʃvɛmʊŋk,ro,inundație
+de,,überwiegend,yːbɐˈviːɡn̩t,en,predominantly
+de,,überwiegend,yːbɐˈviːɡn̩t,ro,predominant

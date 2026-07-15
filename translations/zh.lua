@@ -40,6 +40,7 @@ return {
 
   -- Prose section
   parent_guide_title = "家长指南",
+  glossary_title = "词汇表",
   parent_guide_body  = [[\textbf{可持续发展}是指以不导致资源耗尽或环境退化的方式使用自然资源。过度开发资源并不总是立即产生可见的后果，因此过剩往往在很久之后才变得明显，有时——已经太晚了。
 
 汽车对环境的影响不仅限于尾气排放：

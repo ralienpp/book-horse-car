@@ -39,6 +39,7 @@ return {
 
   -- Prose section
   parent_guide_title = "Leitfaden für Eltern",
+  glossary_title = "Glossar",
   parent_guide_body  = [[\textbf{Nachhaltigkeit} ist die Nutzung natürlicher Ressourcen auf eine Weise, die nicht zu ihrer Erschöpfung oder zur Schädigung der Umwelt führt. Die übermäßige Ausbeutung von Ressourcen zeigt nicht immer sofort sichtbare Folgen, sodass das Übermaß erst später deutlich wird, manchmal -- zu spät.
 
 Die Auswirkungen von Autos auf die Umwelt beschränken sich nicht auf Abgase:

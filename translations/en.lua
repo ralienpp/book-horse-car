@@ -39,6 +39,7 @@ return {
 
   -- Prose section
   parent_guide_title = "Guide for Parents",
+  glossary_title = "Glossary",
   parent_guide_body  = [[\textbf{Sustainability} is the use of natural resources in a way that does not lead to their depletion or to the degradation of the environment. Overexploiting resources does not always produce immediately visible consequences, so the excess becomes apparent later, sometimes -- too late.
 
 The impact of cars on the environment is not limited to exhaust fumes:
