@@ -66,7 +66,7 @@ Impactul automobilelor asupra mediului nu se reduce doar la gazele de eșapament
 \textbf{De ce e important să votezi?}
 O mare parte din problemele cu care ne confruntăm nu sunt tragedii inevitabile care ne-a fost sortit să le îndurăm, ci o consecință a managementului prost, determinat de incompetența sau corupția administrației. Într-o democrație administrația se poate schimba prin alegeri. Așadar, votul este unul din instrumentele pe care le avem la dispoziție, și e important să-l utilizăm. \emph{Rațional}!
 
-Cartea ``Climate injustice'' de Friederike Otto descrie multiple cazuri în care regiuni cu populații de milioane trec prin secete sau inundații, care puteau fi evitate dacă administrația ar fi aplicat corect soluții propuse de cercetători.
+Cartea ``Climate injustice'', scrisă de Friederike Otto, descrie multiple cazuri în care regiuni cu populații de milioane trec prin secete sau inundații, care puteau fi evitate dacă administrația ar fi aplicat corect soluții propuse de cercetători.
 
 Deși problemele care puteau fi evitate nu au fost evitate -- trebuie să ne concentrăn pe acelea care \emph{încă pot fi evitate}.
 
@@ -74,8 +74,22 @@ Deși problemele care puteau fi evitate nu au fost evitate -- trebuie să ne con
 \textbf{Puterea unui singur om} este limitată. Chiar dacă vei merge cu bicileta toată viața, poluarea la scară industrială eclipsează efortul tău personal. Totuși, nimeni dintre noi nu este singur -- \emph{cooperarea aduce schimbarea}. Putem coopera prin votarea pentru politici mai rezonabile, prin elaborarea tehnologiilor noi, etc.
 
 
-\textbf{Tragedia resurselor comune} nereglementate caracterizează multe aspecte a societății umane. Atunci când un bun comun (e.g. un râu, un parc, o pădure, un lac\ldots)
- 
+\textbf{Tragedia resurselor comune} nereglementate poate fi observată în multe aspecte ale societății umane. Tragedia constă în aceea, că dacă un bun comun este exploatat în mod abuziv, deseori consecințele abuzului și costurile remedierii sunt suportate de societate, nu de abuzator. Economiștii numesc acest fenomen \emph{``externalitate negativă''}.
+
+Imaginează-ți o pajiște, unde ciobanii își aduc oile la păscut, stând acolo o oră pe zi. Animalele pleacă, iarba mai crește până la venirea următoarei turme, astfel oile tuturor sunt sătule. Dar un cioban decide să-și pască oile cu jumătate de oră mai mult. Oile sale vor consuma mai multă iarbă, vor da mai mult lapte (adică beneficiu personal). Asta însă se petrece în detrimentul turmelor care vin mai târziu -- pajiștea are mai puțin timp pentru a se restabili, respectiv alte animale vor mânca mai puțin (adică paguba este externalizată). Diferența va fi imperceptibilă.
+Dar ce se va întâmpla dacă fiecare va decide să-și pască turma mai mult timp? Iarba nu va avea timp să se refacă, eventual pajiștea se va usca -- toți rămân cu nimic.
+
+Schema descrisă are un singur beneficiar -- ciobanul viclean, iar toți ceilalți sunt păgubiți. Însă odată cu colapsul ecosistemului, ajunge să plătească și ``beneficiarul'', deși în general o poate duce mai bine ca restul.
+
+
+O altă manifestare a tragediei resurselor comune uneori o putem observa cu prietenii la restaurant. Dacă decidem de la început că nota de plată va fi împărțită egal, s-ar putea găsi cineva care va comanda bucate și băuturi mai scumpe. Dat fiind faptul că plata pentru ele se va distribui uniform, această persoană va beneficia de ``subsidiile'' celorlalți.
+
+
+La scară planetară, tragedia resurselor comune de regulă favorizează țările industrializate și companiile mari, defavorizând țările sărace și păturile vulnerabile ale societății. 
+
+
+Se mai întâmplă că pagubele vor fi suportate generațiile viitorului -- ele vor moșteni un ocean plin de plastic, o atmosferă plină de gaze de eșapament, păduri defrișate, soluri erodate\ldots
+
 
 ]],
 }
