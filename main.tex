@@ -10,6 +10,8 @@
 %\def\bookfont{OpenDyslexic}
 %\def\bookfontpath{fonts/opendyslexic/}
 \usepackage[pagenumbers]{picturebook}
+\usepackage{multicol}
+\usepackage{hyperref}
 
 \begin{document}
 
@@ -282,5 +284,15 @@
 \startprose
 \section*{\tr{parent_guide_title}}
 {\small \tr{parent_guide_body}}
+
+% ============================================================
+%  GLOSSARY — vocabulary with IPA and translations
+%  Only shown when a secondary language is defined.
+% ============================================================
+\ifdefined\booklangsecondary
+  \newpage
+  \section*{\tr{glossary_title}}
+  \printglossary{translations/glossary.csv}{\booklang}{\booklangsecondary}
+\fi
 
 \end{document}
