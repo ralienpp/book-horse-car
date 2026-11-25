@@ -562,7 +562,7 @@
       \node[fill=black, fill opacity=0.7, text=white, text opacity=1,
             font=\ttfamily\scriptsize, inner sep=3pt, anchor=north west]
         at (2mm, \paperheight-2mm)
-        {#1 ~|~ p.\thepage};
+        {#1 ~|~ p.\thepage ~|~ \ifodd\value{page}ODD\else EVEN\fi};
     \end{tikzpicture}%
   }%
 }
@@ -720,6 +720,7 @@
     \fi
   \end{center}
   \vfill
+  \ifpb@debug\pb@drawdebug{DELIBERATE BLANK}\fi
   \clearpage
 }
 
@@ -765,10 +766,16 @@
   \addtocounter{pb@fillerpages}{-\@tempcnta}%           (Q+1) mod 4
   \@tempcnta=\numexpr4-\value{pb@fillerpages}%
   \ifnum\@tempcnta=4 \@tempcnta=0 \fi%
+  % Remember f and the resulting back-cover page for debug markers.
+  \edef\pb@padtotal{\the\@tempcnta}%
+  \edef\pb@padbackcoverpage{\the\numexpr\value{page}+\@tempcnta\relax}%
   \loop
   \ifnum\@tempcnta>0
     \thispagestyle{empty}%
     \bookletfiller
+    \ifpb@debug
+      \pb@drawdebug{SIGNATURE PAD \the\numexpr\pb@padtotal-\@tempcnta+1\relax\,/\,\pb@padtotal ~|~ makes back cover land on p.\pb@padbackcoverpage}%
+    \fi
     \clearpage
     \advance\@tempcnta -1
   \repeat
