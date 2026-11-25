@@ -11,11 +11,16 @@ Romanian and Russian are the primary check pair - always build both to catch Cyr
 ## Quick Start
 
 ```bash
-# Build all languages (A5, single-pass)
+# Build all languages (A5)
 make all
 
-# Build only Romanian
+# Build only Romanian. Builds are incremental: latexmk tracks sources,
+# translations AND images, so an unchanged book finishes in well under
+# a second and editing a photo triggers exactly the right rebuilds.
 make ro
+
+# Force a full rebuild (ignore the dependency cache)
+make ro LATEXMKFLAGS=-gg
 
 # Build Romanian + Russian, then run verification
 make verify
@@ -42,6 +47,7 @@ Output files land in the project root: `book-<lang>.pdf`, one per language in `L
 ├── main-dual.tex               # Dual-language edition
 ├── picturebook.sty             # LaTeX package - all macros, environments, config
 ├── picturebook-glossary.lua    # Glossary CSV parser and LaTeX emitter
+├── .latexmkrc                  # latexmk config (engine, dependency recording)
 ├── Makefile                    # Build system
 ├── translations/
 │   ├── <lang>.lua              # One file per language code in LANGS (ro is primary)
@@ -112,9 +118,10 @@ fc-list --format="%{family}\n" | sort -u
 
 | Target               | Description                                            |
 |----------------------|--------------------------------------------------------|
-| `make all`           | Build all languages (single LuaLaTeX pass each)        |
+| `make all`           | Build all languages                                    |
 | `make ro`            | Build Romanian only                                    |
 | `make ru`            | Build Russian only                                     |
+| `make dual`          | Build stacked dual edition (see Dual-Language Edition) |
 | `make debug`         | Debug build - Romanian with grid overlay enabled       |
 | `make verify`        | Build ro + ru, then run `scripts/verify.sh`            |
 | `make check-translations` | Check all translation files for missing keys      |
@@ -127,6 +134,8 @@ fc-list --format="%{family}\n" | sort -u
 
 - `SIZE` - Target paper size for scaling. Default: `b5`. Values: `a6`, `b6`, `a5`, `b5`, `a4`, `a3`.
 - `SHEET` - Physical sheet size for booklet printing. Default: `a4`.
+- `LATEXMKFLAGS` - Extra flags for latexmk, e.g. `-gg` to force a rebuild.
+- `DUAL_PRIMARY` / `DUAL_SECONDARY` - Language pair for `make dual`. Defaults: `ro` / `en`.
 
 ## picturebook.sty Reference
 
@@ -144,7 +153,7 @@ fc-list --format="%{family}\n" | sort -u
 Debug mode can also be activated at compile time without editing the source:
 
 ```bash
-lualatex "\def\debugmode{1}\input{main}"
+lualatex "\PassOptionsToPackage{debug}{picturebook}\input{main}"
 ```
 
 ### Paper Size

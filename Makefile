@@ -1,8 +1,8 @@
 LANGS        := ro en ru de es ta bn hi fa tr zh sq it sv
 PDFS         := $(foreach lang,$(LANGS),book-$(lang).pdf)
 
-# LuaLaTeX flags — never hang on interactive prompts
-LATEXFLAGS   := -interaction=nonstopmode -halt-on-error
+# Extra latexmk flags, e.g.:  make ro LATEXMKFLAGS=-gg   (force rebuild)
+LATEXMKFLAGS ?=
 
 # Glossary: build without the glossary section when a language pair has no
 # glossary data.  Usage:  make dual GLOSSARY=off
@@ -13,7 +13,12 @@ else
   GLOSSARYFLAG :=
 endif
 
-.PHONY: all $(LANGS) dual debug verify check-translations scale booklet clean
+# Rebuilding is decided by latexmk, not make (it tracks images too, which
+# make prerequisites cannot see), so the PDF targets must always run their
+# recipe. They hang off FORCE for that: .PHONY does NOT work here because
+# GNU make >= 4.4 ignores pattern-rule recipes for phony targets.
+.PHONY: all $(LANGS) dual debug verify check-translations scale booklet clean FORCE
+FORCE:
 
 # Build all languages
 all: $(PDFS)
@@ -30,21 +35,23 @@ $(foreach lang,$(LANGS),$(eval $(lang): book-$(lang).pdf))
 DUAL_PRIMARY   ?= ro
 DUAL_SECONDARY ?= en
 dual: book-dual-$(DUAL_PRIMARY)-$(DUAL_SECONDARY).pdf
-.SECONDEXPANSION:
-book-dual-%.pdf: main-dual.tex picturebook.sty \
-		translations/$$(word 1,$$(subst -, ,$$*)).lua \
-		translations/$$(word 2,$$(subst -, ,$$*)).lua
+
+# All builds delegate to latexmk (see .latexmkrc): it tracks every input —
+# sources, style, translations AND images — so the rules always run and
+# latexmk itself no-ops when nothing relevant changed.
+
+book-dual-%.pdf: FORCE
 	$(eval DUAL_P := $(word 1,$(subst -, ,$*)))
 	$(eval DUAL_S := $(word 2,$(subst -, ,$*)))
-	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}$(GLOSSARYFLAG)\input{main-dual}"
+	latexmk $(LATEXMKFLAGS) -jobname="book-dual-$*" -e '$$lualatex = q/lualatex -interaction=nonstopmode -halt-on-error %O "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}$(GLOSSARYFLAG)\input{main-dual}"/' main-dual.tex
 
-# Per-language PDF (single pass — all page placement is shipout-anchored)
-book-%.pdf: main.tex picturebook.sty translations/%.lua
-	lualatex $(LATEXFLAGS) -jobname="book-$*" "\def\booklang{$*}\input{main}"
+# Per-language PDF.
+book-%.pdf: FORCE
+	latexmk $(LATEXMKFLAGS) -jobname="book-$*" -e '$$lualatex = q/lualatex -interaction=nonstopmode -halt-on-error %O "\def\booklang{$*}\input{main}"/' main.tex
 
 # Debug build (Romanian only, with grid overlay)
 debug:
-	lualatex $(LATEXFLAGS) -jobname="book-ro-debug" "\PassOptionsToPackage{debug}{picturebook}\def\booklang{ro}\input{main}"
+	latexmk $(LATEXMKFLAGS) -jobname="book-ro-debug" -e '$$lualatex = q/lualatex -interaction=nonstopmode -halt-on-error %O "\PassOptionsToPackage{debug}{picturebook}\def\booklang{ro}\input{main}"/' main.tex
 
 # Run automated verification
 verify: book-ro.pdf book-ru.pdf
