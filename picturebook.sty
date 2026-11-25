@@ -97,9 +97,11 @@
 }
 % \pb@block{width}{content} — a fixed-width text block with the same box
 % semantics textpos had: \hsize/\textwidth/\linewidth set to the block
-% width, normal paragraph indentation preserved.
+% width. No paragraph indentation: these are standalone picture-book
+% fragments, not prose flow (this also covers the secondary language
+% paragraph introduced by \dualtr).
 \newcommand{\pb@block}[2]{%
-  \vtop{\hsize=#1cm\relax \textwidth=\hsize \linewidth=\hsize #2}%
+  \vtop{\hsize=#1cm\relax \textwidth=\hsize \linewidth=\hsize \parindent=0pt #2}%
 }
 
 % Store original geometry for switching modes
