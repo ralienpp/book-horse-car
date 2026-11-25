@@ -28,6 +28,7 @@
 %\def\bookfontpath{fonts/opendyslexic/}
 \usepackage[pagenumbers]{picturebook}
 \usepackage{multicol}
+\usepackage{hyperref}
 
 % Secondary-language styling (optional overrides):
 %   \renewcommand{\dualsecstyle}{\small\itshape}
@@ -284,5 +285,41 @@
   \printglossary{translations/glossary.csv}{\booklang}{\booklangsecondary}
 \fi
 
+% ============================================================
+%  BACK COVER
+%  Pad to a full saddle-stitch signature (multiple of 4 pages) so
+%  the back cover lands on the physical back-cover surface.
+% ============================================================
+\padbooklet
+\backcover{%
+  {\noindent\textbf{\tr{other_books_title}}\par\smallskip}
+  \begin{bookgrid}
+	\book{images/covers/cat-tree.png}{Poetry for kids}
+    \book{images/covers/cover-high5.png}{What is software engineering?}
+	\book{images/covers/tree-cover.jpeg}{Never give up}
+  \end{bookgrid}
+
+  \vfill
+
+  {\noindent\textbf{\tr{about_author_title}}\par\smallskip}
+  \noindent
+  \begin{minipage}[t]{0.75\textwidth}
+    \footnotesize
+    \tr{about_author_body}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.2\textwidth}
+    \raggedleft
+    \includegraphics[height=2.5cm]{images/maskavatar-trimmed.jpg}
+  \end{minipage}
+
+  \vspace{5mm}
+  \noindent
+  \includegraphics[height=1.8cm]{images/payments/qr-btc.pdf}\hspace{0.5cm}%
+  \includegraphics[height=1.8cm]{images/payments/qr-eth.pdf}\hspace{0.5cm}%
+  \href{https://paypal.me/ralienpp}{\includegraphics[height=1.8cm]{images/payments/qr-paypal.pdf}}%
+  \hfill
+  \href{https://creativecommons.org/licenses/by-sa/4.0/}{\includegraphics[height=0.4cm]{images/cc-by-sa-eps-converted-to.pdf}}
+}
 
 \end{document}
