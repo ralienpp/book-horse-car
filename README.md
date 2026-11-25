@@ -4,14 +4,14 @@ A multi-language illustrated children's picture book, built entirely in LuaLaTeX
 
 ## Languages
 
-Romanian (ro), Russian (ru), English (en), German (de).
+The supported languages are the `LANGS` variable in the `Makefile`; each language has a `translations/<lang>.lua` file.
 
 Romanian and Russian are the primary check pair - always build both to catch Cyrillic font issues early.
 
 ## Quick Start
 
 ```bash
-# Build all four languages (A5, two-pass each)
+# Build all languages (A5, two-pass each)
 make all
 
 # Build only Romanian
@@ -32,7 +32,7 @@ scripts/make-booklet.sh book-ro.pdf a4
 make booklet SHEET=a4 SIZE=a6
 ```
 
-Output files land in the project root: `book-ro.pdf`, `book-ru.pdf`, `book-en.pdf`, `book-de.pdf`.
+Output files land in the project root: `book-<lang>.pdf`, one per language in `LANGS`.
 
 ## Project Structure
 
@@ -44,10 +44,7 @@ Output files land in the project root: `book-ro.pdf`, `book-ru.pdf`, `book-en.pd
 ├── picturebook-glossary.lua    # Glossary CSV parser and LaTeX emitter
 ├── Makefile                    # Build system
 ├── translations/
-│   ├── ro.lua                  # Romanian (primary)
-│   ├── ru.lua                  # Russian
-│   ├── en.lua                  # English
-│   ├── de.lua                  # German
+│   ├── <lang>.lua              # One file per language code in LANGS (ro is primary)
 │   └── glossary.csv            # Multilingual glossary (IPA + translations)
 ├── images/
 │   ├── modern-city.jpeg        # Placeholder - modern city scene
@@ -115,7 +112,7 @@ fc-list --format="%{family}\n" | sort -u
 
 | Target               | Description                                            |
 |----------------------|--------------------------------------------------------|
-| `make all`           | Build all four languages (two LuaLaTeX passes each)    |
+| `make all`           | Build all languages (two LuaLaTeX passes each)         |
 | `make ro`            | Build Romanian only                                    |
 | `make ru`            | Build Russian only                                     |
 | `make debug`         | Debug build - Romanian with grid overlay enabled       |

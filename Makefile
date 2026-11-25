@@ -1,4 +1,4 @@
-LANGS        := ro en ru de es ta bn hi fa tr zh al
+LANGS        := ro en ru de es ta bn hi fa tr zh sq it sv
 PDFS         := $(foreach lang,$(LANGS),book-$(lang).pdf)
 
 # LuaLaTeX flags — never hang on interactive prompts
@@ -13,23 +13,13 @@ else
   GLOSSARYFLAG :=
 endif
 
-.PHONY: all al ro ru es ta bn hi fa tr zh dual debug verify check-translations scale booklet clean
+.PHONY: all $(LANGS) dual debug verify check-translations scale booklet clean
 
 # Build all languages
 all: $(PDFS)
 
-# Quick builds: one target per language
-ro: book-ro.pdf
-ru: book-ru.pdf
-en: book-en.pdf
-es: book-es.pdf
-ta: book-ta.pdf
-bn: book-bn.pdf
-hi: book-hi.pdf
-fa: book-fa.pdf
-tr: book-tr.pdf
-zh: book-zh.pdf
-al: book-al.pdf
+# Quick builds: one target per language (derived from LANGS)
+$(foreach lang,$(LANGS),$(eval $(lang): book-$(lang).pdf))
 
 # Dual-language edition (stacked: primary on top, secondary below).
 # Defaults to Romanian primary / English secondary; override on the
