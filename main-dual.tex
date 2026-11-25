@@ -277,9 +277,12 @@
 % ============================================================
 %  GLOSSARY — vocabulary with IPA and translations
 % ============================================================
-\newpage
-\section*{\tr{glossary_title}}
+\ifdefined\bookglossaryoff\else
+  \newpage
+  \section*{\tr{glossary_title}}
 
-\printglossary{translations/glossary.csv}{\booklang}{\booklangsecondary}
+  \printglossary{translations/glossary.csv}{\booklang}{\booklangsecondary}
+\fi
+
 
 \end{document}

@@ -290,9 +290,11 @@
 %  Only shown when a secondary language is defined.
 % ============================================================
 \ifdefined\booklangsecondary
-  \newpage
-  \section*{\tr{glossary_title}}
-  \printglossary{translations/glossary.csv}{\booklang}{\booklangsecondary}
+  \ifdefined\bookglossaryoff\else
+    \newpage
+    \section*{\tr{glossary_title}}
+    \printglossary{translations/glossary.csv}{\booklang}{\booklangsecondary}
+  \fi
 \fi
 
 \end{document}

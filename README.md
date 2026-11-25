@@ -302,6 +302,14 @@ Edit `translations/glossary.csv` in any spreadsheet application (Excel, Google S
 
 The glossary is rendered automatically by `\printglossary` in `main-dual.tex`. It reads the CSV at compile time, filters by the active `(src, dst)` language pair, and emits a compact dictionary-style layout. If no data exists for a language pair, the glossary section is simply empty.
 
+To build a language pair without the glossary section, pass `GLOSSARY=off`:
+
+```bash
+make dual GLOSSARY=off
+# or, without make:
+lualatex -interaction=nonstopmode "\def\booklang{de}\def\booklangsecondary{tr}\def\bookglossaryoff{}\input{main-dual}"
+```
+
 ### Maintainer Workflow
 
 ```bash

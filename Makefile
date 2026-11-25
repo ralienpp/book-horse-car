@@ -4,6 +4,15 @@ PDFS         := $(foreach lang,$(LANGS),book-$(lang).pdf)
 # LuaLaTeX flags — never hang on interactive prompts
 LATEXFLAGS   := -interaction=nonstopmode -halt-on-error
 
+# Glossary: build without the glossary section when a language pair has no
+# glossary data.  Usage:  make dual GLOSSARY=off
+GLOSSARY     ?= on
+ifeq ($(GLOSSARY),off)
+  GLOSSARYFLAG := \def\bookglossaryoff{}
+else
+  GLOSSARYFLAG :=
+endif
+
 .PHONY: all al ro ru es ta bn hi fa tr zh dual debug verify check-translations scale booklet clean
 
 # Build all languages
@@ -37,8 +46,8 @@ book-dual-%.pdf: main-dual.tex picturebook.sty \
 		translations/$$(word 2,$$(subst -, ,$$*)).lua
 	$(eval DUAL_P := $(word 1,$(subst -, ,$*)))
 	$(eval DUAL_S := $(word 2,$(subst -, ,$*)))
-	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}\input{main-dual}"
-	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}\input{main-dual}"
+	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}$(GLOSSARYFLAG)\input{main-dual}"
+	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}$(GLOSSARYFLAG)\input{main-dual}"
 
 # Per-language PDF; 2 passes needed, otherwise images are offset to coordinates outside the page
 book-%.pdf: main.tex picturebook.sty translations/%.lua
