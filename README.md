@@ -11,7 +11,7 @@ Romanian and Russian are the primary check pair - always build both to catch Cyr
 ## Quick Start
 
 ```bash
-# Build all languages (A5, two-pass each)
+# Build all languages (A5, single-pass)
 make all
 
 # Build only Romanian
@@ -112,7 +112,7 @@ fc-list --format="%{family}\n" | sort -u
 
 | Target               | Description                                            |
 |----------------------|--------------------------------------------------------|
-| `make all`           | Build all languages (two LuaLaTeX passes each)         |
+| `make all`           | Build all languages (single LuaLaTeX pass each)        |
 | `make ro`            | Build Romanian only                                    |
 | `make ru`            | Build Russian only                                     |
 | `make debug`         | Debug build - Romanian with grid overlay enabled       |
@@ -229,7 +229,7 @@ Semi-transparent rounded box for readable text over images.
 | `color`   | `white` | Background color                   |
 | `opacity` | `0.6`   | Background opacity (0 = invisible) |
 
-Built on `tcolorbox`. Works correctly inside `textblock*` positioning.
+Built on `tcolorbox`. Works correctly inside abspos page placements.
 
 ## Translation System
 

@@ -37,16 +37,13 @@ book-dual-%.pdf: main-dual.tex picturebook.sty \
 	$(eval DUAL_P := $(word 1,$(subst -, ,$*)))
 	$(eval DUAL_S := $(word 2,$(subst -, ,$*)))
 	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}$(GLOSSARYFLAG)\input{main-dual}"
-	lualatex $(LATEXFLAGS) -jobname="book-dual-$*" "\def\booklang{$(DUAL_P)}\def\booklangsecondary{$(DUAL_S)}$(GLOSSARYFLAG)\input{main-dual}"
 
-# Per-language PDF; 2 passes needed, otherwise images are offset to coordinates outside the page
+# Per-language PDF (single pass — all page placement is shipout-anchored)
 book-%.pdf: main.tex picturebook.sty translations/%.lua
-	lualatex $(LATEXFLAGS) -jobname="book-$*" "\def\booklang{$*}\input{main}"
 	lualatex $(LATEXFLAGS) -jobname="book-$*" "\def\booklang{$*}\input{main}"
 
 # Debug build (Romanian only, with grid overlay)
 debug:
-	lualatex $(LATEXFLAGS) -jobname="book-ro-debug" "\PassOptionsToPackage{debug}{picturebook}\def\booklang{ro}\input{main}"
 	lualatex $(LATEXFLAGS) -jobname="book-ro-debug" "\PassOptionsToPackage{debug}{picturebook}\def\booklang{ro}\input{main}"
 
 # Run automated verification

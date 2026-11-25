@@ -38,7 +38,7 @@
 \RequirePackage{tikz}
 \RequirePackage{fontspec}
 \RequirePackage{polyglossia}
-\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{abspos}
 \RequirePackage{xcolor}
 \RequirePackage{environ}
 \RequirePackage{fancyhdr}
@@ -60,40 +60,47 @@
 \newcommand{\pagenumbersoff}{\pb@pagenumbersfalse}
 \newcommand{\pagenumberstyle}[1]{\def\pb@pagenumberstyle{#1}}
 
-% Render page number as TikZ overlay (works over full-bleed images)
+% Render page number as a shipout-anchored box (abspos — no second pass).
+% y offsets are positive upwards, so bottom anchors use the page b pole.
+\newcommand{\pb@pnbox}{%
+  \begin{tikzpicture}[baseline=(pn.base)]
+    \node[fill=white, fill opacity=0.5, text opacity=1,
+          inner sep=3pt, rounded corners=2pt, font=\small\sffamily]
+      (pn) {\thepage};
+  \end{tikzpicture}%
+}
 \newcommand{\pb@renderpagenum}{%
   \ifpb@pagenumbers
-    \begin{tikzpicture}[remember picture, overlay]
-      \def\pb@pnstyle{\pb@pagenumberstyle}%
-      \ifx\pb@pnstyle\pb@style@center
-        % Centered at bottom
-        \node[fill=white, fill opacity=0.5, text opacity=1,
-              inner sep=3pt, rounded corners=2pt, anchor=south,
-              font=\small\sffamily]
-          at ([yshift=8mm]current page.south) {\thepage};
+    \def\pb@pnstyle{\pb@pagenumberstyle}%
+    \ifx\pb@pnstyle\pb@style@center
+      % Centered at bottom
+      \pb@at{hc}{b}{hc}{b}{0pt}{8mm}{\pb@pnbox}%
+    \else
+      % Sides: left on even pages, right on odd pages
+      \ifodd\value{page}%
+        \pb@at{r}{b}{r}{b}{-8mm}{8mm}{\pb@pnbox}%
       \else
-        % Sides: left on even pages, right on odd pages
-        \ifodd\value{page}
-          \node[fill=white, fill opacity=0.5, text opacity=1,
-                inner sep=3pt, rounded corners=2pt, anchor=south east,
-                font=\small\sffamily]
-            at ([xshift=-8mm, yshift=8mm]current page.south east) {\thepage};
-        \else
-          \node[fill=white, fill opacity=0.5, text opacity=1,
-                inner sep=3pt, rounded corners=2pt, anchor=south west,
-                font=\small\sffamily]
-            at ([xshift=8mm, yshift=8mm]current page.south west) {\thepage};
-        \fi
+        \pb@at{l}{b}{l}{b}{8mm}{8mm}{\pb@pnbox}%
       \fi
-    \end{tikzpicture}%
+    \fi
   \fi
 }
 \def\pb@style@center{center}
 
-% Configure textpos to use centimeters from top-left origin
-\setlength{\TPHorizModule}{1cm}
-\setlength{\TPVertModule}{1cm}
-\textblockorigin{0cm}{0cm}
+% Page placement: abspos shipout-anchored boxes (\absput), top-left origin,
+% centimetres. No TikZ "remember picture" anywhere, so every build is
+% single-pass: there is no aux round-trip that could offset page material.
+% \pb@at{page-h}{page-v}{box-h}{box-v}{x}{y}{material} places the box pole
+% (h,v) at the page pole (h,v) offset by (x,y); y is positive upwards.
+\newcommand{\pb@at}[7]{%
+  \absput[pg-#1,pg-#2,#3,#4,x=#5,y=#6]{#7}%
+}
+% \pb@block{width}{content} — a fixed-width text block with the same box
+% semantics textpos had: \hsize/\textwidth/\linewidth set to the block
+% width, normal paragraph indentation preserved.
+\newcommand{\pb@block}[2]{%
+  \vtop{\hsize=#1cm\relax \textwidth=\hsize \linewidth=\hsize #2}%
+}
 
 % Store original geometry for switching modes
 \newlength{\pb@pageW}
@@ -199,7 +206,7 @@
 % Non-Latin script support and language setup.
 %
 % Font map: polyglossia language name -> {serif, sans, mono} font families.
-% RTL set:  languages whose direction=RL would flip textpos coordinates.
+% RTL set:  languages whose direction=RL would flip page coordinates.
 %   For RTL languages we keep \setmainlanguage{english} so the page layout
 %   stays LTR, and wrap the translated text in {\<lang>font \textdir TRT …}
 %   inside \tr{} at render time.
@@ -499,17 +506,14 @@
 % ============================================================
 \newcommand{\singlepage}[5]{%
   \pb@resetbleed
-  % Background image
-  \begin{tikzpicture}[remember picture, overlay]
-    \node[inner sep=0pt, anchor=center] at (current page.center)
-      {\includegraphics[width=\paperwidth, height=\paperheight]{#1}};
-  \end{tikzpicture}%
+  \null % keep the main vlist non-empty so the page actually ships
+  % Background image, full bleed
+  \pb@at{l}{t}{l}{t}{0pt}{0pt}{%
+    \includegraphics[width=\paperwidth, height=\paperheight]{#1}}%
   % Debug overlay
   \ifpb@debug\pb@drawdebug{SINGLE PAGE}\fi
   % Text block
-  \begin{textblock*}{#4cm}(#2cm, #3cm)
-    #5
-  \end{textblock*}%
+  \pb@at{l}{t}{l}{t}{#2cm}{-#3cm}{\pb@block{#4}{#5}}%
   % Page number
   \pb@renderpagenum
 }
@@ -523,9 +527,7 @@
 %  May be called multiple times for multiple extra blocks.
 % ============================================================
 \newcommand{\block}[4]{%
-  \begin{textblock*}{#3cm}(#1cm, #2cm)
-    #4
-  \end{textblock*}%
+  \pb@at{l}{t}{l}{t}{#1cm}{-#2cm}{\pb@block{#3}{#4}}%
 }
 
 
@@ -533,33 +535,36 @@
 %  DEBUG OVERLAY
 % ============================================================
 \newcommand{\pb@drawdebug}[1]{%
-  \begin{tikzpicture}[remember picture, overlay]
-    % 1cm grid
-    \draw[cyan!30, very thin, step=1cm]
-      (current page.south west) grid (current page.north east);
-    % 5cm coordinate labels
-    \pgfmathsetmacro{\xmax}{int(\the\paperwidth / 28.45274)}% paperwidth in cm (approx)
-    \pgfmathsetmacro{\ymax}{int(\the\paperheight / 28.45274)}% paperheight in cm
-    \foreach \x in {0,5,...,\xmax} {
-      \foreach \y in {0,5,...,\ymax} {
-        \node[fill=black, fill opacity=0.5, text=white, text opacity=1,
-              font=\ttfamily\fontsize{5}{6}\selectfont, inner sep=1pt,
-              anchor=north west]
-          at ([xshift=\x cm, yshift=-\y cm]current page.north west)
-          {\x,\y};
+  \pb@at{l}{b}{l}{b}{0pt}{0pt}{%
+    \begin{tikzpicture}[overlay]
+      % 1cm grid (picture origin at page bottom-left; labels keep
+      % top-left origin semantics: (x, H - y))
+      \draw[cyan!30, very thin, step=1cm]
+        (0,0) grid (\paperwidth,\paperheight);
+      % 5cm coordinate labels
+      \pgfmathsetmacro{\xmax}{int(\the\paperwidth / 28.45274)}% paperwidth in cm (approx)
+      \pgfmathsetmacro{\ymax}{int(\the\paperheight / 28.45274)}% paperheight in cm
+      \foreach \x in {0,5,...,\xmax} {
+        \foreach \y in {0,5,...,\ymax} {
+          \node[fill=black, fill opacity=0.5, text=white, text opacity=1,
+                font=\ttfamily\fontsize{5}{6}\selectfont, inner sep=1pt,
+                anchor=north west]
+            at (\x cm, \paperheight - \y cm)
+            {\x,\y};
+        }
       }
-    }
-    % Safe area (red dotted)
-    \draw[red, thick, densely dotted]
-      ([shift={(\pb@safemargin,\pb@safemargin)}]current page.south west)
-      rectangle
-      ([shift={(-\pb@safemargin,-\pb@safemargin)}]current page.north east);
-    % Page type label
-    \node[fill=black, fill opacity=0.7, text=white, text opacity=1,
-          font=\ttfamily\scriptsize, inner sep=3pt, anchor=north west]
-      at ([xshift=2mm, yshift=-2mm]current page.north west)
-      {#1 ~|~ p.\thepage};
-  \end{tikzpicture}%
+      % Safe area (red dotted)
+      \draw[red, thick, densely dotted]
+        (\pb@safemargin,\pb@safemargin)
+        rectangle
+        (\paperwidth-\pb@safemargin,\paperheight-\pb@safemargin);
+      % Page type label
+      \node[fill=black, fill opacity=0.7, text=white, text opacity=1,
+            font=\ttfamily\scriptsize, inner sep=3pt, anchor=north west]
+        at (2mm, \paperheight-2mm)
+        {#1 ~|~ p.\thepage};
+    \end{tikzpicture}%
+  }%
 }
 
 
@@ -607,14 +612,17 @@
 % The author can call this explicitly to pad the page count.
 \newcommand{\fillerpage}{%
   \pb@resetbleed
-  \begin{tikzpicture}[remember picture, overlay]
-    \fill[orange!30] (current page.south west) rectangle (current page.north east);
-    \node[font=\Large\sffamily\bfseries, text=orange!70!black,
-          align=center, anchor=center]
-      at (current page.center)
-      {THIS PAGE INTENTIONALLY LEFT BLANK\\[4pt]
-       \normalsize\normalfont (filler page — p.\thepage)};
-  \end{tikzpicture}%
+  \null
+  \pb@at{l}{b}{l}{b}{0pt}{0pt}{%
+    \begin{tikzpicture}[overlay]
+      \fill[orange!30] (0,0) rectangle (\paperwidth,\paperheight);
+      \node[font=\Large\sffamily\bfseries, text=orange!70!black,
+            align=center, anchor=center]
+        at (0.5\paperwidth, 0.5\paperheight)
+        {THIS PAGE INTENTIONALLY LEFT BLANK\\[4pt]
+         \normalsize\normalfont (filler page — p.\thepage)};
+    \end{tikzpicture}%
+  }%
   \ifpb@debug\pb@drawdebug{FILLER PAGE}\fi
   \pb@renderpagenum
 }
@@ -623,16 +631,19 @@
 \newcommand{\pb@drawautofiller}{%
   \newgeometry{margin=0mm}%
   \thispagestyle{fancy}%
-  \begin{tikzpicture}[remember picture, overlay]
-    \fill[orange!50] (current page.south west) rectangle (current page.north east);
-    \node[font=\Large\sffamily\bfseries, text=orange!90!black,
-          align=center, anchor=center]
-      at (current page.center)
-      {AUTO-INSERTED FILLER PAGE\\[4pt]
-       \normalsize\normalfont A spread needed an even left page.\\
-       Replace this with content or a \texttt{\textbackslash fillerpage}.\\[4pt]
-       (p.\thepage)};
-  \end{tikzpicture}%
+  \null
+  \pb@at{l}{b}{l}{b}{0pt}{0pt}{%
+    \begin{tikzpicture}[overlay]
+      \fill[orange!50] (0,0) rectangle (\paperwidth,\paperheight);
+      \node[font=\Large\sffamily\bfseries, text=orange!90!black,
+            align=center, anchor=center]
+        at (0.5\paperwidth, 0.5\paperheight)
+        {AUTO-INSERTED FILLER PAGE\\[4pt]
+         \normalsize\normalfont A spread needed an even left page.\\
+         Replace this with content or a \texttt{\textbackslash fillerpage}.\\[4pt]
+         (p.\thepage)};
+    \end{tikzpicture}%
+  }%
   \ifpb@debug\pb@drawdebug{AUTO FILLER}\fi
   \pb@renderpagenum
 }
@@ -661,29 +672,31 @@
   \fi
   % --- LEFT PAGE ---
   \pb@resetbleed
-  % Clip left half of the image
-  \begin{tikzpicture}[remember picture, overlay]
-    \clip (current page.south west) rectangle (current page.north east);
-    \node[inner sep=0pt, anchor=west] at (current page.west)
-      {\includegraphics[height=\paperheight, width=2\paperwidth]{#1}};
-  \end{tikzpicture}%
+  \null
+  % Clip left half of the image (origin at page bottom-left)
+  \pb@at{l}{b}{l}{b}{0pt}{0pt}{%
+    \begin{tikzpicture}[overlay]
+      \clip (0,0) rectangle (\paperwidth,\paperheight);
+      \node[inner sep=0pt, anchor=south west] at (0,0)
+        {\includegraphics[height=\paperheight, width=2\paperwidth]{#1}};
+    \end{tikzpicture}%
+  }%
   \ifpb@debug\pb@drawdebug{SPREAD LEFT}\fi
-  \begin{textblock*}{#4cm}(#2cm, #3cm)
-    #5
-  \end{textblock*}%
+  \pb@at{l}{t}{l}{t}{#2cm}{-#3cm}{\pb@block{#4}{#5}}%
   \pb@renderpagenum
   % --- RIGHT PAGE ---
   \pb@resetbleed
-  % Clip right half of the image
-  \begin{tikzpicture}[remember picture, overlay]
-    \clip (current page.south west) rectangle (current page.north east);
-    \node[inner sep=0pt, anchor=east] at (current page.east)
-      {\includegraphics[height=\paperheight, width=2\paperwidth]{#1}};
-  \end{tikzpicture}%
+  \null
+  % Clip right half of the image (origin at page bottom-right)
+  \pb@at{r}{b}{r}{b}{0pt}{0pt}{%
+    \begin{tikzpicture}[overlay]
+      \clip (-\paperwidth,0) rectangle (0,\paperheight);
+      \node[inner sep=0pt, anchor=south east] at (0,0)
+        {\includegraphics[height=\paperheight, width=2\paperwidth]{#1}};
+    \end{tikzpicture}%
+  }%
   \ifpb@debug\pb@drawdebug{SPREAD RIGHT}\fi
-  \begin{textblock*}{#8cm}(#6cm, #7cm)
-    #9
-  \end{textblock*}%
+  \pb@at{l}{t}{l}{t}{#6cm}{-#7cm}{\pb@block{#8}{#9}}%
   \pb@renderpagenum
 }
 
