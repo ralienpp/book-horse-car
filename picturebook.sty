@@ -689,6 +689,142 @@
 
 
 % ============================================================
+%  \deliberateblank[content] — intentional blank/filler page.
+%  With no argument, shows the translated "deliberately blank" text.
+%  With an argument, shows that content instead.
+% ============================================================
+\newcommand{\deliberateblank}[1][__default__]{%
+  \clearpage
+  \thispagestyle{empty}%
+  \null\vfill
+  \begin{center}
+    \def\pb@blankarg{#1}%
+    \def\pb@blankdefault{__default__}%
+    \ifx\pb@blankarg\pb@blankdefault
+      {\small\itshape \tr{deliberate_blank}}%
+    \else
+      #1%
+    \fi
+  \end{center}
+  \vfill
+  \clearpage
+}
+
+% ============================================================
+%  \bookletfiller — decorative page used for signature padding.
+%  Default: a truly blank page. Override (e.g. insert an
+%  illustration or pattern) to make padding aesthetic.
+% ============================================================
+\newcommand{\bookletfiller}{\null}
+
+% ============================================================
+%  \padbooklet — insert filler page(s) so the total page count is
+%  a multiple of 4 (a full saddle-stitch signature), keeping the
+%  back cover as the very last page.
+%
+%  Call it IMMEDIATELY BEFORE \backcover. A saddle-stitched booklet
+%  is folded from sheets of 4 book pages each, so the total page
+%  count must be divisible by 4. When it is, the back cover (the
+%  last PDF page) automatically lands on the exterior back surface
+%  of the outermost physical sheet. Printed folios are unaffected:
+%  the unnumbered filler pages are inserted after all numbered
+%  sections and before the (also unnumbered) back cover.
+%
+%  Needs a second LaTeX pass only when the page count changes.
+% ============================================================
+\newif\ifpb@padbooklet
+\pb@padbookletfalse
+\newcounter{pb@fillerpages}
+\newcommand{\padbooklet}{%
+  \pb@padbooklettrue
+  % Close the page we are on. After \clearpage, \value{page} is the
+  % label of the page the back cover would occupy with zero fillers.
+  \clearpage
+  % f = (4 - ((Q+1) mod 4)) mod 4, where Q+1 = \value{page} here.
+  % With f filler pages, the total becomes Q+1+f, which we make ≡ 0
+  % (mod 4) — a complete saddle-stitch signature — and the back cover
+  % (page Q+1+f) then lands on the exterior of the last physical
+  % sheet. Back cover even-ness (verso) is automatic since Q+1+f ≡ 0.
+  \setcounter{pb@fillerpages}{\value{page}}%            Q+1
+  \@tempcnta=\value{pb@fillerpages}%
+  \divide\@tempcnta 4%
+  \multiply\@tempcnta 4%
+  \addtocounter{pb@fillerpages}{-\@tempcnta}%           (Q+1) mod 4
+  \@tempcnta=\numexpr4-\value{pb@fillerpages}%
+  \ifnum\@tempcnta=4 \@tempcnta=0 \fi%
+  \loop
+  \ifnum\@tempcnta>0
+    \thispagestyle{empty}%
+    \bookletfiller
+    \clearpage
+    \advance\@tempcnta -1
+  \repeat
+}
+% ============================================================
+%  \backcover{content} — back cover page.
+%  Ensures the back cover is on the last page with correct parity
+%  for booklet printing (must be even). Uses safe-area margins.
+%  If the current page is odd, a \deliberateblank is inserted first.
+% ============================================================
+\newcommand{\backcover}[1]{%
+  \clearpage
+  % Ensure we land on an even page (verso) for booklet back cover.
+  % If current page is odd, we need one blank page.
+  % If current page is even, we need two blank pages (to get to next even).
+  % When \padbooklet ran just before us, it already aligned the page to a
+  % multiple of 4, so this independent parity step is suppressed to avoid
+  % adding *extra* padding (which would break the signature).
+  \ifpb@padbooklet\else
+    \ifodd\value{page}%
+      \deliberateblank
+    \fi
+  \fi
+  \thispagestyle{empty}%
+  \newgeometry{left=10mm, right=10mm, top=10mm, bottom=10mm}%
+  #1%
+  \restoregeometry
+}
+
+% ============================================================
+%  bookgrid environment + \book{image}{title} — grid of book covers.
+%  Arranges book thumbnails in rows of 3 with titles below each.
+%  Usage:
+%    \begin{bookgrid}
+%      \book{image1}{Title 1}
+%      \book{image2}{Title 2}
+%      ...
+%    \end{bookgrid}
+% ============================================================
+\newcounter{pb@bookcount}
+
+\newenvironment{bookgrid}{%
+  \setcounter{pb@bookcount}{0}%
+  \begin{center}%
+  \def\pb@booksep{}%
+}{%
+  \end{center}%
+}
+
+\newcommand{\book}[2]{%
+  \stepcounter{pb@bookcount}%
+  % Start a new row after every 3rd book
+  \ifnum\value{pb@bookcount}>1
+    \pgfmathparse{int(Mod(\thepb@bookcount - 1, 3))}%
+    \ifnum\pgfmathresult=0
+      \\[6pt]%
+    \else
+      \hspace{4mm}%
+    \fi
+  \fi
+  \begin{minipage}[t]{0.3\textwidth}%
+    \centering
+    \includegraphics[height=4.5cm]{#1}\\[2pt]%
+    {\scriptsize #2}%
+  \end{minipage}%
+}
+
+
+% ============================================================
 %  END OF PACKAGE
 % ============================================================
 \endinput
