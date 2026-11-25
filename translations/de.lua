@@ -40,6 +40,10 @@ return {
   -- Prose section
   parent_guide_title = "Leitfaden für Eltern",
   glossary_title = "Glossar",
+  other_books_title = "Andere Bücher",
+  about_author_title = "Über den Autor",
+  about_author_body = "Über Ungenauigkeiten und Fehler berichten Sie bitte an: alex@railean.net",
+  deliberate_blank = "Diese Seite wurde absichtlich leer gelassen.",
   parent_guide_body  = [[\textbf{Nachhaltigkeit} ist die Nutzung natürlicher Ressourcen auf eine Weise, die nicht zu ihrer Erschöpfung oder zur Schädigung der Umwelt führt. Die übermäßige Ausbeutung von Ressourcen zeigt nicht immer sofort sichtbare Folgen, sodass das Übermaß erst später deutlich wird, manchmal -- zu spät.
 
 Die Auswirkungen von Autos auf die Umwelt beschränken sich nicht auf Abgase:
@@ -71,6 +75,18 @@ Auch wenn die vermeidbaren Probleme nicht vermieden wurden -- müssen wir uns au
 
 \textbf{Die Macht eines einzelnen Menschen} ist begrenzt. Selbst wenn du dein ganzes Leben lang Fahrrad fährst, stellt die Verschmutzung im industriellen Maßstab deinen persönlichen Einsatz in den Schatten. Dennoch ist keiner von uns allein -- \emph{Zusammenarbeit bringt Veränderung}. Wir können zusammenarbeiten, indem wir für vernünftigere Politik stimmen, indem wir neue Technologien entwickeln und so weiter.
 
-\textbf{Die Tragödie der Allmende}, wenn unreguliert, prägt viele Aspekte der menschlichen Gesellschaft. Wenn ein Gemeingut (z.\,B. ein Fluss, ein Park, ein Wald, ein See\ldots)
+Die unregulierte \textbf{Tragödie der Allmende} lässt sich in vielen Aspekten der menschlichen Gesellschaft beobachten. Die Tragödie besteht darin, dass bei einem Missbrauch eines Gemeinschaftsguts die Folgen des Missbrauchs und die Kosten der Sanierung oft von der Gesellschaft getragen werden und nicht vom Verursacher. Ökonomen nennen dieses Phänomen eine \emph{``negative Externalität''}.
+
+Stellen Sie sich eine Weide vor, auf die Hirten ihre Schafe täglich für eine Stunde zum Grasen bringen. Die Tiere ziehen ab, das Gras wächst bis zur Ankunft der nächsten Herde nach, sodass die Schafe aller Beteiligten satt werden. Doch ein Hirte beschließt, seine Schafe eine halbe Stunde länger grasen zu lassen. Seine Schafe werden mehr Gras fressen und mehr Milch geben (d. h. ein persönlicher Vorteil). Dies geschieht jedoch zum Nachteil der später eintreffenden Herden –- die Weide hat weniger Zeit, sich zu regenerieren, sodass andere Tiere weniger zu fressen haben (d. h. der Schaden wird externalisiert). Der Unterschied wird anfangs kaum wahrnehmbar sein.
+
+Doch was passiert, wenn jeder beschließt, seine Herde länger grasen zu lassen? Das Gras wird keine Zeit haben, sich zu erholen, und schließlich wird die Weide vertrocknen –- am Ende stehen alle mit nichts da.
+
+Das beschriebene Schema hat nur einen Nutzniesser -– den listigen Hirten, während alle anderen geschädigt werden. Mit dem Zusammenbruch des Ökosystems muss jedoch auch der ``Nutzniesser'' zahlen, obwohl es ihm im Allgemeinen besser gehen mag als dem Rest.
+
+Eine weitere Ausprägung der Tragödie der Allmende lässt sich manchmal bei Freunden im Restaurant beobachten. Wenn wir von vornherein beschließen, dass die Rechnung zu gleichen Teilen geteilt wird, könnte sich jemand finden, der teurere Speisen und Getränke bestellt. Da die Kosten dafür gleichmäßig verteilt werden, profitiert diese Person von den ``Subventionen'' der anderen.
+
+Auf globaler Ebene begünstigt die Tragödie der Allmende in der Regel Industrieländer und Großkonzerne, während sie arme Länder und schutzbedürftige Schichten der Gesellschaft benachteiligt.
+
+Oft kommt es auch vor, dass die Schäden von künftigen Generationen getragen werden müssen –- sie werden einen Ozean voller Plastik, eine Atmosphäre voller Abgase, abgeholzte Wälder und erodierte Böden erben\ldots
 ]],
 }

@@ -40,6 +40,10 @@ return {
   -- Prose section
   parent_guide_title = "Guide for Parents",
   glossary_title = "Glossary",
+  other_books_title = "Other books",
+  about_author_title = "About the author",
+  about_author_body = "Please report inaccuracies and errors to: alex@railean.net",
+  deliberate_blank = "This page was intentionally left blank.",
   parent_guide_body  = [[\textbf{Sustainability} is the use of natural resources in a way that does not lead to their depletion or to the degradation of the environment. Overexploiting resources does not always produce immediately visible consequences, so the excess becomes apparent later, sometimes -- too late.
 
 The impact of cars on the environment is not limited to exhaust fumes:
@@ -65,12 +69,30 @@ The impact of cars on the environment is not limited to exhaust fumes:
 \textbf{Why is it important to vote?}
 A large part of the problems we face are not inevitable tragedies we were fated to endure, but a consequence of poor management driven by the incompetence or corruption of the administration. In a democracy the administration can be changed through elections. Voting is therefore one of the instruments at our disposal, and it is important to use it. \emph{Rationally}!
 
-The book ``Climate Injustice'' by Friederike Otto describes many cases in which regions with populations in the millions go through droughts or floods that could have been avoided had the administration correctly applied solutions proposed by researchers.
+The book ``Climate Injustice'', written by Friederike Otto, describes many cases in which regions with populations in the millions go through droughts or floods that could have been avoided had the administration correctly applied solutions proposed by researchers.
 
 Although the problems that could have been avoided were not avoided -- we must focus on those that \emph{can still be avoided}.
 
+
 \textbf{The power of a single person} is limited. Even if you cycle your whole life, industrial-scale pollution eclipses your personal effort. And yet none of us is alone -- \emph{cooperation brings change}. We can cooperate by voting for more reasonable policies, by developing new technologies, and so on.
 
-\textbf{The tragedy of the commons}, when unregulated, characterises many aspects of human society. When a common good (e.g. a river, a park, a forest, a lake\ldots)
+
+\textbf{The tragedy of the unregulated commons} can be observed across many facets of human society. The tragedy lies in the fact that when a shared resource is exploited abusively, the consequences of this abuse and the remediation costs are often borne by society rather than by the abuser. Economists refer to this phenomenon as a \emph{``negative externality''}.
+
+Picture a meadow where shepherds bring their sheep to graze for one hour each day. The animals leave, the grass regrows before the next flock arrives, and everyone's sheep remain well-fed. But suppose one shepherd decides to graze his sheep for an extra half hour. His sheep will consume more grass and yield more milk (a private benefit). However, this happens at the expense of flocks arriving later: the pasture has less time to recover, and consequently the other animals have less to eat (the loss has been externalised). Initially, the difference remains imperceptible.
+What happens, though, if every shepherd decides to graze their flock longer? The grass will not have enough time to replenish, and eventually the meadow will turn barren -- leaving everyone with nothing.
+
+This dynamic yields a single beneficiary -- the cunning shepherd -- while everyone else suffers a loss. Yet once the ecosystem collapses, even that ``beneficiary'' ends up paying the price, even if they fared better than the rest along the way.
+
+
+Another everyday manifestation of the tragedy of the commons can be observed when dining out with friends. If everyone agrees in advance to split the bill evenly, someone might be tempted to order significantly more expensive dishes and drinks. Since the overall cost is distributed evenly across the table, that person benefits from being ``subsidised'' by the others.
+
+
+On a global scale, the tragedy of the commons routinely favours industrialised nations and large corporations, while placing developing nations and the most vulnerable strata of society at a disadvantage.
+
+
+Furthermore, the burden of the damage is often passed on to future generations -- they will inherit an ocean filled with plastic, an atmosphere choked with exhaust fumes, deforested lands, and eroded soils\dots
+
+
 ]],
 }

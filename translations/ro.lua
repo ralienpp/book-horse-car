@@ -41,6 +41,10 @@ return {
   -- Prose section
   parent_guide_title = "Ghid pentru părinți",
   glossary_title = "Glosar",
+  other_books_title = "Alte cărți",
+  about_author_title = "Despre autor",
+  about_author_body = "Vă rugăm să raportați inexactitățile și erorile la: alex@railean.net",
+  deliberate_blank = "Această pagină a fost lăsată goală în mod deliberat.",
   parent_guide_body  = [[\textbf{Sustenabilitatea} este utilizarea resurselor naturale într-un mod care nu duce la epuizarea acestora sau la degradarea mediului înconjurător. Exploatarea excesivă a resurselor nu produce întotdeauna consecințe vizibile imediat, astfel excesul devine evident mai târziu, uneori -- prea târziu.
 
 Impactul automobilelor asupra mediului nu se reduce doar la gazele de eșapament:

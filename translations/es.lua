@@ -40,6 +40,10 @@ return {
   -- Prose section
   parent_guide_title = "Guía para padres",
   glossary_title = "Glosario",
+  other_books_title = "Otros libros",
+  about_author_title = "Sobre el autor",
+  about_author_body = "Informe de inexactitudes y errores a: alex@railean.net",
+  deliberate_blank = "Esta página se dejó en blanco intencionalmente.",
   parent_guide_body  = [[\textbf{La sostenibilidad} es el uso de los recursos naturales de una manera que no conduzca a su agotamiento ni a la degradación del medio ambiente. La sobreexplotación de los recursos no siempre produce consecuencias visibles de inmediato, de modo que el exceso se hace evidente más tarde, a veces -- demasiado tarde.
 
 El impacto de los automóviles en el medio ambiente no se limita a los gases de escape:
