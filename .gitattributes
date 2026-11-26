@@ -1,0 +1,31 @@
+# Line endings: LF everywhere — in the repo AND in working trees.
+#
+# How this works: these attributes are consulted on every `git add` (clean:
+# working tree -> index, CRLF is converted to LF before hashing/storing) and
+# on every checkout (smudge: index -> working tree, LF is written as-is,
+# never converted to CRLF). They override each developer's core.autocrlf
+# and core.eol, so the outcome is identical on every machine.
+#
+# They apply to all future commits; existing history keeps whatever was
+# committed then. The one-time "normalize everything" commit that introduced
+# this file rewrote the affected blobs, so from it on, every checkout of
+# every branch is LF. If a merge ever re-introduces CRLF, repair with:
+#   git add --renormalize .
+
+*.lua      text eol=lf
+*.tex      text eol=lf
+*.sty      text eol=lf
+*.csv      text eol=lf
+*.md       text eol=lf
+*.txt      text eol=lf
+*.sh       text eol=lf
+Makefile   text eol=lf
+
+# Binaries: never touch a byte. The QR PDFs are hand-crafted and a
+# line-ending conversion would corrupt them.
+*.pdf  -text
+*.jpg  -text
+*.jpeg -text
+*.png  -text
+*.eps  -text
+*.kra  -text
