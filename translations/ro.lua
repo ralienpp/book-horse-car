@@ -14,7 +14,7 @@ return {
   p01_modern_city     = "Orașele nu arătau întotdeauna așa.",
   p02_horse_tram      = "Trăsurile și tramvaiele cu cai au fost cândva mijloace de transport public.",
   p03_growing_cities  = "Orașele creșteau, în ele veneau tot mai mulți oameni.",
-  p03a_more_horses    = "Creștea și populația cailor.",
+  p03a_more_horses    = "Creștea și numărul cailor.",
   p04_ny_stats        = [[În 1890 în New York locuiau 1,5 milioane de oameni și 100\,000 de cai!]],
   p04_ny_subtitle     = [[Iar acolo unde avem cai~--- ce mai avem?]],
   p05_manure_stats    = [[Zilnic un cal produce 17~kg de balegă și 8~litri de urină.]],
@@ -60,22 +60,22 @@ Impactul automobilelor asupra mediului nu se reduce doar la gazele de eșapament
 
 \textbf{Soluții și alternative:}
 \begin{itemize}
-	\item Automobilele electrice folosesc preponderent ``frâne regenerative'', și nu frâne cu saboți. Această înlocuire elimină una din sursele de particule minuscule care ajung în atmosferă.
-	\item Transportul pe șenile (e.g., tramvai, metrou) elimină efectul frecării roților cu asfaltul; frecarea metal-pe-metal e mult mai mică, astfel se consumă mai puțină energie pentru a mișca din loc un tren.
+	\item Automobilele electrice folosesc preponderent ``frâne regenerative'', și nu frâne cu saboți. Această înlocuire reduce cantitatea de particule minuscule care ajung în atmosferă.
+	\item Transportul pe șine (e.g., tramvai, metrou) elimină efectul frecării roților cu asfaltul; frecarea metal-pe-metal e mult mai mică, astfel se consumă mai puțină energie pentru a mișca din loc un tren.
 	\item Trenurile cu levitație magnetică (Maglev) nu au deloc contact cu șina, ceea ce reduce și mai mult atât poluarea fonică, cât și forța de frecare. Astfel randamentul acestui mijloc de transport e și mai mare.
 	\item Căile ferate sunt permeabile, adică nu au un efect de ``capac'', spre deosebire de drumurile asfaltate.
 	\item Căile ferate utilizează mult mai eficient spațiul -- în aceeași unitate de timp un tren transportă sute de oameni, în timp ce într-un automobil încap doar câteva persoane.
 \end{itemize}
 
 \textbf{De ce e important să votezi?}
-O mare parte din problemele cu care ne confruntăm nu sunt tragedii inevitabile care ne-a fost sortit să le îndurăm, ci o consecință a managementului prost, determinat de incompetența sau corupția administrației. Într-o democrație administrația se poate schimba prin alegeri. Așadar, votul este unul din instrumentele pe care le avem la dispoziție, și e important să-l utilizăm. \emph{Rațional}!
+O mare parte din problemele cu care ne confruntăm nu sunt tragedii inevitabile care ne-au fost sortite, ci o consecință a managementului prost, determinat de incompetența sau corupția administrației. Într-o democrație administrația se poate schimba prin alegeri. Așadar, votul este unul din instrumentele pe care le avem la dispoziție, și e important să-l utilizăm. \emph{Rațional}!
 
 Cartea ``Climate injustice'', scrisă de Friederike Otto, descrie multiple cazuri în care regiuni cu populații de milioane trec prin secete sau inundații, care puteau fi evitate dacă administrația ar fi aplicat corect soluții propuse de cercetători.
 
-Deși problemele care puteau fi evitate nu au fost evitate -- trebuie să ne concentrăn pe acelea care \emph{încă pot fi evitate}.
+Deși problemele care puteau fi evitate nu au fost evitate -- trebuie să ne concentrăm pe acelea care \emph{încă pot fi evitate}.
 
 
-\textbf{Puterea unui singur om} este limitată. Chiar dacă vei merge cu bicileta toată viața, poluarea la scară industrială eclipsează efortul tău personal. Totuși, nimeni dintre noi nu este singur -- \emph{cooperarea aduce schimbarea}. Putem coopera prin votarea pentru politici mai rezonabile, prin elaborarea tehnologiilor noi, etc.
+\textbf{Puterea unui singur om} este limitată. Chiar dacă vei merge cu bicicleta toată viața, poluarea la scară industrială eclipsează efortul tău personal. Totuși, nimeni dintre noi nu este singur -- \emph{cooperarea aduce schimbarea}. Putem coopera prin votarea pentru politici mai rezonabile, prin elaborarea tehnologiilor noi, etc.
 
 
 \textbf{Tragedia resurselor comune} nereglementate poate fi observată în multe aspecte ale societății umane. Tragedia constă în aceea, că dacă un bun comun este exploatat în mod abuziv, deseori consecințele abuzului și costurile remedierii sunt suportate de societate, nu de abuzator. Economiștii numesc acest fenomen \emph{``externalitate negativă''}.
@@ -92,7 +92,7 @@ O altă manifestare a tragediei resurselor comune uneori o putem observa cu prie
 La scară planetară, tragedia resurselor comune de regulă favorizează țările industrializate și companiile mari, defavorizând țările sărace și păturile vulnerabile ale societății. 
 
 
-Se mai întâmplă că pagubele vor fi suportate generațiile viitorului -- ele vor moșteni un ocean plin de plastic, o atmosferă plină de gaze de eșapament, păduri defrișate, soluri erodate\ldots
+Se mai întâmplă că pagubele vor fi suportate de generațiile viitorului -- ele vor moșteni un ocean plin de plastic, o atmosferă plină de gaze de eșapament, păduri defrișate, soluri erodate\ldots
 
 
 ]],
