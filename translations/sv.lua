@@ -60,7 +60,7 @@ Bilarnas påverkan på miljön stannar inte vid enbart avgaser:
 
 \textbf{Lösningar och alternativ:}
 \begin{itemize}
-	\item Elbilar använder i huvudsak ``regenerativa bromsar'' snarare än mekaniska friktionsbromsar. Detta byte tar bort en av källorna till mikropartiklar i luften.
+	\item Elbilar använder i huvudsak ``regenerativa bromsar'' snarare än mekaniska friktionsbromsar. Detta byte minskar mängden mikropartiklar i luften.
 	\item Spårburen transport (t.ex. spårvagn, tunnelbana) eliminerar friktionen mellan hjul och asfalt; friktionen mellan metall och metall är avsevärt lägre, vilket gör att det krävs betydligt mindre energi för att sätta ett tåg i rörelse.
 	\item Maglev-tåg (magnetresande tåg) har ingen kontakt alls med rälsen, vilket ytterligare minskar både buller och friktionskrafter. Verkningsgraden för detta transportmedel blir därmed ännu högre.
 	\item Järnvägsspår är genomsläppliga, vilket innebär att de till skillnad från asfalterade vägar inte skapar någon ``lockeffekt''.

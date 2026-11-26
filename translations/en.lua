@@ -59,7 +59,7 @@ The impact of cars on the environment is not limited to exhaust fumes:
 
 \textbf{Solutions and alternatives:}
 \begin{itemize}
-	\item Electric cars mostly use ``regenerative brakes'' rather than friction brakes. This replacement removes one of the sources of tiny particles that reach the atmosphere.
+	\item Electric cars mostly use ``regenerative brakes'' rather than friction brakes. This replacement reduces the amount of tiny particles that reach the atmosphere.
 	\item Rail transport (e.g. tram, metro) eliminates the effect of wheel-on-asphalt friction; metal-on-metal friction is much smaller, so less energy is consumed to set a train in motion.
 	\item Magnetic-levitation trains (Maglev) have no contact at all with the rail, which further reduces both noise pollution and frictional force. The efficiency of this means of transport is therefore even greater.
 	\item Railways are permeable, that is, they have no ``lid'' effect, unlike paved roads.

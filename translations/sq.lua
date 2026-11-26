@@ -14,7 +14,7 @@ return {
   p01_modern_city     = "Qytetet nuk kanë qenë gjithmonë kështu.",
   p02_horse_tram      = "Karrocat dhe tramvajet me kuaj kanë qenë dikur mjete të transportit publik.",
   p03_growing_cities  = "Qytetet rriteshin, dhe gjithnjë e më shumë njerëz vinin në to.",
-  p03a_more_horses    = "Edhe popullsia e kuajve rritej.",
+  p03a_more_horses    = "Edhe numri i kuajve rritej.",
   p04_ny_stats        = [[Në vitin 1890 në New York jetonin 1,5 milionë njerëz dhe 100\,000 kuaj!]],
   p04_ny_subtitle     = [[Dhe aty ku kemi kuaj -- çfarë tjetër kemi?]],
   p05_manure_stats    = [[Çdo ditë një kalë prodhon 17~kg bajgë dhe 8~litra urinë.]],
@@ -60,7 +60,7 @@ Ndikimi i automobilave në mjedis nuk kufizohet vetëm në gazet e shkarkimit:
 
 \textbf{Zgjidhje dhe alternativa:}
 \begin{itemize}
-	\item Automobilat elektrikë përdorin kryesisht ``frena ripërtëritëse'', dhe jo frena me këpucë. Ky zëvendësim eliminon një nga burimet e grimcave të vogla që arrijnë në atmosferë.
+	\item Automobilat elektrikë përdorin kryesisht ``frena ripërtëritëse'', dhe jo frena me këpucë. Ky zëvendësim redukton sasinë e grimcave të vogla që arrijnë në atmosferë.
 	\item Transporti me shinat (p.sh., tramvaj, metro) eliminon efektin e fërkimit të rrotave me asfaltin; fërkimi metal-mbi-metal është shumë më i vogël, kështu konsumohet më pak energji për të lëvizur një tren.
 	\item Trenat me levitacion magnetik (Maglev) nuk kanë fare kontakt me shinën, gjë që redukton edhe më shumë si ndotjen akustike ashtu edhe forcën e fërkimit. Kështu rendimenti i këtij mjeti transporti është edhe më i lartë.
 	\item Hekurudhat janë të përshkueshme, domethënë nuk kanë efektin e ``kapakut'', ndryshe nga rrugët e asfaltuara.

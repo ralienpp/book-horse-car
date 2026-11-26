@@ -13,7 +13,7 @@ return {
   p01_modern_city     = "Städte sahen nicht immer so aus wie heute.",
   p02_horse_tram      = "Pferdekutschen und Pferdestraßenbahnen waren einst Mittel des öffentlichen Verkehrs.",
   p03_growing_cities  = "Die Städte wuchsen, immer mehr Menschen zogen hinzu.",
-  p03a_more_horses    = "Auch die Pferdepopulation wuchs.",
+  p03a_more_horses    = "Auch der Pferdebestand wuchs.",
   p04_ny_stats        = [[1890 lebten in New York 1,5 Millionen Menschen und 100\,000 Pferde!]],
   p04_ny_subtitle     = [[Und wo es Pferde gibt~--- was gibt es da noch?]],
   p05_manure_stats    = [[Jeden Tag produziert ein Pferd 17~kg Mist und 8~Liter Urin.]],
@@ -59,7 +59,7 @@ Die Auswirkungen von Autos auf die Umwelt beschränken sich nicht auf Abgase:
 
 \textbf{Lösungen und Alternativen:}
 \begin{itemize}
-	\item Elektroautos nutzen überwiegend ``regeneratives Bremsen'' statt Reibungsbremsen. Dieser Ersatz beseitigt eine der Quellen winziger Partikel, die in die Atmosphäre gelangen.
+	\item Elektroautos nutzen überwiegend ``regeneratives Bremsen'' statt Reibungsbremsen. Dieser Ersatz reduziert die Menge winziger Partikel, die in die Atmosphäre gelangen.
 	\item Der schienengebundene Verkehr (z.\,B. Straßenbahn, U-Bahn) beseitigt den Effekt der Rad-auf-Asphalt-Reibung; die Metall-auf-Metall-Reibung ist viel geringer, sodass weniger Energie nötig ist, um einen Zug in Bewegung zu setzen.
 	\item Magnetschwebebahnen (Maglev) haben überhaupt keinen Kontakt zur Schiene, was sowohl die Lärmbelastung als auch die Reibungskraft weiter verringert. Der Wirkungsgrad dieses Verkehrsmittels ist daher noch höher.
 	\item Eisenbahnstrecken sind durchlässig, das heißt, sie haben keinen ``Deckel''-Effekt, anders als asphaltierte Straßen.

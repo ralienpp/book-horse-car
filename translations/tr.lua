@@ -13,7 +13,7 @@ return {
   p01_modern_city     = "Şehirler her zaman böyle görünmüyordu.",
   p02_horse_tram      = "At arabaları ve atlı tramvaylar bir zamanlar toplu taşıma araçlarıydı.",
   p03_growing_cities  = "Şehirler büyüyordu, şehirlere giderek daha fazla insan geliyordu.",
-  p03a_more_horses    = "At nüfusu da artıyordu.",
+  p03a_more_horses    = "At sayısı da artıyordu.",
   p04_ny_stats        = [[1890'da New York'ta 1,5 milyon insan ve 100\,000 at yaşıyordu!]],
   p04_ny_subtitle     = [[Atların olduğu yerde~--- başka neyimiz var?]],
   p05_manure_stats    = [[Bir at günde 17~kg gübre ve 8~litre idrar üretir.]],
@@ -59,7 +59,7 @@ Otomobillerin çevre üzerindeki etkisi yalnızca egzoz gazlarıyla sınırlı d
 
 \textbf{Çözümler ve alternatifler:}
 \begin{itemize}
-	\item Elektrikli otomobiller ağırlıklı olarak sürtünmeli frenler yerine ``rejeneratif frenler'' kullanır. Bu değişim, atmosfere karışan mikro parçacık kaynaklarından birini ortadan kaldırır.
+	\item Elektrikli otomobiller ağırlıklı olarak sürtünmeli frenler yerine ``rejeneratif frenler'' kullanır. Bu değişim, atmosfere karışan mikro parçacık miktarını azaltır.
 	\item Raylı ulaşım (örneğin tramvay, metro) lastiklerin asfaltla olan sürtünme etkisini ortadan kaldırır; metalin metalle sürtünmesi çok daha düşüktür, böylece bir treni hareket ettirmek için daha az enerji harcanır.
 	\item Manyetik kaldırmalı trenler (Maglev) raylarla hiç temas etmez, bu da hem gürültü kirliliğini hem de sürtünme kuvvetini daha da azaltır. Böylece bu ulaşım aracının verimliliği daha da artar.
 	\item Demiryolları geçirgendir; yani asfalt yolların aksine bir ``kapak'' etkisi yaratmazlar.

@@ -59,7 +59,7 @@ L'impatto delle automobili sull'ambiente non si limita ai soli gas di scarico:
 
 \textbf{Soluzioni e alternative:}
 \begin{itemize}
-	\item Le auto elettriche utilizzano prevalentemente la ``frenata rigenerativa'' anziché i freni a frizione. Questa sostituzione elimina una delle fonti di particolato rilasciate nell'atmosfera.
+	\item Le auto elettriche utilizzano prevalentemente la ``frenata rigenerativa'' anziché i freni a frizione. Questa sostituzione riduce la quantità di particolato rilasciato nell'atmosfera.
 	\item Il trasporto su rotaia (es. tram, metropolitana) elimina l'effetto dell'attrito tra gomma e asfalto; l'attrito metallo-su-metallo è notevolmente inferiore, pertanto serve molta meno energia per mettere in movimento un convoglio.
 	\item I treni a levitazione magnetica (Maglev) non hanno alcun contatto fisico con il binario, riducendo ulteriormente sia l'inquinamento acustico sia le forze d'attrito. Ne consegue un'efficienza energetica ancora più elevata.
 	\item Le linee ferroviarie sono permeabili, il che significa che non producono l'effetto ``cappa'' tipico delle superfici asfaltate.

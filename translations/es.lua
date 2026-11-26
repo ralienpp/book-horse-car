@@ -13,7 +13,7 @@ return {
   p01_modern_city     = "Las ciudades no siempre tuvieron este aspecto.",
   p02_horse_tram      = "Los carruajes y tranvías de caballos fueron alguna vez medios de transporte público.",
   p03_growing_cities  = "Las ciudades crecían y cada vez llegaba más gente a ellas.",
-  p03a_more_horses    = "También crecía la población de caballos.",
+  p03a_more_horses    = "También crecía el número de caballos.",
   p04_ny_stats        = [[En 1890 vivían en Nueva York 1,5 millones de personas y 100\,000 caballos!]],
   p04_ny_subtitle     = [[Y donde hay caballos~--- ¿qué más hay?]],
   p05_manure_stats    = [[Un caballo produce al día 17~kg de estiércol y 8~litros de orina.]],
@@ -59,7 +59,7 @@ El impacto de los automóviles en el medio ambiente no se limita a los gases de 
 
 \textbf{Soluciones y alternativas:}
 \begin{itemize}
-	\item Los automóviles eléctricos utilizan principalmente ``frenos regenerativos'' en lugar de frenos de fricción, eliminando así una de las fuentes de partículas finas en la atmósfera.
+	\item Los automóviles eléctricos utilizan principalmente ``frenos regenerativos'' en lugar de frenos de fricción, reduciendo así la cantidad de partículas finas que llegan a la atmósfera.
 	\item El transporte sobre raíles (por ejemplo, tranvía, metro) elimina el efecto de la fricción neumático-asfalto; la fricción metal sobre metal es mucho menor, por lo que se consume menos energía para mover un tren.
 	\item Los trenes de levitación magnética (Maglev) no tienen contacto alguno con el carril, lo que reduce aún más tanto la contaminación acústica como la resistencia al avance, haciendo este medio de transporte todavía más eficiente.
 	\item Las vías férreas son permeables, es decir, no tienen el efecto de ``tapa'', a diferencia de las carreteras asfaltadas.
